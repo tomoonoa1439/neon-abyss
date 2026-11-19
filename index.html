@@ -480,6 +480,38 @@ button{font-family:inherit;color:inherit}
 .pxcat{position:absolute;right:14px;bottom:4px;animation:catb 1.2s steps(2) infinite}
 @keyframes catb{50%{transform:translateY(-4px)}}
 .lobbyfoot{grid-template-columns:repeat(3,1fr)}
+
+/* ===== v7 story / missions / comeback ===== */
+.panel{margin:0 0 10px;padding:10px 12px;border-radius:14px;background:rgba(8,12,34,.82);border:1px solid var(--line)}
+.panel:empty{display:none}
+.pn-h{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;font-size:12px}
+.pn-h b{font-family:var(--font-d);letter-spacing:.05em}
+.mis{display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid rgba(255,255,255,.06)}
+.mis .mt{font-size:12px;font-weight:700}
+.mis .mr{font-size:10px;text-align:right;font-family:var(--font-d);color:var(--dim);white-space:nowrap}.mis .mr b{color:var(--green);font-size:11px}
+.mrr{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--cyan);cursor:pointer;flex:0 0 auto}
+.scene{min-height:220px;display:flex;flex-direction:column}
+.sc-title{font-family:var(--font-d);font-weight:900;font-size:12px;letter-spacing:.2em;color:var(--cyan);text-align:center;margin-bottom:12px}
+.sc-body{display:flex;gap:12px;align-items:flex-start;flex:1}
+.sc-av{width:72px;height:72px;flex:0 0 auto;border-radius:50%;overflow:hidden;border:2px solid var(--c);box-shadow:0 0 16px var(--c);animation:pop .3s}
+.sc-av.sm{width:40px;height:40px}
+.sc-av svg{width:100%;height:100%}
+.sc-txt{flex:1;font-size:15px;line-height:1.75;min-height:100px}
+.sc-txt b{display:block;font-size:12px;font-family:var(--font-d);letter-spacing:.08em;margin-bottom:2px}
+.sc-txt.narr{text-align:center;font-style:italic;color:#c5d3f5;padding-top:14px}
+.sc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:11px}
+.lc-title{font-family:var(--font-d);font-weight:900;font-size:34px;letter-spacing:.08em;color:#ff3d6e;text-shadow:0 0 18px #ff3d6e;animation:blink .6s infinite}
+.lc-cards{display:flex;gap:10px;justify-content:center;perspective:700px}
+.lc-card{width:88px;height:126px;cursor:pointer}
+.lc-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}
+.lc-card.open .lc-in{transform:rotateY(180deg)}
+.lc-f,.lc-b{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center}
+.lc-f{background:var(--cardback);border:2px solid #ff2bd6;box-shadow:0 0 18px rgba(255,43,214,.5);font-family:var(--font-d);font-size:40px;font-weight:900;color:#fff;text-shadow:0 0 12px #ff2bd6}
+.lc-card:not(.open):hover .lc-f{box-shadow:0 0 30px #ff2bd6}
+.lc-b{transform:rotateY(180deg);background:radial-gradient(circle,color-mix(in srgb,var(--c) 35%,#05060f),#05060f);border:2px solid var(--c);box-shadow:0 0 22px var(--c);flex-direction:column;align-content:center;gap:4px}
+.lc-b b{font-family:var(--font-d);font-size:13px;color:var(--c)}.lc-b span{font-family:var(--font-d);font-weight:900;font-size:15px}
+.lc-card.dimc{opacity:.45}
+.loanbox{padding:10px;border-radius:12px;background:rgba(255,30,80,.08);border:1px solid rgba(255,61,110,.5)}
 </style>
 </head>
 <body>
@@ -860,9 +892,9 @@ let bankruptOpen=false;
 function checkBankrupt(){if(bankruptOpen||$('#modal').classList.contains('on'))return;if(S.cr>=100)return;if(CUR==='poker'&&(PK.active||PK.inHand))return;if(CUR==='gacha')return;
   bankruptOpen=true;AU.lose();$('#modal').dataset.lock='1';
   showModal(`<div class="center"><div style="font-family:var(--font-d);font-size:42px;font-weight:900;color:var(--red);text-shadow:0 0 18px var(--red);letter-spacing:.1em">BANKRUPT</div><p style="font-size:16px;font-weight:800">破産しました…</p><p class="dim" style="font-size:12px;line-height:1.7">ネオンの海に、すべてのクレジットが沈んだ。<br>最高到達額：${fmt(S.peak)} CR ／ 破産回数：${S.bankrupts+1}</p>
-  <div style="display:grid;gap:8px;margin-top:14px"><button class="btn gold" id="brSmall">少額で再スタート（3,000CR）<br><small style="font-weight:400">コレクション・戦績・開放フロアはそのまま</small></button><button class="btn red" id="brReset">最初からやり直す<br><small style="font-weight:400">すべて初期化して10,000CRから</small></button></div></div>`);
-  $('#brSmall').onclick=()=>{S.bankrupts++;S.cr+=3000;S.streak=0;save();delete $('#modal').dataset.lock;bankruptOpen=false;closeModal();WAL.set(S.cr);FX.burst(innerWidth/2,innerHeight/2,20);go('lobby')};
-  $('#brReset').onclick=()=>{S=defaultState();save();applyCosmetics();delete $('#modal').dataset.lock;bankruptOpen=false;closeModal();WAL.snap();go('lobby')}}
+  <div style="margin-top:12px">${typeof loanHTML==='function'?loanHTML(true):''}</div><div style="display:grid;gap:8px;margin-top:10px"><button class="btn gold" id="brSmall">少額で再スタート（3,000CR）<br><small style="font-weight:400">コレクション・戦績・開放フロアはそのまま</small></button><button class="btn red" id="brReset">最初からやり直す<br><small style="font-weight:400">すべて初期化して10,000CRから</small></button></div></div>`);
+  $('#brSmall').onclick=()=>{onBankrupt();S.bankrupts++;S.cr+=3000;S.streak=0;save();delete $('#modal').dataset.lock;bankruptOpen=false;closeModal();WAL.set(S.cr);FX.burst(innerWidth/2,innerHeight/2,20);go('lobby')};
+  $('#brReset').onclick=()=>{onBankrupt();S=defaultState();save();applyCosmetics();delete $('#modal').dataset.lock;bankruptOpen=false;closeModal();WAL.snap();go('lobby')};if(typeof bindLoan==='function')bindLoan(()=>go('lobby'))}
 /* ================= FX v2: bold & flashy ================= */
 /* shockwave rings & light shafts are drawn on the same canvas */
 FX.ring=function(x,y,{col='#ffd36b',max=260,w=10,life=.7,delay=0}={}){this.parts.push({ring:true,x,y,r:6,max,w,col,life:life+delay,max2:life,delay});this.loop()};
@@ -1426,7 +1458,7 @@ GAME_MOUNT.poker=(v)=>{const SB=100,BB=200;
       for(let k=0;k<Math.min(6,breakChips(a).length);k++){setTimeout(()=>flyChip(breakChips(a)[k],potEl,box,{dur:500}),k*70)}
       await sleep(550);p.stack+=a;PK.pot=Math.max(0,PK.pot-a);updPot();updBet(i);const net=a-p.contrib;
       const r=box.getBoundingClientRect();FX.burst(r.left+r.width/2,r.top+r.height/2,clamp(Math.round(a/400),8,40),{to:{x:r.left+r.width/2,y:r.top+12},onArrive:()=>{box.animate([{transform:'scale(1.08)'},{transform:'none'}],{duration:160})},spread:.8});
-      if(p.human){if(sd&&sc&&sc[i]){if(catOf(sc[i].score)>=6)achv('pokerfh');if(handName(sc[i].score)==='ロイヤルフラッシュ')achv('royal')}AU.win();stamp(sd?'YOU WIN':'POT GET',{col:'#ffd36b',sub:`+${fmt(a)}${sd&&sc&&sc[i]?' · '+handName(sc[i].score):''}`,size:.85,shake:1.5});flashColor('rgba(255,211,107,.6)',.6);FX.shaft(r.left+r.width/2,r.top+r.height/2,{n:14,life:1.4});$('#gmsg').innerHTML=`<span class="neon-g">あなたの勝ち！ +${fmt(net>0?net:a)}${sd&&sc&&sc[i]?'（'+handName(sc[i].score)+'）':''}</span>`;dealerSay('aria',net>=BB*15?'big':'win')}
+      if(p.human){emit('pokerwin');if(sd&&sc&&sc[i]){if(catOf(sc[i].score)>=6)achv('pokerfh');if(handName(sc[i].score)==='ロイヤルフラッシュ')achv('royal')}AU.win();stamp(sd?'YOU WIN':'POT GET',{col:'#ffd36b',sub:`+${fmt(a)}${sd&&sc&&sc[i]?' · '+handName(sc[i].score):''}`,size:.85,shake:1.5});flashColor('rgba(255,211,107,.6)',.6);FX.shaft(r.left+r.width/2,r.top+r.height/2,{n:14,life:1.4});$('#gmsg').innerHTML=`<span class="neon-g">あなたの勝ち！ +${fmt(net>0?net:a)}${sd&&sc&&sc[i]?'（'+handName(sc[i].score)+'）':''}</span>`;dealerSay('aria',net>=BB*15?'big':'win')}
       else{cpuSay(seatEl(i),pick(p.cpu.win),2000);if(!list.some(([j])=>j===0))$('#gmsg').innerHTML=`${p.name} の勝ち${sd&&sc&&sc[i]?'（'+handName(sc[i].score)+'）':''}`}}
     PK.pot=0;updPot();
     const mine=list.find(([i])=>i===0);const ret=mine?mine[1]:0;if(me.contrib>0||ret>0){record('poker',me.contrib,ret);const net=ret-me.contrib;if(net<0&&!me.folded){dealerSay('aria','lose');AU.lose()}if(net>=BB*15){await sleep(900);await bigWin(net,BB*2)}}}
@@ -1525,7 +1557,7 @@ GAME_MOUNT.bigsix=(v)=>{const st={bets:{},chip:100,busy:false,ang:0,last:null,hi
     await new Promise(res=>{const f=t=>{const p=Math.min(1,(t-t0)/D);const e=1-Math.pow(1-p,3.2);const a=a0+(a1-a0)*e;draw(a);const sg=Math.floor((a+seg/2)/seg);if(sg!==lastSeg){lastSeg=sg;AU.tick();flap.animate([{transform:'translateX(-50%) rotate(-22deg)'},{transform:'translateX(-50%) rotate(0)'}],{duration:Math.min(160,40+p*200)})}if(p<1)requestAnimationFrame(f);else{st.ang=a1;res()}};requestAnimationFrame(f)});
     const r=cv.getBoundingClientRect();FX.ring(r.left+r.width/2,r.top+12,{col:B6COL[val],max:200,w:10});
     await stamp(b6lab(val),{col:B6COL[val],sub:`${B6PAY[val]}:1`,size:val==='J'||val==='N'?1:1.2,shake:val==='J'||val==='N'?2.5:1});
-    st.hist.push(val);renderHist();
+    st.hist.push(val);renderHist();emit('b6',val);
     let ret=0,winSp=null;for(const k in st.bets){const sp=spotFor(k);if(k===String(val)){ret+=st.bets[k]*(B6PAY[val]+1);sp.classList.add('win');setTimeout(()=>sp.classList.remove('win'),2500);winSp=sp}else sweepLose(sp)}
     cb.forEach(b=>{if(b.k===String(val)){cpuAdj(b.c.id,b.amt*(B6PAY[val]+1));cpuSay(b.el,pick(b.c.win))}b.el.querySelector('.mn').textContent=fmt(cpuBank(b.c.id))});
     await settle('bigsix',tb,ret,winSp||$('#b6s'),'luna');
@@ -1559,7 +1591,7 @@ GAME_MOUNT.videopoker=(v)=>{const st={bet:500,busy:false,phase:'bet',hand:[],hel
       for(let i=0;i<5;i++){if(st.held[i])continue;const old=st.els[i];old.animate([{transform:'none',opacity:1},{transform:'translateY(-60px) rotate(25deg) scale(.6)',opacity:0}],{duration:260,fill:'forwards'});AU.card();await sleep(120)}
       await sleep(150);
       for(let i=0;i<5;i++){if(st.held[i])continue;const c=deck.pop();st.hand[i]=c;const e=cardEl(c,false);e.onclick=()=>{};box.replaceChild(e,st.els[i]);st.els[i]=e;e.animate([{transform:'translateY(-80px) rotate(-30deg) scale(.4)',opacity:0},{transform:'none',opacity:1}],{duration:300,easing:'cubic-bezier(.2,.8,.3,1)'});AU.card();await sleep(260);flipCard(e);await sleep(200)}
-      const r=vpEval(st.hand);let ret=0;if(r===0)achv('royal');if(r>=0){ret=VP_PAY[r][1]*st.bet;$(`#vppay tr[data-i="${r}"]`).classList.add('win');st.els.forEach(e=>e.classList.add('hl'));if(r<=8&&r>=0&&r!==8)await stamp(VP_PAY[r][0],{col:r<=2?'#ff2bd6':'#ffd36b',size:.7,shake:r<=2?2.5:1.2})}else st.els.forEach(e=>e.classList.add('dim'));
+      const r=vpEval(st.hand);let ret=0;if(r===0)achv('royal');emit('vp',r);if(r>=0){ret=VP_PAY[r][1]*st.bet;$(`#vppay tr[data-i="${r}"]`).classList.add('win');st.els.forEach(e=>e.classList.add('hl'));if(r<=8&&r>=0&&r!==8)await stamp(VP_PAY[r][0],{col:r<=2?'#ff2bd6':'#ffd36b',size:.7,shake:r<=2?2.5:1.2})}else st.els.forEach(e=>e.classList.add('dim'));
       await settle('videopoker',st.bet,ret,box,'luna');
       st.phase='bet';$('#deal').textContent='DEAL';$('#betsel').style.opacity=1;$$('#vph div').forEach(d=>d.textContent='');st.busy=false;save()}};
 };
@@ -1584,7 +1616,7 @@ GAME_MOUNT.keno=(v)=>{const st={bet:500,busy:false,picks:new Set()};
     const draw=shuffle([...Array(40)].map((_,i)=>i+1)).slice(0,10);let hits=0;
     for(const n of draw){const cell=$(`#kg [data-n="${n}"]`);const hit=st.picks.has(n);cell.classList.add(hit?'hit':'drawn');const ball=h(`<div class="kball ${hit?'h':''}">${n}</div>`);$('#kb').appendChild(ball);ball.animate([{transform:'translateY(-60px) scale(.3)',opacity:0},{transform:'translateY(6px) scale(1.2)',opacity:1,offset:.7},{transform:'none'}],{duration:320});
       const r=cell.getBoundingClientRect();if(hit){hits++;AU.coin(1.3);FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#ffd36b',max:70,w:6});FX.sparkle(r.left+r.width/2,r.top+r.height/2,10,'#ffd36b');$('#gmsg').innerHTML=`<span class="neon-g">${hits}ヒット！</span>`}else AU.tick();await sleep(hit?420:260)}
-    if(hits>=5)achv('keno5');const m=(KENO_PAY[k]||{})[hits]||0;const ret=Math.round(m*st.bet);$(`.kpr[data-h="${hits}"]`)?.classList.add('win');
+    if(hits>=5)achv('keno5');emit('keno',hits);const m=(KENO_PAY[k]||{})[hits]||0;const ret=Math.round(m*st.bet);$(`.kpr[data-h="${hits}"]`)?.classList.add('win');
     if(hits>=Math.max(3,Math.ceil(k*.6)))await stamp(`${hits} HIT!`,{col:'#ffd36b',sub:`${k}個中 ${hits}個`,size:.9,shake:1.5});
     await settle('keno',st.bet,ret,$('#kg'),'luna');st.busy=false;save()};
 };
@@ -1648,7 +1680,7 @@ GAME_MOUNT.hilo=(v)=>{const st={bets:{},chip:500,busy:false,phase:'bet',cur:null
     const old=$('#hlC .card');if(old){const sm=old.cloneNode(true);sm.classList.add('flip');$('#hlT').appendChild(sm);old.remove()}
     const nx=shoe();const e=await dealCard($('#hlC'),nx,{faceUp:false});dealerSay('zero','custom',dir==='hi'?'……HIGH。':'……LOW。');AU.heart();await sleep(550);flipCard(e);await sleep(300);
     const nr=hlr(nx);const ok=dir==='hi'?nr>r:nr<r;st.cur=nx;
-    if(ok){st.mult=Math.floor(st.mult*m*100)/100;st.steps++;if(st.steps>=5)achv('hilo5');AU.win();const rr=e.getBoundingClientRect();FX.ring(rr.left+rr.width/2,rr.top+rr.height/2,{col:'#3dffa8',max:160,w:10});
+    if(ok){st.mult=Math.floor(st.mult*m*100)/100;st.steps++;if(st.steps>=5)achv('hilo5');emit('hilo',st.steps);AU.win();const rr=e.getBoundingClientRect();FX.ring(rr.left+rr.width/2,rr.top+rr.height/2,{col:'#3dffa8',max:160,w:10});
       await stamp('×'+st.mult.toFixed(2),{col:'#3dffa8',sub:`${st.steps}連続的中！`,size:.85,shake:Math.min(3,1+st.steps*.3)});upd();$('#gmsg').innerHTML=`<span class="neon-c">的中！</span> 続ける？それとも CASH OUT？`;st.busy=false}
     else{e.classList.add('dim');await stamp(nr===r?'SAME':'MISS',{col:'#ff3d6e',sub:nr===r?'同じ数字は負け':'',size:.8,shake:1.5,ring:false});await finish(0)}}
   async function cashOut(){if(st.phase!=='play'||st.steps===0)return;st.busy=true;await finish(Math.floor(st.stake*st.mult))}
@@ -1835,7 +1867,7 @@ const rwText=rw=>[rw.cr?`${fmt(rw.cr)} CR`:'',rw.t?`ガチャチケット×${rw.
 function achv(id){S.ach=S.ach||{};if(S.ach[id])return;const a=ACH.find(x=>x.id===id);if(!a)return;S.ach[id]=Date.now();
   if(a.rw.t)S.tickets=(S.tickets||0)+a.rw.t;save();
   setTimeout(()=>{stamp('TROPHY!',{col:'#ffd36b',sub:a.name,size:.75,shake:1.2});toast(`🏆 ${a.name}　報酬：${rwText(a.rw)}`);if(a.rw.cr)setTimeout(()=>award(a.rw.cr,null),700)},1400)}
-function checkMisc(){const k=Object.keys(S.stats||{});if(k.length>=Object.keys(GAMES).length)achv('allgames');if(S.peak>=100000)achv('cr100k');if(S.peak>=1000000)achv('cr1m');
+function checkMisc(){const k=Object.keys(S.stats||{}).filter(x=>GAMES[x]);if(k.length>=Object.keys(GAMES).length)achv('allgames');if(S.peak>=100000)achv('cr100k');if(S.peak>=1000000)achv('cr1m');
   if(S.owned.filter(id=>ITEM[id]&&!ITEM[id].base&&!ITEM[id].excl).length>=20)achv('collector');if((S.lux||[]).length)achv('shopper')}
 
 /* ---------- rank-up ---------- */
@@ -1893,6 +1925,137 @@ function decorateLobby(){const hero=$('.hero');if(hero&&!$('#lobVip')){const i=S
 (function(){const w=$('#wallet');const b=h('<button id="rankBtn" class="rankbtn" aria-label="VIP"></button>');w.parentNode.insertBefore(b,w);w.style.marginLeft='0';b.style.marginLeft='auto';b.onclick=()=>navTo('vip')})();
 /* re-check after cloud data arrives */
 const _as=applyState;applyState=function(j,re=true){_as(j,re);if(re){renderRankBadge();setTimeout(()=>{checkRank();checkMisc()},1500)}};
+/* ================= v7: STORY · MISSIONS · COMEBACK ================= */
+/* --- slots removed --- */
+delete GAMES.slots;FLOORS.forEach(f=>{f.games=f.games.filter(g=>g!=='slots')});
+{const i=ACH.findIndex(a=>a.id==='free');if(i>=0)ACH.splice(i,1);const a=ACH.find(a=>a.id==='allgames');if(a)a.desc=`全${Object.keys(GAMES).length}ゲームを遊ぶ`}
+
+/* --- event bus: every achv() call is also an in-game event --- */
+function emit(id,v){MIS.onEvent(id,v)}
+const _achv7=achv;achv=function(id){emit(id);_achv7(id)};
+
+/* ================= STORY ================= */
+const MOTHER_SVG='<svg viewBox="0 0 60 60"><defs><radialGradient id="mg" cx="50%" cy="50%"><stop offset="0" stop-color="#fff"/><stop offset=".25" stop-color="#ff2bd6"/><stop offset=".6" stop-color="#4a0a5a"/><stop offset="1" stop-color="#05020f"/></radialGradient></defs><rect width="60" height="60" fill="#05020f"/><circle cx="30" cy="30" r="24" fill="url(#mg)"/><ellipse cx="30" cy="30" rx="18" ry="8" fill="#05020f"/><circle cx="30" cy="30" r="6" fill="#ff2bd6"/><circle cx="30" cy="30" r="2.5" fill="#fff"/><g stroke="#ff2bd6" stroke-width=".8" opacity=".6">'+[...Array(12)].map((_,i)=>`<line x1="30" y1="30" x2="${30+29*Math.cos(i*Math.PI/6)}" y2="${30+29*Math.sin(i*Math.PI/6)}"/>`).join('')+'</g></svg>';
+const SPK={
+  n:{name:'',svg:null},
+  luna:{name:'ルナ',col:'#ff5fe0',svg:()=>dealerSVG(DEALERS.luna)},
+  honglong:{name:'紅龍',col:'#ff4a4a',svg:()=>dealerSVG(DEALERS.honglong)},
+  zero:{name:'ゼロ',col:'#9fd8ff',svg:()=>dealerSVG(DEALERS.zero)},
+  aria:{name:'アリア',col:'#ffd36b',svg:()=>dealerSVG(DEALERS.aria)},
+  raven:{name:'レイヴン',col:'#a86bff',svg:()=>avatarSVG('raven','#a86bff','human')},
+  omega:{name:'オメガ-7',col:'#9fd8ff',svg:()=>avatarSVG('omega','#9fd8ff','robot')},
+  mother:{name:'マザー',col:'#ff2bd6',svg:()=>MOTHER_SVG},
+  zeni:{name:'ゼニガタ-9',col:'#ff3d6e',svg:()=>avatarSVG('zenigata9','#ff3d6e','robot')},
+};
+const CH=[
+  {t:'漂着',goal:20000,intro:[['n','西暦2189年。海上都市の最深部に浮かぶカジノ「NEON ABYSS」。'],['n','目を覚ますと、あなたはゲートの前に倒れていた。記憶はない。手元にあるのは10,000CRと、一枚の契約書だけ。'],['luna','わっ、起きた！大丈夫？ ここはNEON ABYSS。夢と借金が渦巻く、海の底のカジノだよ☆'],['luna','その契約書…「アビス社への債務 10,000,000CR」！？ うわぁ、すごい額…'],['luna','でも大丈夫！ ここで勝てば返せる…かも？ まずは 20,000CR を目指してみよっ！']]},
+  {t:'龍の門',goal:50000,intro:[['luna','すごいすごい！もう20,000CR！ あなた、才能あるかも！'],['honglong','お見事でございます。…その契約書、拝見してもよろしいかな。'],['honglong','…アビス社。このカジノの所有者でございます。記憶を失った契約者がここへ流れ着くのは、珍しいことではありません。'],['honglong','龍の門をくぐる資格は十分。次は 50,000CR。真実に近づきたければ、勝ち続けなされ。']]},
+  {t:'深海の契約',goal:100000,intro:[['zero','……あなたの記録を、照会しました。'],['zero','契約日、2189年4月1日。保証人の欄に……あなた自身の、署名。'],['zero','つまりあなたは、自分で自分を、このカジノに売った。……理由は、記録にありません。'],['zero','100,000CR に到達すれば、上層の記録庫にアクセスできます。']]},
+  {t:'スカイデッキの賭け',goal:300000,intro:[['aria','ようこそ、地上800mへ。噂の「記憶のない勝ち頭」ね。'],['raven','…やあ。君のこと、ハックさせてもらったよ。面白いデータが出てきた。'],['raven','君、半年前までこのカジノの「中の人」だったんだ。消されてるけどね、記録ごと。'],['aria','続きが知りたいなら 300,000CR。この高さに見合う勝ちを見せて。']]},
+  {t:'オメガの記憶',goal:1000000,intro:[['omega','ピピ…照合完了。アナタハ…元・主任エンジニア。'],['omega','アナタハ、カジノノ支配AI「マザー」ヲ止メヨウトシタ。ソシテ記憶ヲ消サレ、借金ヲ背負ワサレタ。'],['omega','ワタシハ、アナタニ作ラレタ。ズット、待ッテイマシタ。'],['omega','1,000,000CR…ソレガ、マザーノ部屋ヘノ入場料デス。']]},
+  {t:'アビスの底',goal:3000000,intro:[['mother','ようこそ、エンジニア。また会えて嬉しいわ。'],['mother','あなたは賭けをやめられない。私がそう設計したもの。この街の全員をね。'],['mother','まずは 3,000,000CR、私の前に積んでみせて。それができたら、最後の勝負をしましょう。'],['luna','負けないで！ ルナたち、みんなあなたの味方だよ！']]},
+  {t:'自由',goal:10000000,intro:[['mother','…本当に積んだのね。いいわ、最後の勝負よ。'],['zero','……10,000,000CR。それが、あなたの自由の値段です。'],['honglong','龍は、天に昇る時を待っております。'],['aria','最高の夜にしましょう。']]},
+];
+const ENDING=[['mother','……計算外だわ。あなたは、確率に勝った。'],['mother','約束は守る。契約は破棄。あなたは、自由よ。'],['omega','オカエリナサイ、マスター。'],['luna','やったぁぁぁ！！ ねぇ…自由になっても、たまには遊びに来てくれる？'],['n','NEON ABYSS ―― THE END.'],['n','ここからはエンドレス。夢の続きを、どうぞ。']];
+function storyCheck(){if(S.ch==null)return;if(S.ch>=CH.length)return;if(S.cr>=CH[S.ch].goal&&!S.stPend){S.stPend=1;const c=CH[S.ch];S.tickets=(S.tickets||0)+S.ch+1;save();
+  setTimeout(()=>{stamp('CHAPTER CLEAR',{col:'#29f3ff',sub:`第${S.ch+1}章「${c.t}」`,size:.8,shake:1.5});toast(`📖 ストーリーが進みました！ロビーで続きが見られます（チケット×${S.ch+1}）`)},1800)}}
+let scenePlaying=false;
+function playScene(lines,{title='',onEnd}={}){scenePlaying=true;let i=0;$('#modal').dataset.lock='1';
+  const draw=()=>{const [sp,tx]=lines[i];const P=SPK[sp]||SPK.n;
+    showModal(`<div class="scene">${title?`<div class="sc-title">${title}</div>`:''}<div class="sc-body">${P.svg?`<div class="sc-av" style="--c:${P.col}">${P.svg()}</div>`:''}<div class="sc-txt ${P.svg?'':'narr'}">${P.name?`<b style="color:${P.col}">${P.name}</b>`:''}<span id="scT"></span></div></div><div class="sc-foot"><span class="dim">${i+1} / ${lines.length}</span><button class="btn ${i===lines.length-1?'gold':''} sm" id="scN">${i===lines.length-1?'とじる':'つぎへ ▶'}</button></div></div>`);
+    const el=$('#scT');let k=0;const t=setInterval(()=>{el.textContent=tx.slice(0,++k);if(k%2===0)AU.tone(rnd(600,800),.02,{type:'square',vol:.012});if(k>=tx.length)clearInterval(t)},24);
+    $('#scN').onclick=()=>{if(k<tx.length){clearInterval(t);k=tx.length;el.textContent=tx;return}AU.click();i++;if(i<lines.length)draw();else{delete $('#modal').dataset.lock;closeModal();scenePlaying=false;onEnd&&onEnd()}}};
+  draw()}
+function storyLobby(){if(!CLOUD.ready){setTimeout(storyLobby,800);return}if(CUR!=='lobby'||$('#modal').classList.contains('on')||scenePlaying||$('#banner').classList.contains('on'))return;
+  if(S.ch==null){S.ch=0;save();playScene(CH[0].intro,{title:'PROLOGUE',onEnd:()=>go('lobby')});return}
+  if(S.stPend){S.stPend=0;const done=S.ch;S.ch++;save();FX.confetti(80);
+    if(S.ch>=CH.length){playScene(ENDING,{title:'ENDING',onEnd:()=>{achv('legend');S.tickets=(S.tickets||0)+30;save();bigWin(10000000,200000);go('lobby')}})}
+    else playScene(CH[S.ch].intro,{title:`CHAPTER ${S.ch+1}　${CH[S.ch].t}`,onEnd:()=>go('lobby')})}}
+ACH.push({id:'legend',name:'自由への帰還',desc:'ストーリーを最後までクリアする',rw:{t:10}});
+
+/* ================= MISSIONS ================= */
+const SPECIALS=[
+  {id:'straightup',g:'roulette',text:'ルーレットで数字1点を当てる',base:6000},
+  {id:'bj',g:'blackjack',text:'ブラックジャックで最初の2枚が21',base:4000},
+  {id:'hilo',min:3,g:'hilo',text:'ハイ＆ローで3連続的中',base:4000},
+  {id:'keno',min:4,g:'keno',text:'キノで4個以上ヒット',base:4000},
+  {id:'craps',g:'craps',text:'クラップスでポイントを決める',base:3500},
+  {id:'vp',min:0,max:7,g:'videopoker',text:'ビデオポーカーでツーペア以上',base:3000},
+  {id:'b6',set:[10,20,'J','N'],g:'bigsix',text:'ネオン・ホイールで×10以上を当てる',base:5000},
+  {id:'pokerwin',g:'poker',text:'ポーカーでポットを獲得する',base:3000},
+  {id:'dtwin',g:'dragontiger',text:'ドラゴンタイガーで3連勝',n:3,base:4000},
+  {id:'bigwin',g:null,text:'どれかのゲームで BIG WIN を出す',base:7000},
+];
+const unlockedGames=()=>FLOORS.filter(f=>S.unlocked.includes(f.id)).flatMap(f=>f.games);
+const mScale=()=>1+(S.rank||0)*.5;
+const chainMult=()=>Math.min(3,1+(S.chain||0)*.15);
+const MIS={
+  gen(){const gs=unlockedGames();const r=Math.random();let m;
+    const sp=SPECIALS.filter(s=>!s.g||gs.includes(s.g));
+    if(r<.28){const g=pick(gs);m={k:'play',g,n:ri(3,6),base:1200}}
+    else if(r<.52){const g=pick(gs);m={k:'win',g,n:ri(2,4),base:2500}}
+    else if(r<.64){m={k:'net',n:pick([3000,5000,8000])*mScale(),base:3000}}
+    else if(r<.76){m={k:'big',n:pick([2000,3000,5000])*mScale(),base:4000}}
+    else{const s=pick(sp);m={k:'ev',ev:s.id,min:s.min,max:s.max,set:s.set,txt:s.text,n:s.n||1,base:s.base,g:s.g}}
+    m.prog=0;m.id=Math.random().toString(36).slice(2,8);return m},
+  text(m){if(m.k==='play')return `${GAMES[m.g].name}を${m.n}回遊ぶ`;if(m.k==='win')return `${GAMES[m.g].name}で${m.n}回勝つ`;if(m.k==='net')return `合計 ${fmt(m.n)} CR 勝つ`;if(m.k==='big')return `1回で ${fmt(m.n)} CR 以上勝つ`;return m.txt},
+  reward(m){return Math.round(m.base*mScale()*chainMult()/100)*100},
+  ensure(){S.mis=(S.mis||[]).filter(m=>m.k!=='play'&&m.k!=='win'||GAMES[m.g]);while(S.mis.length<3)S.mis.push(this.gen())},
+  bump(m,by=1){m.prog=Math.min(m.n,m.prog+by);if(m.prog>=m.n)this.complete(m)},
+  complete(m){const rw=this.reward(m);S.chain=(S.chain||0)+1;S.mis=S.mis.filter(x=>x!==m);S.mis.push(this.gen());save();
+    setTimeout(()=>{stamp('MISSION CLEAR',{col:'#3dffa8',sub:`+${fmt(rw)} CR　連続${S.chain}`,size:.75,shake:1.2});award(rw,null);toast(`🎯 ${this.text(m)} 達成！（連続ボーナス ×${chainMult().toFixed(2)}）`);renderMisPanel()},900)},
+  onRecord(game,bet,ret){this.ensure();const net=ret-bet;[...S.mis].forEach(m=>{if(m.prog>=m.n)return;
+    if(m.k==='play'&&m.g===game&&bet>0)this.bump(m);
+    else if(m.k==='win'&&m.g===game&&net>0)this.bump(m);
+    else if(m.k==='net'&&net>0){m.prog=Math.min(m.n,m.prog+net);if(m.prog>=m.n)this.complete(m)}
+    else if(m.k==='big'&&net>=m.n){m.prog=m.n;this.complete(m)}
+    else if(m.k==='ev'&&m.ev==='dtwin'&&game==='dragontiger'){if(net>0)this.bump(m);else if(net<0)m.prog=0}});save()},
+  onEvent(id,v){if(!S.mis)return;[...S.mis].forEach(m=>{if(m.k!=='ev'||m.ev!==id||m.prog>=m.n)return;if(m.min!=null&&!(v>=m.min))return;if(m.max!=null&&!(v<=m.max))return;if(m.set&&!m.set.includes(v))return;this.bump(m)})},
+  reroll(i){const cost=300;if(!spend(cost)){toast('クレジットが足りません');return}S.mis[i]=this.gen();save();AU.whoosh();renderMisPanel()}
+};
+const _rec7=record;record=function(game,bet,ret){_rec7(game,bet,ret);S.lc=Math.min(30,(S.lc==null?30:S.lc)+1);if(S.blk>0)S.blk--;MIS.onRecord(game,bet,ret)};
+
+/* ================= COMEBACK: LAST CHANCE & LOAN ================= */
+const LOANS=[{amt:10000,rep:13000,rank:0},{amt:30000,rep:39000,rank:2},{amt:100000,rep:130000,rank:4}];
+const loanOK=()=>!(S.debt>0)&&!(S.blk>0);
+function loanHTML(inBankrupt=false){if(!loanOK())return S.debt>0?'':`<div class="dim" style="font-size:11px;text-align:center;margin-bottom:6px">💸 ゼニガタ・ローンは あと${S.blk}ゲーム 利用できません（ブラックリスト中）</div>`;
+  const opts=LOANS.filter(l=>(S.rank||0)>=l.rank);return `<div class="loanbox"><div class="row" style="gap:8px;align-items:center"><div class="sc-av sm" style="--c:#ff3d6e">${SPK.zeni.svg()}</div><div style="font-size:12px;text-align:left"><b style="color:#ff3d6e">ゼニガタ-9</b>「お困りのようで。貸しますよ…利子はいただきますがね」</div></div><div class="row" style="gap:6px;margin-top:8px">${opts.map((l,i)=>`<button class="btn red sm loanb" data-i="${LOANS.indexOf(l)}" style="flex:1">${fmtK(l.amt)}借りる<br><small style="font-weight:400">返済 ${fmt(l.rep)}</small></button>`).join('')}</div><div class="dim" style="font-size:10px;margin-top:6px">勝つたびに払い戻しの30%が自動で返済に回ります</div></div>`}
+function bindLoan(after){$$('.loanb').forEach(b=>b.onclick=()=>{const l=LOANS[+b.dataset.i];S.debt=l.rep;S.loanAmt=l.amt;S.cr+=0;save();if(bankruptOpen){bankruptOpen=false;delete $('#modal').dataset.lock}closeModal();
+  AU.slam(1.3);vignette('rgba(255,30,80,.7)');stamp('LOAN',{col:'#ff3d6e',sub:`+${fmt(l.amt)} CR（返済 ${fmt(l.rep)}）`,size:.8,shake:1});_aw7(l.amt,null);after&&after()})}
+function onBankrupt(){if(S.debt>0){S.blk=50}S.debt=0;S.chain=0;save()}
+/* auto-repay from every payout */
+const _aw7=award;award=function(n,from,o){if(S.debt>0&&n>0){const cut=Math.min(S.debt,Math.ceil(n*.3));S.debt-=cut;n-=cut;setTimeout(()=>{toast(S.debt>0?`💸 返済 −${fmt(cut)}（残り ${fmt(S.debt)}）`:'💸 借金を完済しました！');if(S.debt===0){stamp('完済!',{col:'#3dffa8',size:.9,shake:1.5})}},500);save()}
+  _aw7(n,from,o);storyCheck()};
+/* last chance before bankrupt */
+let lcOpen=false;
+const _cb7=checkBankrupt;checkBankrupt=function(){if(bankruptOpen||lcOpen||scenePlaying||$('#modal').classList.contains('on'))return;if(S.cr>=100)return;if(CUR==='poker'&&(PK.active||PK.inHand))return;if(CUR==='gacha')return;
+  if((S.lc==null?30:S.lc)>=30){runLastChance();return}_cb7()};
+function runLastChance(){lcOpen=true;S.lc=0;save();const R=S.rank||0;const prizes=shuffle([{k:'JACKPOT',v:8000+R*4000,col:'#ffd36b'},{k:'SAFE',v:2000+R*1000,col:'#29f3ff'},{k:'EMPTY',v:0,col:'#ff3d6e'}]);
+  AU.heart();setTimeout(()=>AU.heart(),700);vignette('rgba(255,30,80,.9)');$('#modal').dataset.lock='1';
+  showModal(`<div class="center"><div class="lc-title">LAST CHANCE</div><p style="font-size:13px;margin:6px 0 2px">クレジットが尽きた…。でも、まだ終わりじゃない。</p><p class="dim" style="font-size:11px;margin:0 0 12px">3枚のホロカードから1枚えらべ。<br>当たりなら復活。ハズレなら……破産。</p><div class="lc-cards">${prizes.map((p,i)=>`<div class="lc-card" data-i="${i}"><div class="lc-in"><div class="lc-f">?</div><div class="lc-b" style="--c:${p.col}"><b>${p.k}</b><span>${p.v?'+'+fmt(p.v):'0'}</span></div></div></div>`).join('')}</div><p class="dim" style="font-size:10px;margin-top:10px">ラストチャンスは30ゲームごとに1回</p></div>`);
+  $$('.lc-card').forEach(c=>c.onclick=async()=>{if(c.dataset.done)return;$$('.lc-card').forEach(x=>x.dataset.done=1);const p=prizes[+c.dataset.i];
+    for(let k=0;k<3;k++){c.animate([{transform:'rotate(-6deg) scale(1.05)'},{transform:'rotate(6deg) scale(1.05)'},{transform:'none'}],{duration:220});AU.heart();await sleep(260)}
+    c.classList.add('open');AU.slam(1.2);const r=c.getBoundingClientRect();FX.ring(r.left+r.width/2,r.top+r.height/2,{col:p.col,max:200,w:10});
+    await sleep(600);$$('.lc-card').forEach(x=>{if(x!==c){x.classList.add('open','dimc')}});await sleep(900);
+    delete $('#modal').dataset.lock;closeModal();lcOpen=false;
+    if(p.v>0){await stamp(p.k==='JACKPOT'?'REVIVE!!':'SURVIVE!',{col:p.col,sub:`+${fmt(p.v)} CR`,size:1,shake:2.5});lightning(innerWidth/2,innerHeight/2,3,p.col);award(p.v,null,{big:p.k==='JACKPOT'});toast('🔥 起死回生！ ここから巻き返そう')}
+    else{await stamp('EMPTY…',{col:'#ff3d6e',size:.9,shake:1,ring:false});setTimeout(()=>_cb7(),300)}})}
+
+/* ================= LOBBY PANELS ================= */
+function renderMisPanel(){const el=$('#misPanel');if(!el)return;MIS.ensure();
+  el.innerHTML=`<div class="pn-h"><b>🎯 MISSIONS</b><span>連続 <b class="neon-g">${S.chain||0}</b>　報酬 ×${chainMult().toFixed(2)}</span></div>${S.mis.map((m,i)=>`<div class="mis"><div style="flex:1;min-width:0"><div class="mt">${MIS.text(m)}</div><div class="vbar" style="height:5px;margin-top:4px"><i style="width:${m.prog/m.n*100}%;background:linear-gradient(90deg,#3dffa8,#29f3ff)"></i></div></div><div class="mr">${m.k==='net'?fmtK(Math.floor(m.prog))+'/'+fmtK(m.n):m.prog+'/'+m.n}<br><b>+${fmt(MIS.reward(m))}</b></div><button class="mrr" data-i="${i}" title="別のミッションに変える（300CR）">↻</button></div>`).join('')}<div class="dim" style="font-size:10px;margin-top:4px">達成するほど報酬アップ（最大×3）。破産すると連続数は0に戻ります。↻＝300CRで変更</div>`;
+  $$('.mrr',el).forEach(b=>b.onclick=()=>MIS.reroll(+b.dataset.i))}
+function renderStoryPanel(){const el=$('#stPanel');if(!el)return;if(S.ch==null){el.innerHTML='';return}
+  if(S.ch>=CH.length){el.innerHTML=`<div class="pn-h"><b>📖 STORY</b><span class="neon-g">COMPLETE</span></div><div style="font-size:12px">あなたは自由を手に入れた。<button class="btn ghost sm" id="stRe" style="margin-left:6px">エンディングを見る</button></div>`;$('#stRe').onclick=()=>playScene(ENDING,{title:'ENDING'});return}
+  const c=CH[S.ch];const p=clamp(S.cr/c.goal,0,1);el.innerHTML=`<div class="pn-h"><b>📖 CHAPTER ${S.ch+1}　${c.t}</b><button class="btn ghost sm" id="stRe" style="padding:4px 8px">あらすじ</button></div><div style="font-size:12px">目標：所持金 <b class="neon-g">${fmt(c.goal)} CR</b> に到達</div><div class="vbar"><i style="width:${p*100}%;background:linear-gradient(90deg,#29f3ff,#ff2bd6)"></i></div><div class="dim" style="font-size:10px;margin-top:3px">いま ${fmt(S.cr)} / ${fmt(c.goal)}（${Math.floor(p*100)}%）</div>`;
+  $('#stRe').onclick=()=>playScene(CH[S.ch].intro,{title:`CHAPTER ${S.ch+1}　${c.t}`})}
+function renderDebtPanel(){const el=$('#dbPanel');if(!el)return;
+  if(S.debt>0){el.innerHTML=`<div class="pn-h"><b style="color:#ff3d6e">💸 借金</b><span style="font-family:var(--font-d);color:#ff3d6e">${fmt(S.debt)} CR</span></div><div class="dim" style="font-size:11px">勝つたびに払い戻しの30%が自動で返済されます。</div><div class="row" style="gap:6px;margin-top:6px"><button class="btn ghost sm" id="payAll" style="flex:1" ${S.cr<S.debt?'disabled':''}>今すぐ全額返済</button><button class="btn ghost sm" id="payHalf" style="flex:1" ${S.cr<1000?'disabled':''}>1,000返済</button></div>`;
+    $('#payAll').onclick=()=>{if(spend(S.debt)){S.debt=0;save();stamp('完済!',{col:'#3dffa8',size:.9});renderDebtPanel()}};$('#payHalf').onclick=()=>{const n=Math.min(1000,S.debt);if(spend(n)){S.debt-=n;save();renderDebtPanel()}};el.style.display=''}
+  else if(S.cr<3000&&loanOK()){el.innerHTML=loanHTML();bindLoan(()=>go('lobby'));el.style.display=''}
+  else el.style.display='none'}
+const _dl7=decorateLobby;decorateLobby=function(){_dl7();const hero=$('.hero');if(hero&&!$('#stPanel')){hero.insertAdjacentHTML('afterend',`<div class="panel" id="stPanel"></div><div class="panel" id="dbPanel"></div><div class="panel" id="misPanel"></div>`)}storyCheck();renderStoryPanel();renderDebtPanel();renderMisPanel();setTimeout(storyLobby,600)};
+
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
