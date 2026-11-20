@@ -512,6 +512,31 @@ button{font-family:inherit;color:inherit}
 .lc-b b{font-family:var(--font-d);font-size:13px;color:var(--c)}.lc-b span{font-family:var(--font-d);font-weight:900;font-size:15px}
 .lc-card.dimc{opacity:.45}
 .loanbox{padding:10px;border-radius:12px;background:rgba(255,30,80,.08);border:1px solid rgba(255,61,110,.5)}
+
+/* ===== v8 album / key visual ===== */
+.hero.kvh{position:relative;min-height:min(150vw,720px);display:flex;flex-direction:column;justify-content:space-between;padding-bottom:16px;margin:-12px -12px 10px;background:linear-gradient(180deg,rgba(4,5,12,.15) 0%,rgba(4,5,12,0) 30%,rgba(4,5,12,0) 70%,var(--bg) 100%),var(--kv) center 20%/cover no-repeat;overflow:hidden}
+.hero.kvh .t{filter:drop-shadow(0 0 14px rgba(41,243,255,.8)) drop-shadow(0 3px 0 #000)}
+.hero.kvh .s,.hero.kvh .peak{text-shadow:0 2px 6px #000}
+.hero.kvh .peak{margin-top:auto;background:rgba(4,5,12,.6);display:inline-block;padding:4px 12px;border-radius:99px;align-self:center}
+.hero.kvh .lobvip{align-self:center;background:rgba(4,5,12,.75)}
+.bondrow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.bondc{padding:8px 4px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid color-mix(in srgb,var(--c) 50%,transparent);text-align:center;font-size:10px}
+.bondc .dealer-av{margin:0 auto 4px}.bondc b{display:block;font-size:11px}.bondc span{color:var(--c);font-family:var(--font-d);font-weight:700}
+.albsec{font-family:var(--font-d);font-size:11px;letter-spacing:.2em;color:var(--cyan);margin:14px 0 6px}
+.albgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:8px}
+.albit{position:relative;aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:rgba(0,0,0,.45);border:1px solid var(--line)}
+.albit img{width:100%;height:100%;object-fit:cover;display:block}
+.albit.has{cursor:pointer;border-color:rgba(255,211,107,.6);box-shadow:0 0 12px rgba(255,211,107,.25)}
+.albit.has:active{transform:scale(.96)}
+.albph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:4px;font-family:var(--font-d);font-size:18px;color:var(--dim);text-align:center}
+.albph small{font-size:9px;font-family:var(--font)}
+.albit.open .albph{color:var(--gold)}
+.albcap{position:absolute;left:0;right:0;bottom:0;padding:16px 6px 5px;font-size:9px;line-height:1.3;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff}
+.albnew{position:absolute;right:4px;top:4px;font-family:var(--font-d);font-size:8px;font-weight:900;padding:2px 5px;border-radius:5px;background:var(--mag);color:#fff;animation:blink 1s infinite}
+.imgview{position:fixed;inset:0;z-index:65;background:rgba(1,2,8,.92);display:flex;align-items:center;justify-content:center;padding:14px;cursor:pointer}
+.iv-in{max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:8px}
+.imgview img{max-width:100%;max-height:82vh;border-radius:14px;box-shadow:0 0 40px rgba(255,43,214,.35)}
+.iv-cap{font-size:13px;text-align:center}
 </style>
 </head>
 <body>
@@ -1193,6 +1218,7 @@ GAME_MOUNT.baccarat=(v)=>{const st={bets:{},chip:100,busy:false,shoe:newShoe(8),
     $('#gmsg').innerHTML=res==='T'?'<span style="color:#3dffa8">TIE（引き分け）</span>':res==='P'?'<span style="color:#5fb0ff">PLAYER WIN</span>':'<span style="color:#ff5a5a">BANKER WIN</span>';
     (res==='P'?pe:res==='B'?be:[...pe,...be]).forEach(e=>{e.classList.add('hl');e.animate([{transform:'none'},{transform:'translateY(-12px) scale(1.15)'},{transform:'none'}],{duration:500})});await stamp(res==='P'?'PLAYER':res==='B'?'BANKER':'TIE',{col:res==='P'?'#5fb0ff':res==='B'?'#ff4a4a':'#3dffa8',sub:`${pt} − ${bt}`,size:.95,shake:1});(res==='P'?be:res==='B'?pe:[]).forEach(e=>e.classList.add('dim'));
     await sleep(700);
+    if(!$('#deal'))return;
     let ret=0,winSp=null;for(const k in st.bets){const a=st.bets[k];let r=0;if(k===res){r=k==='P'?a*2:k==='B'?a*1.95:a*9}else if(res==='T'&&k!=='T')r=a;if(r>0){ret+=r;const sp=spotFor(k);if(k===res){sp.classList.add('win');setTimeout(()=>sp.classList.remove('win'),2500)}winSp=winSp||sp}else sweepLose(spotFor(k))}
     ret=Math.floor(ret);cb.forEach(b=>{let r=0;if(b.k===res)r=b.k==='P'?b.amt*2:b.k==='B'?b.amt*1.95:b.amt*9;else if(res==='T')r=b.amt;cpuAdj(b.c.id,Math.floor(r));b.el.querySelector('.mn').textContent=fmt(cpuBank(b.c.id));if(r>b.amt)cpuSay(b.el,pick(b.c.win));else if(r===0&&Math.random()<.5)cpuSay(b.el,pick(b.c.lose))});
     await settle('baccarat',tb,ret,winSp||$('.bacspots'),'honglong');
@@ -2056,6 +2082,58 @@ function renderDebtPanel(){const el=$('#dbPanel');if(!el)return;
   else el.style.display='none'}
 const _dl7=decorateLobby;decorateLobby=function(){_dl7();const hero=$('.hero');if(hero&&!$('#stPanel')){hero.insertAdjacentHTML('afterend',`<div class="panel" id="stPanel"></div><div class="panel" id="dbPanel"></div><div class="panel" id="misPanel"></div>`)}storyCheck();renderStoryPanel();renderDebtPanel();renderMisPanel();setTimeout(storyLobby,600)};
 
+/* ================= v8: MEMORIAL ALBUM · BOND LEVELS · KEY VISUAL ================= */
+/* image files that exist (add names here as illustrations arrive) */
+const IMGS={key_visual:'img/key_visual.webp',luna_1:'img/luna_1.webp'};
+const IMG_THUMB={key_visual:'img/key_visual_s.webp',luna_1:'img/luna_1_s.webp'};
+/* dealer face icons cut from their Lv1 portraits */
+const DEALER_AV={luna:'img/luna_av.webp'};
+const _dsvg8=dealerSVG;dealerSVG=function(d){return DEALER_AV[d.id]?`<img src="${DEALER_AV[d.id]}" alt="" style="width:100%;height:100%;object-fit:cover;display:block">`:_dsvg8(d)};
+const BOND_NEED=[0,20,60,150,300];
+const BOND_TITLE=['はじめまして','顔なじみ','打ち解けた','特別な常連','かけがえのない人'];
+const DEALER_OF=g=>{const f=FLOORS.find(f=>f.games.includes(g)||GAMES[g]&&GAMES[g].floor===f.id);return f?f.dealer:null};
+const bondLv=id=>{const n=(S.bond||{})[id]||0;let l=1;BOND_NEED.forEach((x,i)=>{if(n>=x)l=i+1});return l};
+const ALBUM=[
+  {sec:'キービジュアル',items:[{id:'key_visual',name:'NEON ABYSS',open:()=>true,cond:()=>'最初から'}]},
+  ...['luna','honglong','zero','aria'].map(d=>({sec:`${DEALERS[d].jp}`,dealer:d,items:[1,2,3,4,5].map(l=>({id:`${d}_${l}`,name:`${DEALERS[d].jp} 絆Lv${l}「${BOND_TITLE[l-1]}」`,open:()=>bondLv(d)>=l,cond:()=>{const n=(S.bond||{})[d]||0;return `${DEALERS[d].jp}の卓で あと${Math.max(0,BOND_NEED[l-1]-n)}回`}}))})),
+  {sec:'ストーリー',items:[...[0,1,2,3,4,5,6].map(k=>({id:`story_${k}`,name:k===0?'プロローグ「漂着」':`第${k+1}章「${CH[k].t}」`,open:()=>S.ch!=null&&S.ch>=k,cond:()=>k===0?'ストーリー開始':`第${k}章をクリア`})),{id:'story_end',name:'エンディング',open:()=>S.ch!=null&&S.ch>=CH.length,cond:()=>'ストーリーを最後までクリア'}]},
+  {sec:'ライバル',items:CPUS.map(c=>({id:`cpu_${c.id==='doc'?'doc':c.id}`,cpu:c.id,name:`${c.name}（${c.title}）`,open:()=>((S.rival||{})[c.id]||0)>=30,cond:()=>`${c.name}と同じ卓で あと${Math.max(0,30-((S.rival||{})[c.id]||0))}回`}))},
+];
+const allAlbum=()=>ALBUM.flatMap(s=>s.items);
+
+/* --- counting: dealer bond & rival meetings (never reset by bankruptcy) --- */
+let tableCpus=new Set();
+const _pc8=pickCpus;pickCpus=function(n,ex){const r=_pc8(n,ex);r.forEach(c=>tableCpus.add(c.id));return r};
+const _go8=go;go=function(v,a){if(GAMES[v])tableCpus=new Set();_go8(v,a)};
+const _rec8=record;record=function(game,bet,ret){_rec8(game,bet,ret);if(bet<=0)return;
+  const d=DEALER_OF(game);if(d){S.bond=S.bond||{};const before=bondLv(d);S.bond[d]=(S.bond[d]||0)+1;const after=bondLv(d);if(after>before)onUnlock(`${d}_${after}`,{title:'BOND UP!',sub:`${DEALERS[d].jp} 絆Lv${after}「${BOND_TITLE[after-1]}」`,col:DEALERS[d].col})}
+  S.rival=S.rival||{};tableCpus.forEach(id=>{S.rival[id]=(S.rival[id]||0)+1;if(S.rival[id]===30){const c=CPU[id];onUnlock(`cpu_${id}`,{title:'RIVAL CARD',sub:`${c.name}（${c.title}）`,col:c.col})}});save()};
+/* story chapter → story CG */
+const _sl8=storyLobby;storyLobby=function(){const before=S.ch;_sl8();if(S.ch!=null&&S.ch!==before){const id=S.ch>=CH.length?'story_end':`story_${S.ch}`;S.albNew=S.albNew||{};S.albNew[id]=1;save()}};
+function onUnlock(id,{title,sub,col}){S.albNew=S.albNew||{};S.albNew[id]=1;save();
+  setTimeout(()=>{stamp(title,{col,sub,size:.8,shake:1.5});if(IMGS[id])setTimeout(()=>{if(!$('#modal').classList.contains('on'))viewImg(id,true)},1500);else toast(`🖼 アルバムに「${sub}」の枠が解放されました`)},1200)}
+
+/* --- viewer --- */
+function viewImg(id,isNew=false){const it=allAlbum().find(x=>x.id===id);if(!it||!IMGS[id])return;delete (S.albNew||{})[id];save();
+  const v=h(`<div class="imgview"><div class="iv-in"><img src="${IMGS[id]}" alt=""><div class="iv-cap">${isNew?'<b class="neon-g">NEW ILLUSTRATION</b><br>':''}${it.name}</div></div></div>`);document.body.appendChild(v);
+  v.animate([{opacity:0},{opacity:1}],{duration:300});$('img',v).animate([{transform:'scale(.7) rotate(-3deg)',filter:'brightness(3)'},{transform:'none',filter:'none'}],{duration:650,easing:'cubic-bezier(.2,1.3,.4,1)'});
+  if(isNew){AU.big();FX.confetti(60)}v.onclick=()=>{v.animate([{opacity:1},{opacity:0}],{duration:200}).onfinish=()=>v.remove()}}
+
+/* --- album screen --- */
+function renderAlbum(v){const items=allAlbum();const open=items.filter(i=>i.open()).length;const drawn=items.filter(i=>i.open()&&IMGS[i.id]).length;
+  v.innerHTML=`<div class="wrap"><div class="gtop" style="padding:0 0 8px">${backBtn()}<div><div class="title neon-m">MEMORIAL ALBUM</div><div class="sub">解放 ${open} / ${items.length}　遊び続けるほど、思い出が増えていく</div></div></div>
+  <div class="vbar" style="margin-bottom:12px"><i style="width:${open/items.length*100}%;background:linear-gradient(90deg,var(--mag),var(--gold))"></i></div>
+  <div class="bondrow">${['luna','honglong','zero','aria'].map(d=>{const l=bondLv(d),n=(S.bond||{})[d]||0,nx=BOND_NEED[l];return `<div class="bondc" style="--c:${DEALERS[d].col}"><div class="dealer-av" style="width:44px;height:44px;--accent:${DEALERS[d].col}">${dealerSVG(DEALERS[d])}</div><b>${DEALERS[d].jp}</b><span>絆Lv${l}</span><div class="vbar" style="height:4px;margin-top:3px"><i style="width:${nx?Math.min(100,(n-BOND_NEED[l-1])/(nx-BOND_NEED[l-1])*100):100}%;background:var(--c)"></i></div></div>`}).join('')}</div>
+  ${ALBUM.map(s=>`<div class="albsec">${s.sec}</div><div class="albgrid">${s.items.map(it=>{const o=it.open(),has=!!IMGS[it.id],nw=(S.albNew||{})[it.id];return `<div class="albit ${o?'open':''} ${o&&has?'has':''}" data-id="${it.id}">${o&&has?`<img src="${IMG_THUMB[it.id]||IMGS[it.id]}" alt="" loading="lazy">`:`<div class="albph">${o?'🎨<small>イラスト準備中</small>':'？？？'}</div>`}${nw&&o?'<span class="albnew">NEW</span>':''}<div class="albcap">${o?it.name:it.cond()}</div></div>`}).join('')}</div>`).join('')}
+  <p class="dim center" style="font-size:10px;margin-top:12px">絆レベルとライバルの記録は、破産しても消えません（「最初からやり直す」を除く）</p></div>`;
+  $$('.albit.has',v).forEach(e=>e.onclick=()=>{viewImg(e.dataset.id);setTimeout(()=>renderAlbum(v),300)})}
+VIEWS.album=renderAlbum;
+
+/* --- lobby: key visual hero + album button --- */
+const _dl8=decorateLobby;decorateLobby=function(){_dl8();const hero=$('.hero');if(hero&&!hero.classList.contains('kvh')){hero.classList.add('kvh');hero.style.setProperty('--kv',`url(${IMGS.key_visual})`)}
+  const lf=$('.lobbyfoot');if(lf&&!$('#lfAlb')){const nw=Object.keys(S.albNew||{}).filter(id=>IMGS[id]).length;lf.insertAdjacentHTML('afterbegin',`<button class="gamebtn" id="lfAlb" onclick="go('album')" style="position:relative"><svg viewBox="0 0 40 40" class="gi"><rect x="6" y="8" width="28" height="24" rx="3" fill="none" stroke="#ff2bd6" stroke-width="2"/><circle cx="15" cy="16" r="3" fill="#ffd36b"/><path d="M8 30 L17 21 L23 26 L28 20 L33 26 V30Z" fill="#29f3ff"/></svg><b>アルバム</b><small>${allAlbum().filter(i=>i.open()).length}/${allAlbum().length}</small>${nw?'<span class="albnew">NEW</span>':''}</button>`)}};
+/* boot screen gets the key visual too */
+(function(){const b=$('#boot');if(b){b.style.background=`linear-gradient(180deg,rgba(3,4,12,.55),rgba(3,4,12,.92)),url(${IMG_THUMB.key_visual}) center/cover`}})();
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
