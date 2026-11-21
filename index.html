@@ -655,6 +655,31 @@ body.fever #feverfx{animation:fvp .9s ease-in-out infinite alternate}@keyframes 
 .chspots{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}.chspots .spot{min-height:52px}.chspots .spot.big{min-height:98px}
 .kj{font-size:46px;font-weight:900;line-height:1.05;font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
 .chspots .spot>.stack{left:auto;right:6px;bottom:16px;transform:scale(.9)}
+
+/* ===== v11 THRILL ===== */
+.spot.lt{border-color:#ffe14a!important;box-shadow:0 0 0 2px #ffe14a,0 0 16px #ffe14a;z-index:2}
+.ltg{position:absolute;left:50%;top:-9px;transform:translateX(-50%);font-style:normal;font-family:var(--font-d);font-weight:900;font-size:9px;padding:1px 5px;border-radius:6px;background:#ffe14a;color:#2b1600;white-space:nowrap;z-index:5;box-shadow:0 0 8px #ffe14a;animation:pop .3s}
+.rb .ltg{font-size:8px;padding:0 3px;top:-7px}
+.kn.pick.gold{background:linear-gradient(180deg,#fff0b8,#ffb53d);color:#2b1600;border-color:#fff;box-shadow:0 0 0 2px #fff,0 0 16px var(--gold)}
+.thx{margin:6px 10px 0;padding:6px 10px;border-radius:10px;font-size:11px;background:rgba(255,225,74,.07);border:1px solid rgba(255,225,74,.3);color:#e8dca0;text-align:center}.thx:empty{display:none}
+.thx b{color:#ffe14a;font-family:var(--font-d)}.thx.hot{background:rgba(255,122,46,.18);border-color:#ff7a2e;animation:bossg 1.2s infinite}
+.multroll{position:fixed;inset:0;z-index:62;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(1,2,8,.78)}
+.mr-t{font-family:var(--font-d);font-weight:900;letter-spacing:.3em;font-size:14px;color:#fff}.mr-v{font-family:var(--font-d);font-weight:900;font-size:110px;line-height:1.1;text-shadow:0 0 30px currentColor,0 6px 0 #000}
+.dubtn{position:fixed;left:0;right:0;margin:0 auto;width:fit-content;bottom:calc(env(safe-area-inset-bottom) + 200px);z-index:35;border:2px solid #fff;border-radius:16px;padding:10px 18px;cursor:pointer;color:#fff;text-align:center;background:linear-gradient(100deg,#e21cbc,#ff7a2e);box-shadow:0 0 26px rgba(255,43,214,.7);animation:embp 1s ease-in-out infinite;max-width:92vw}
+.dubtn span{display:block;font-family:var(--font-d);font-weight:900;font-size:17px;letter-spacing:.06em}.dubtn small{font-size:10px}
+.du-t{font-family:var(--font-d);font-weight:900;font-size:28px;letter-spacing:.08em;background:linear-gradient(90deg,#ff2bd6,#ffd36b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.du-step{font-size:12px;color:var(--green);font-weight:800;min-height:18px}
+.du-stake{margin:6px 0}.du-stake small{display:block;font-size:10px;color:var(--dim)}.du-stake b{font-family:var(--font-d);font-size:34px;color:var(--gold);text-shadow:0 0 14px rgba(255,211,107,.6)}.du-stake span{font-size:10px;color:var(--dim);margin-left:4px}
+.du-card{width:92px;height:130px;margin:8px auto;perspective:700px}.du-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}.du-card.open .du-in{transform:rotateY(180deg)}
+.du-f,.du-b{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center}
+.du-f{background:var(--cardback);border:2px solid #ff2bd6;font-family:var(--font-d);font-size:44px;font-weight:900;color:#fff}.du-b{transform:rotateY(180deg);background:linear-gradient(160deg,#fff,#dbe7ff);align-content:center}
+.du-b b{font-family:var(--font-d);font-size:36px;line-height:1}.du-b i{font-style:normal;font-size:40px;line-height:1}
+.du-lad{display:flex;justify-content:space-around;font-size:11px;color:var(--dim)}.du-lad b{color:var(--gold);font-family:var(--font-d)}
+#tabbar{flex:0 0 auto;display:flex;background:rgba(6,9,26,.96);border-top:1px solid var(--line);z-index:5;position:relative}
+#tabbar button{flex:1;background:none;border:none;padding:7px 0 6px;cursor:pointer;color:var(--dim);display:flex;flex-direction:column;align-items:center;gap:1px;font-size:9px;font-weight:700}
+#tabbar svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+#tabbar button.on{color:var(--cyan)}#tabbar button.on svg{filter:drop-shadow(0 0 5px var(--cyan))}
+.resume{width:100%;margin:0 0 12px;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(8,12,34,.85);color:var(--txt);font-size:13px;text-align:left;cursor:pointer}.resume b{color:var(--cyan)}
 </style>
 </head>
 <body>
@@ -1337,7 +1362,7 @@ GAME_MOUNT.baccarat=(v)=>{const st={bets:{},chip:100,busy:false,shoe:newShoe(8),
     (res==='P'?pe:res==='B'?be:[...pe,...be]).forEach(e=>{e.classList.add('hl');e.animate([{transform:'none'},{transform:'translateY(-12px) scale(1.15)'},{transform:'none'}],{duration:500})});await stamp(res==='P'?'PLAYER':res==='B'?'BANKER':'TIE',{col:res==='P'?'#5fb0ff':res==='B'?'#ff4a4a':'#3dffa8',sub:`${pt} − ${bt}`,size:.95,shake:1});(res==='P'?be:res==='B'?pe:[]).forEach(e=>e.classList.add('dim'));
     await sleep(700);
     if(!$('#deal'))return;
-    let ret=0,winSp=null;for(const k in st.bets){const a=st.bets[k];let r=0;if(k===res){r=k==='P'?a*2:k==='B'?a*1.95:a*9}else if(res==='T'&&k!=='T')r=a;if(r>0){ret+=r;const sp=spotFor(k);if(k===res){sp.classList.add('win');setTimeout(()=>sp.classList.remove('win'),2500)}winSp=winSp||sp}else sweepLose(spotFor(k))}
+    let ret=0,winSp=null;for(const k in st.bets){const a=st.bets[k];let r=0;if(k===res){r=k==='P'?a*2:k==='B'?a*1.95:a*9;r=thBac(k,a,r)}else if(res==='T'&&k!=='T')r=a;if(r>0){ret+=r;const sp=spotFor(k);if(k===res){sp.classList.add('win');setTimeout(()=>sp.classList.remove('win'),2500)}winSp=winSp||sp}else sweepLose(spotFor(k))}
     ret=Math.floor(ret);cb.forEach(b=>{let r=0;if(b.k===res)r=b.k==='P'?b.amt*2:b.k==='B'?b.amt*1.95:b.amt*9;else if(res==='T')r=b.amt;cpuAdj(b.c.id,Math.floor(r));b.el.querySelector('.mn').textContent=fmt(cpuBank(b.c.id));if(r>b.amt)cpuSay(b.el,pick(b.c.win));else if(r===0&&Math.random()<.5)cpuSay(b.el,pick(b.c.lose))});
     await settle('baccarat',tb,ret,winSp||$('.bacspots'),'honglong');
     st.last={...st.bets};await sleep(900);for(const k in st.bets)renderStack(spotFor(k),0);st.bets={};st.busy=false;const dl=$('#deal');if(dl)dl.disabled=false;save()};
@@ -1533,7 +1558,7 @@ GAME_MOUNT.poker=(v)=>{const SB=100,BB=200;
     PK.board=[];PK.pot=0;$('#board').innerHTML='';updPot();PK.deck=newShoe(1);
     PK.button=nextIdx(PK.button<0?ri(0,4):PK.button);renderSeats();
     let sbI,bbI;if(seated.length===2){sbI=PK.button;bbI=nextIdx(sbI)}else{sbI=nextIdx(PK.button);bbI=nextIdx(sbI)}
-    dealerSay('aria','bet');putIn(sbI,SB);tag(sbI,'SB '+SB);putIn(bbI,BB);tag(bbI,'BB '+BB);PK.cur=BB;PK.minR=BB;
+    dealerSay('aria','bet');PK.boost=thPotBoost();putIn(sbI,SB);tag(sbI,'SB '+SB);putIn(bbI,BB);tag(bbI,'BB '+BB);PK.cur=BB;PK.minR=BB;
     await sleep(400);
     for(let r=0;r<2;r++){let i=sbI;for(let k=0;k<5;k++){const p=PK.players[i];if(p&&!p.out){const c=PK.deck.pop();p.hole.push(c);const e=await dealCard(seatEl(i).querySelector('.hc'),c,{faceUp:!!p.human,dur:200});p.els.push(e)}i=(i+1)%5}}
     // streets
@@ -1598,7 +1623,7 @@ GAME_MOUNT.poker=(v)=>{const SB=100,BB=200;
     // highlight winning cards
     const winners=Object.keys(pays).map(Number);winners.forEach(i=>{const bc=sc[i]?.cards||[];const all=[...PK.players[i].els.map((e,k)=>[e,PK.players[i].hole[k]]),...$$('#board .card').map((e,k)=>[e,PK.board[k]])];all.forEach(([e,c])=>{if(bc.some(b=>b.r===c.r&&b.s===c.s))e.classList.add('hl')})});
     await payout(Object.entries(pays).map(([i,a])=>[+i,a]),true,sc);endHand()}
-  async function payout(list,sd,sc){const potEl=$('#pot');for(const [i,a] of list){if(a<=0)continue;const p=PK.players[i];const box=seatEl(i).querySelector('.box');
+  async function payout(list,sd,sc){const potEl=$('#pot');if(PK.boost>1){list=list.map(([i,a])=>[i,a*PK.boost]);PK.pot*=PK.boost;updPot();await stamp('HOT POT ×'+PK.boost,{col:'#ff7a2e',size:.8,shake:2})}for(const [i,a] of list){if(a<=0)continue;const p=PK.players[i];const box=seatEl(i).querySelector('.box');
       for(let k=0;k<Math.min(6,breakChips(a).length);k++){setTimeout(()=>flyChip(breakChips(a)[k],potEl,box,{dur:500}),k*70)}
       await sleep(550);p.stack+=a;PK.pot=Math.max(0,PK.pot-a);updPot();updBet(i);const net=a-p.contrib;
       const r=box.getBoundingClientRect();FX.burst(r.left+r.width/2,r.top+r.height/2,clamp(Math.round(a/400),8,40),{to:{x:r.left+r.width/2,y:r.top+12},onArrive:()=>{box.animate([{transform:'scale(1.08)'},{transform:'none'}],{duration:160})},spread:.8});
@@ -1816,7 +1841,7 @@ GAME_MOUNT.hilo=(v)=>{const st={bets:{},chip:500,busy:false,phase:'bet',cur:null
   leaveGuard=async()=>{if(st.phase==='bet'){refund(totalBets(st.bets));return true}if(st.phase==='play'&&!st.busy){await cashOut();await sleep(600);return true}toast('ゲームの途中です');return false};
   const P=r=>({hi:(13-r)/13,lo:(r-1)/13});
   const upd=()=>{const r=hlr(st.cur);const p=P(r);const mh=hlMult(p.hi),ml=hlMult(p.lo);$('#hiM').textContent=mh?`×${mh.toFixed(2)}（${Math.round(p.hi*100)}%）`:'なし';$('#loM').textContent=ml?`×${ml.toFixed(2)}（${Math.round(p.lo*100)}%）`:'なし';$('#hi').disabled=!mh;$('#lo').disabled=!ml;
-    $('#hlM').textContent='×'+st.mult.toFixed(2);$('#hlW').textContent=st.steps?`獲得予定 ${fmt(Math.floor(st.stake*st.mult))} CR（${st.steps}連続）`:'まず1回当ててみよう';$('#cash').disabled=st.steps===0;$('#cash').textContent=st.steps?`CASH OUT ${fmt(Math.floor(st.stake*st.mult))}`:'CASH OUT'};
+    $('#hlM').textContent='×'+st.mult.toFixed(2);$('#hlW').textContent=st.steps?`獲得予定 ${fmt(Math.floor(st.stake*st.mult))} CR（${st.steps}連続）`+hlNext(st.steps):'まず1回当ててみよう'+hlNext(0);$('#cash').disabled=st.steps===0;$('#cash').textContent=st.steps?`CASH OUT ${fmt(Math.floor(st.stake*st.mult))}`:'CASH OUT'};
   const shoe=()=>({r:ri(0,12),s:ri(0,3)});
   $('#start').onclick=async()=>{if(st.phase!=='bet')return;const b=st.bets.main||0;if(!b){toast('先にベットしてください');return}st.stake=b;st.mult=1;st.steps=0;st.phase='play';st.busy=true;$('#hlBet').style.display='none';$('#hlC').innerHTML='';$('#hlT').innerHTML='';
     st.cur=shoe();await dealCard($('#hlC'),st.cur);$('#hlPlay').style.display='';upd();st.busy=false;$('#gmsg').textContent='次は上？下？'};
@@ -1824,7 +1849,7 @@ GAME_MOUNT.hilo=(v)=>{const st={bets:{},chip:500,busy:false,phase:'bet',cur:null
     const old=$('#hlC .card');if(old){const sm=old.cloneNode(true);sm.classList.add('flip');$('#hlT').appendChild(sm);old.remove()}
     const nx=shoe();const e=await dealCard($('#hlC'),nx,{faceUp:false});dealerSay('zero','custom',dir==='hi'?'……HIGH。':'……LOW。');AU.heart();await sleep(550);flipCard(e);await sleep(300);
     const nr=hlr(nx);const ok=dir==='hi'?nr>r:nr<r;st.cur=nx;
-    if(ok){st.mult=Math.floor(st.mult*m*100)/100;st.steps++;if(st.steps>=5)achv('hilo5');emit('hilo',st.steps);AU.win();const rr=e.getBoundingClientRect();FX.ring(rr.left+rr.width/2,rr.top+rr.height/2,{col:'#3dffa8',max:160,w:10});
+    if(ok){st.mult=Math.floor(st.mult*m*100)/100;st.steps++;hlMilestone(st);if(st.steps>=5)achv('hilo5');emit('hilo',st.steps);AU.win();const rr=e.getBoundingClientRect();FX.ring(rr.left+rr.width/2,rr.top+rr.height/2,{col:'#3dffa8',max:160,w:10});
       await stamp('×'+st.mult.toFixed(2),{col:'#3dffa8',sub:`${st.steps}連続的中！`,size:.85,shake:Math.min(3,1+st.steps*.3)});upd();$('#gmsg').innerHTML=`<span class="neon-c">的中！</span> 続ける？それとも CASH OUT？`;st.busy=false}
     else{e.classList.add('dim');await stamp(nr===r?'SAME':'MISS',{col:'#ff3d6e',sub:nr===r?'同じ数字は負け':'',size:.8,shake:1.5,ring:false});await finish(0)}}
   async function cashOut(){if(st.phase!=='play'||st.steps===0)return;st.busy=true;await finish(Math.floor(st.stake*st.mult))}
@@ -2851,17 +2876,143 @@ function runJackpot(){const SL=['MINI','MAJOR','MINI','MINI','MAJOR','MINI','GRA
   $('#jpStop').onclick=stop;setTimeout(()=>{if(!stopping)stop()},6000)}
 
 /* ---------- what's new ---------- */
-const NEWS_VER=10;
+const NEWS_VER=11;
 const _dl11=decorateLobby;decorateLobby=function(){_dl11();jpRender();updFever();
   if(S.ch==null||window.__noJP){S.seenVer=NEWS_VER;return}
   if((S.seenVer||0)<NEWS_VER)setTimeout(()=>{if(CUR!=='lobby'||$('#modal').classList.contains('on')||scenePlaying)return;S.seenVer=NEWS_VER;save();AU.big();FX.confetti(80);
     showModal(`<div class="center"><div class="dim" style="font-family:var(--font-d);letter-spacing:.3em;font-size:10px">MAJOR UPDATE</div><h2 style="font-size:24px;margin:6px 0;background:linear-gradient(90deg,#6fb6ff,#ff2bd6);-webkit-background-clip:text;background-clip:text;color:transparent">THE ABYSS UPDATE</h2></div>
+     <div class="rsec" style="border-color:#ffe14a"><b style="color:#ffe14a">⚡ THRILL UPDATE ― 青天井、解禁</b><p>全ゲームに「どこまで上がるの！？」を追加。ルーレットに最大×500のライトニング、連勝で配当が上がり続けるドラゴンタイガー、キャリーオーバー総取りのレース…。各ゲームの「？ルール」に説明があります。</p></div>
+     <div class="rsec"><b>🎲 ダブルアップ</b><p>どのゲームでも、勝ったあとに挑戦可能。色を当てれば×2、マークなら×4。やめない限り、倍々に。</p></div>
      <div class="rsec"><b>🌊 ABYSS DIVE（新モード）</b><p>ポーカーの役で得点を稼ぎ、改造チップを集めて深海8階層に挑むローグライク。ロビーの青いバナーから。</p></div>
      <div class="rsec"><b>🏮 歌舞伎フロア（新フロア）</b><p>チンチロリンと丁半が遊べる和の賭場。最高到達額 50,000CR で開放。壺振りの「お蝶」が待っています。</p></div>
      <div class="rsec"><b>💰 グランド・ジャックポット</b><p>画面上の賞金プールは、遊ぶたびに増え続けます。どのゲーム中でも、突然「JACKPOT CHANCE」が来るかも。</p></div>
      <div class="rsec"><b>🔥 フィーバータイム</b><p>3連勝以上で突入。連勝が続くかぎり、勝ち分に+10%のボーナス。</p></div>
      <button class="btn gold" style="width:100%" onclick="closeModal()">遊んでみる！</button>`)},1600)};
 setTimeout(()=>{try{checkPeak();jpRender();updFever()}catch(e){}},3000);
+/* ================= v11: THRILL UPDATE — sky-high multipliers for every game ================= */
+const TH={spot:{},dt:0,bj:1,heat:0,vp:1,tri:false,boostNote:''};
+const wpick=t=>{let s=t.reduce((a,x)=>a+x[1],0),r=Math.random()*s;for(const x of t){if((r-=x[1])<0)return x[0]}return t[0][0]};
+const thX=(game,key)=>((TH.spot[game]||{})[key])||1;
+const FIB=(()=>{const a=[1,2,3];while(a.length<40)a.push(a[a.length-1]+a[a.length-2]);return a})();
+ACH.push({id:'x100',name:'こんなに上がっていいの！？',desc:'1回の勝負で賭け金の100倍以上を獲得',rw:{t:5}},{id:'ltg',name:'雷に打たれた',desc:'ライトニング倍率を的中させる',rw:{t:2}},{id:'du5',name:'止まらない倍々',desc:'ダブルアップを5回連続で成功',rw:{t:3}},{id:'du10',name:'倍々の神',desc:'ダブルアップを10回連続で成功',rw:{t:10}},{id:'carry',name:'キャリーオーバー総取り',desc:'レースで3連単を当ててキャリーオーバーを獲得',rw:{t:3}});
+SPECIALS.push({id:'du3',g:null,text:'ダブルアップを3回連続で成功させる',base:6000});
+
+/* ---------- high-roller chips ---------- */
+DENOMS.push(1000000,10000000);
+const _cc11=chipColors;chipColors=function(){return [..._cc11(),'#ffffff','#ff3d6e']};
+const _scb11=setupChipBar;setupChipBar=function(state,min){_scb11(state,min);$$('#chipbar .chip').forEach(c=>{const v=+c.dataset.v;if(v>100000&&(S.peak||0)<v*2)c.remove()});if(!$('#chipbar .chip.sel')){const f=$('#chipbar .chip');if(f){f.classList.add('sel');state.chip=+f.dataset.v}}};
+
+/* ---------- lightning helpers ---------- */
+function clearLight(){$$('.spot.lt').forEach(s=>{s.classList.remove('lt');s.querySelector('.ltg')?.remove()})}
+function markLight(spot,label,delay){setTimeout(()=>{if(!document.body.contains(spot))return;spot.classList.add('lt');spot.insertAdjacentHTML('beforeend',`<em class="ltg">${label}</em>`);const r=spot.getBoundingClientRect();FX.bolt(r.left+r.width/2+rnd(-60,60),-10,r.left+r.width/2,r.top+r.height/2,{col:'#ffe14a',life:.35});FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#ffe14a',max:50,w:5,life:.4});AU.zap()},delay)}
+function lightRoulette(){clearLight();const spots=$$('#rboard .spot').filter(s=>s.dataset.k.startsWith('n:'));const n=wpick([[1,20],[2,30],[3,25],[4,15],[5,10]]);const m={};const notes=[];shuffle(spots.slice()).slice(0,n).forEach((sp,i)=>{const x=wpick([[50,40],[100,25],[150,15],[200,10],[300,6],[500,4]]);m[sp.dataset.k]=x;notes.push(`${sp.dataset.k.slice(2)}<b>×${x}</b>`);markLight(sp,'×'+x,500+i*260)});
+  TH.spot[CUR]=m;setTimeout(()=>{stamp('LIGHTNING',{col:'#ffe14a',sub:'光った数字は配当が跳ね上がる',size:.7,shake:1,dur:900});const g=$('#gmsg');if(g)g.innerHTML='⚡ '+notes.join('　')},300)}
+function lightSicbo(){clearLight();const spots=$$('#sb .spot').filter(s=>s.dataset.k.startsWith('t:'));const n=wpick([[2,35],[3,40],[4,25]]);const m={};shuffle(spots.slice()).slice(0,n).forEach((sp,i)=>{const k=wpick([[2,40],[3,25],[5,18],[10,10],[25,5],[50,2]]);m[sp.dataset.k]=k;markLight(sp,(SB_TOTAL[+sp.dataset.k.slice(2)]*k)+':1',300+i*220)});TH.spot.sicbo=m;setTimeout(()=>stamp('LIGHTNING',{col:'#ffe14a',sub:'光った合計は配当アップ',size:.7,shake:1,dur:900}),200)}
+function lightBac(){clearLight();const m={};[['P',.4,[[2,50],[3,25],[5,15],[8,10]]],['B',.4,[[2,50],[3,25],[5,15],[8,10]]],['T',.65,[[2,35],[3,25],[5,20],[10,13],[20,7]]]].forEach(([k,p,t],i)=>{if(Math.random()<p){const x=wpick(t);m[k]=x;const sp=$(`.bacspots [data-k="${k}"]`);sp&&markLight(sp,'×'+x,200+i*250)}});TH.spot.baccarat=m;if(Object.keys(m).length)setTimeout(()=>stamp('龍の息吹',{col:'#ffe14a',sub:'光った所は配当が倍増',size:.7,shake:1,dur:900}),150)}
+function goldKeno(){$$('#kg .kn.gold').forEach(e=>e.classList.remove('gold'));const p=shuffle($$('#kg .kn.pick'));if(!p.length)return;p.slice(0,p.length>=5?2:1).forEach(e=>{e.classList.add('gold');const r=e.getBoundingClientRect();FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#ffd36b',max:60,w:6});AU.coin(1.4)});toast('⭐ ゴールデンナンバー決定！当たれば配当×5（2個なら×25）')}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('button');if(!b||b.disabled)return;const id=b.id;DU.hide();
+  if((CUR==='roulette'||CUR==='roulette_hi')&&id==='spin'&&$('#rboard .stack'))lightRoulette();
+  else if(CUR==='sicbo'&&id==='roll'&&$('#sb .stack'))lightSicbo();
+  else if(CUR==='baccarat'&&id==='deal'&&$('.bacspots .stack'))lightBac();
+  else if(CUR==='keno'&&id==='kplay')goldKeno()},true);
+const _rl11=rlPayout;rlPayout=function(key,n){const m=_rl11(key,n);if(m>0&&typeof key==='string'&&key.startsWith('n:')){const x=thX(CUR,key);if(x>1){TH.ltHit=true;return x+1}}return m};
+const _sb11=sbPayout;sbPayout=function(k,d){const m=_sb11(k,d);if(m>0&&k.startsWith('t:')){const x=thX('sicbo',k);if(x>1){TH.ltHit=true;return (m-1)*x+1}}return m};
+function thBac(k,a,r){const x=thX('baccarat',k);if(x>1&&r>a){TH.ltHit=true;return a+(r-a)*x}return r}
+
+/* ---------- multiplier roll overlay ---------- */
+function rollMult(table,{title='MULTIPLIER',col='#ffd36b'}={}){return new Promise(res=>{const fin=wpick(table);const vals=table.map(x=>x[0]);const o=h(`<div class="multroll"><div class="mr-t">${title}</div><div class="mr-v" style="color:${col}">×?</div></div>`);document.body.appendChild(o);const v=o.querySelector('.mr-v');let i=0,d=60;AU.rise(1.2);
+  const step=()=>{i++;if(i<18){v.textContent='×'+pick(vals);AU.tick();d+=i>10?28:4;setTimeout(step,d)}else{v.textContent='×'+fin;v.animate([{transform:'scale(2.6)'},{transform:'scale(1)'}],{duration:320,easing:'cubic-bezier(.2,1.5,.4,1)'});AU.slam(fin>=10?.8:1.4);if(fin>=5){flashColor(col,.6);shakeApp(fin>=25?3:1.5);FX.ring(innerWidth/2,innerHeight*.45,{col,max:innerWidth,w:14})}setTimeout(()=>{o.animate([{opacity:1},{opacity:0}],{duration:250}).onfinish=()=>o.remove();res(fin)},fin>1?800:450)}};step()})}
+
+/* ---------- hi-lo milestones (called from the game) ---------- */
+const HL_MS={3:1.5,5:2,7:3,10:5,13:8,16:12,20:25,25:50,30:100};
+function hlMilestone(st){const b=HL_MS[st.steps];if(!b)return;st.mult=Math.floor(st.mult*b*100)/100;setTimeout(()=>{flashColor('#ffd36b',.6);lightning(innerWidth/2,innerHeight*.4,2,'#ffd36b');toast(`🎁 ${st.steps}連続ボーナス！倍率がさらに ×${b}`)},200)}
+function hlNext(n){const nx=Object.keys(HL_MS).map(Number).find(k=>k>n);return nx?`　🎁あと${nx-n}回でボーナス×${HL_MS[nx]}`:''}
+
+/* ---------- poker hot pot ---------- */
+function thPotBoost(){if(Math.random()>.3)return 1;const x=wpick([[2,50],[3,25],[5,15],[10,8],[25,2]]);setTimeout(()=>{stamp('HOT POT',{col:'#ff7a2e',sub:`このハンドのポットは ×${x}！`,size:.8,shake:1.5});flashColor('#ff7a2e',.5)},500);return x}
+
+/* ---------- chain HUD ---------- */
+function thHud(){const g=CUR;let el=$('#thx');const gt=$('.gtop');if(!gt)return;if(!el){el=h('<div id="thx" class="thx"></div>');gt.insertAdjacentElement('afterend',el)}let t='';
+  if(g==='dragontiger'){t=TH.dt?`🔥 闘気 ${TH.dt}連勝中　<b>次の勝ちは配当 ×${FIB[TH.dt]}</b>`:'連勝するほど配当が ×2 → ×3 → ×5 → ×8 … と上がり続ける'}
+  else if(g==='blackjack'){t=TH.bj>1?`⚡ CHAIN　<b>次の勝ちは配当 ×${TH.bj}</b>（勝ち続けるとさらに加算）`:'勝つと次の手に倍率がつく（20で勝てば×4、BJなら×8…負けるまで加算）'}
+  else if(g==='craps'){t=TH.heat?`🎲 HOT SHOOTER ${TH.heat}連勝　<b>次の勝ちは配当 ×${TH.heat+1}</b>`:'勝ち続けるほど配当 ×2 → ×3 → ×4 … 上限なし'}
+  else if(g==='videopoker'){t=TH.vp>1?`✨ <b>次のハンドは配当 ×${TH.vp}</b>`:'役ができると次のハンドに倍率（最大×12）'}
+  else if(g==='race'){t=`💰 キャリーオーバー <b>${fmt(S.raceCarry||0)} CR</b>　3連単的中で総取り`}
+  else if(g==='bigsix'){t='当たるたびに倍率ルーレット（最大 ×100）'}
+  else if(g==='keno'){t='⭐ 毎回ゴールデンナンバーを抽選。当たれば ×5（2個で ×25）'}
+  else if(g==='roulette'||g==='roulette_hi'){t='⚡ 毎スピン、ランダムな数字に最大 ×500 のライトニング'}
+  else if(g==='sicbo'){t='⚡ 毎回、ランダムな合計に最大 ×50 倍のライトニング'}
+  else if(g==='baccarat'){t='🐉 毎回、賭け枠に最大 ×20 の倍率がつくことがある'}
+  else if(g==='hilo'){t='🎁 3・5・7・10連続…で倍率にボーナス。上限なし'}
+  else if(g==='poker'){t='🔥 3割の確率で HOT POT（ポットが最大 ×25）'}
+  el.innerHTML=t;el.classList.toggle('hot',/次の/.test(t))}
+const _goT=go;go=function(v,a){DU.hide();_goT(v,a);if(GAMES[v])setTimeout(thHud,30);tabbar()};
+const _emT=emit;emit=function(id,v){if(id==='race3')TH.tri=true;_emT(id,v)};
+
+/* ---------- the settle wrapper: apply chains, then offer double-up ---------- */
+const _stT=settle;settle=async function(game,bet,ret,fromEl,dealer){let net=ret-bet,mult=1,label='';
+  if(net>0){
+    if(game==='bigsix'){mult=await rollMult([[1,34],[2,30],[3,16],[5,10],[10,6],[25,3],[100,1]]);label='MULTIPLIER'}
+    else if(game==='keno'){const g=$$('#kg .kn.gold.hit').length;mult=[1,5,25][g]||1;label='GOLDEN NUMBER'}
+    else if(game==='dragontiger'){mult=FIB[TH.dt];label=`闘気 ${TH.dt}連勝`}
+    else if(game==='blackjack'){mult=TH.bj;label='LIGHTNING CHAIN'}
+    else if(game==='craps'){mult=TH.heat+1;label='HOT SHOOTER'}
+    else if(game==='videopoker'){mult=TH.vp;label='MULTIPLIER'}}
+  if(game==='race'){if(TH.tri&&(S.raceCarry||0)>0){const c=S.raceCarry;S.raceCarry=0;ret+=c;achv('carry');await stamp('CARRY OVER!',{col:'#ffd36b',sub:`+${fmt(c)} CR 総取り！`,size:.9,shake:3});lightning(innerWidth/2,innerHeight*.4,3,'#ffd36b')}else if(!TH.tri)S.raceCarry=(S.raceCarry||0)+bet;TH.tri=false}
+  if(mult>1&&game!=='bigsix'){await stamp('×'+mult,{col:'#ffe14a',sub:label,size:1,shake:Math.min(3,1+mult/8)})}
+  if(mult>1)ret=bet+net*mult;ret=Math.floor(ret);net=ret-bet;
+  // next-round state (before the inner settle so the HUD is right when it ends)
+  if(game==='dragontiger'){if(net>0)TH.dt++;else if(ret===0)TH.dt=0}
+  if(game==='blackjack'){if(net>0){const txt=[...$$('#pH .handval')].map(e=>e.textContent).find(t=>/WIN/.test(t))||'';const mm=txt.match(/^(\d+)(?:\/(\d+))?/);const tot=/BJ/.test(txt)?99:mm?+(mm[2]||mm[1]):18;const add=tot===99?8:tot>=21?6:tot===20?4:tot===19?3:2;TH.bj=(TH.bj>1?TH.bj:0)+add}else if(net<0)TH.bj=1}
+  if(game==='craps'){if(net>0)TH.heat++;else if(net<0)TH.heat=0}
+  if(game==='videopoker'){const w=$('#vppay tr.win');TH.vp=net>=0&&w?[12,12,10,8,6,5,4,3,2][+w.dataset.i]||1:1}
+  if(TH.ltHit){TH.ltHit=false;if(net>0){achv('ltg');lightning(innerWidth/2,innerHeight*.4,3,'#ffe14a')}}
+  await _stT(game,bet,ret,fromEl,dealer);
+  if(bet>0&&ret/bet>=100)achv('x100');
+  if(net>0)legendAdd(game,net,bet?ret/bet:0);
+  if(['roulette','roulette_hi','sicbo','baccarat'].includes(game)){TH.spot[game]={};setTimeout(clearLight,2600)}
+  thHud();if(net>0&&game!=='poker')DU.offer(net,game)};
+
+/* ---------- universal DOUBLE UP ---------- */
+const DU={el:null,timer:0,
+  hide(){clearTimeout(this.timer);if(this.el){this.el.remove();this.el=null}},
+  offer(amount,game){this.hide();if(amount<100||window.__noJP)return;const show=()=>{if($('#banner').classList.contains('on')||$('#modal').classList.contains('on')||document.querySelector('#stampLayer .stamp')){this.timer=setTimeout(show,700);return}if(CUR!==game)return;
+      const b=h(`<button class="dubtn"><span>🎲 DOUBLE UP</span><small>いまの勝ち分 ${fmt(amount)} CR を賭けて、倍々に挑戦</small></button>`);document.body.appendChild(b);this.el=b;b.animate([{transform:'translateY(40px)',opacity:0},{transform:'none',opacity:1}],{duration:300,easing:'cubic-bezier(.2,1.4,.4,1)'});
+      b.onclick=ev=>{ev.stopPropagation();this.hide();this.start(amount,game)};this.timer=setTimeout(()=>this.hide(),9000)};this.timer=setTimeout(show,900)},
+  start(stake0,game){if(!spend(stake0)){toast('クレジットが足りません');return}let stake=stake0,step=0,busy=false;$('#modal').dataset.lock='1';const SU=['♠','♥','♦','♣'];
+    const draw=()=>{showModal(`<div class="center du"><div class="du-t">DOUBLE UP</div><div class="du-step">${step?`${step}回連続成功！`:'次のカードを当てよう'}</div>
+      <div class="du-stake"><small>いまの賭け金</small><b>${fmt(stake)}</b><span>CR${step?`　（最初の ${fmtK(stake0)} が ×${fmt(stake/stake0)}）`:''}</span></div>
+      <div class="du-card" id="duCard"><div class="du-in"><div class="du-f">?</div><div class="du-b" id="duFace"></div></div></div>
+      <div class="du-lad"><span>色を当てる → <b>${fmt(stake*2)}</b></span><span>マークを当てる → <b>${fmt(stake*4)}</b></span></div>
+      <div class="actions" style="margin-top:8px"><button class="btn red dug" data-g="r">赤 ×2</button><button class="btn ghost dug" data-g="b" style="background:#101428">黒 ×2</button></div>
+      <div class="actions" style="margin-top:6px">${SU.map((s,i)=>`<button class="btn ghost dug" data-g="${i}" style="min-width:0;font-size:20px;color:${i===1||i===2?'#ff5f8f':'#fff'}">${s}<small style="font-size:10px;display:block">×4</small></button>`).join('')}</div>
+      <button class="btn gold" id="duCol" style="width:100%;margin-top:10px;font-family:var(--font-d)">${step?`COLLECT ${fmt(stake)} CR`:'やめる（賭け金を戻す）'}</button></div>`);
+      $$('.dug').forEach(b=>b.onclick=()=>guess(b.dataset.g));$('#duCol').onclick=collect};
+    const end=()=>{delete $('#modal').dataset.lock;closeModal()};
+    const collect=()=>{if(busy)return;end();if(step){stamp('COLLECT',{col:'#3dffa8',sub:`+${fmt(stake)} CR（×${fmt(stake/stake0)}）`,size:.85,shake:1.5});legendAdd('doubleup',stake-stake0,stake/stake0)}award(stake,null,{big:step>=3});if(step>=4)setTimeout(()=>bigWin(stake,stake0),600)};
+    const guess=async g=>{if(busy)return;busy=true;$$('.dug,#duCol').forEach(b=>b.disabled=true);const c={r:ri(0,12),s:ri(0,3)};const red=c.s===1||c.s===2;const ok=g==='r'?red:g==='b'?!red:+g===c.s;const x=(g==='r'||g==='b')?2:4;
+      for(let k=0;k<3;k++){AU.heart();$('#duCard').animate([{transform:'rotate(-5deg) scale(1.04)'},{transform:'rotate(5deg) scale(1.04)'},{transform:'none'}],{duration:260});await sleep(300)}
+      $('#duFace').innerHTML=`<b style="color:${red?'#e0136e':'#0b1030'}">${RANKS[c.r]}</b><i style="color:${red?'#e0136e':'#0b1030'}">${SU[c.s]}</i>`;$('#duCard').classList.add('open');AU.slam(1.3);await sleep(650);
+      if(ok){stake*=x;step++;AU.win();flashColor('#3dffa8',.5);const r=$('#duCard').getBoundingClientRect();FX.firework(r.left+r.width/2,r.top+r.height/2,{col:'#3dffa8'});if(step>=3)emit('du3');if(step>=5)achv('du5');if(step>=10)achv('du10');await stamp('×'+fmt(stake/stake0),{col:'#3dffa8',sub:`${fmt(stake)} CR　${step}連続！`,size:.9,shake:Math.min(3,1+step*.4)});busy=false;draw()}
+      else{end();vignette('rgba(255,30,80,.9)');AU.lose();stamp('BUST',{col:'#ff3d6e',sub:`${fmt(stake)} CR が消えた…`,size:1,shake:2,ring:false});save();setTimeout(checkBankrupt,1500)}};
+    draw()}};
+
+/* ---------- legends board ---------- */
+function legendAdd(game,net,x){if(net<1000)return;S.legends=S.legends||[];S.legends.push({g:game,net:Math.floor(net),x:Math.round(x*10)/10,t:Date.now()});S.legends.sort((a,b)=>b.net-a.net);S.legends=S.legends.slice(0,10);if((S.bestX||0)<x)S.bestX=Math.round(x*10)/10;save()}
+const gName=g=>g==='doubleup'?'ダブルアップ':GAMES[g]?GAMES[g].name:g;
+const _rs11=renderStats;renderStats=function(v){if(S.bestGame&&!GAMES[S.bestGame])S.bestGame='';_rs11(v);const w=$('.wrap',v);if(!w)return;const L=S.legends||[];w.insertAdjacentHTML('beforeend',`<div class="albsec" style="margin-top:18px">伝説の一撃 TOP10</div><div class="glass" style="padding:8px">${L.length?`<table class="stat"><tr><th>#</th><th>ゲーム</th><th>倍率</th><th>獲得</th></tr>${L.map((l,i)=>`<tr><td>${i<3?['🥇','🥈','🥉'][i]:i+1}</td><td style="text-align:left">${gName(l.g)}</td><td>×${fmt(l.x)}</td><td class="neon-g">+${fmt(l.net)}</td></tr>`).join('')}</table>`:'<p class="dim center" style="font-size:12px">まだ記録がありません。大きく勝つとここに刻まれます。</p>'}</div><p class="dim center" style="font-size:10px">最高倍率：×${fmt(S.bestX||0)}</p>`)};
+
+/* ---------- bottom tab bar ---------- */
+(function(){$('#view').insertAdjacentHTML('afterend',`<nav id="tabbar">${[['lobby','ロビー','<path d="M4 11 L12 4 L20 11 V20 H14 V14 H10 V20 H4Z"/>'],['dive','ダイブ','<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>'],['album','アルバム','<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M5 17 L10 12 L13 15 L16 11 L19 15"/>'],['mycasino','マイカジノ','<path d="M4 20 V10 L12 4 L20 10 V20Z"/><rect x="10" y="14" width="4" height="6"/>'],['stats','戦績','<path d="M5 20 V12 M12 20 V5 M19 20 V9"/>']].map(([k,n,p])=>`<button data-v="${k}"><svg viewBox="0 0 24 24">${p}</svg><span>${n}</span></button>`).join('')}</nav>`);$$('#tabbar button').forEach(b=>b.onclick=()=>{AU.click();navTo(b.dataset.v)})})();
+function tabbar(){const tb=$('#tabbar');if(!tb)return;const hide=GAMES[CUR]||CUR==='duel'||(CUR==='dive'&&S.dive)||(CUR==='cup'&&typeof CUP!=='undefined'&&CUP);tb.style.display=hide?'none':'';$$('button',tb).forEach(b=>b.classList.toggle('on',b.dataset.v===CUR))}
+
+/* ---------- lobby: resume last game ---------- */
+const _goL=go;go=function(v,a){if(GAMES[v])S.lastGame=v;_goL(v,a)};
+const _dlT=decorateLobby;decorateLobby=function(){_dlT();const bn=$('#dvBanner');const g=S.lastGame;if(bn&&g&&GAMES[g]&&!$('#resume')&&S.unlocked.includes(GAMES[g].floor)){bn.insertAdjacentHTML('afterend',`<button class="resume" id="resume" onclick="go('${g}')">▶ 前回のつづき：<b>${GAMES[g].name}</b></button>`)}};
+setTimeout(tabbar,100);
+
+/* ---------- rules: explain the sky-high part ---------- */
+Object.entries({roulette:'⚡ライトニング：毎スピン1〜5個の数字が光り、その数字の1点賭けは配当が ×50〜×500 に。',roulette_hi:'⚡ライトニング：毎スピン1〜5個の数字が光り、1点賭けの配当が ×50〜×500 に。',sicbo:'⚡ライトニング：毎回2〜4個の「合計」が光り、配当が最大50倍に跳ね上がる（例 60:1 → 3000:1）。',baccarat:'🐉龍の息吹：配る前に PLAYER／BANKER／TIE の枠が光ることがあり、勝つと配当が ×2〜×20。',bigsix:'🎰当たるたびに倍率ルーレットが回り、配当がさらに ×2〜×100。',keno:'⭐ゴールデンナンバー：選んだ数字のうち1個（5個以上選ぶと2個）が金色に。当たれば配当 ×5、2個とも当たれば ×25。',videopoker:'✨役ができると、次のハンドの配当に倍率がつく（ジャックス×2 〜 フォーカード以上×12）。',dragontiger:'🔥闘気：連勝するほど配当が ×2→×3→×5→×8→×13… と上がり続ける。上限なし。負けるとリセット。',blackjack:'⚡ライトニング・チェーン：勝つと次の手に倍率（17-18で+2、19で+3、20で+4、21で+6、BJで+8）。勝ち続けるかぎり加算され続ける。',craps:'🎲ホットシューター：勝ちが続くほど配当 ×2→×3→×4… 上限なし。',hilo:'🎁連続ボーナス：3・5・7・10・13・16・20・25・30連続で、倍率がさらに ×1.5〜×100。上限なし。',poker:'🔥HOT POT：3割の確率で、そのハンドのポットが ×2〜×25 に。',race:'💰キャリーオーバー：3連単が外れたレースの賭け金がすべて貯まり、3連単を当てた人が総取り。'}).forEach(([g,t])=>{if(RULES[g])RULES[g].tips+=`<br><br><b style="color:#ffe14a">【青天井ルール】</b><br>${t}<br><br>🎲 どのゲームでも、勝ったあとは「ダブルアップ」に挑戦できます。色当て×2、マーク当て×4。何回でも続けられます。`});
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
