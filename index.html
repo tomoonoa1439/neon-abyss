@@ -593,6 +593,68 @@ button{font-family:inherit;color:inherit}
 .bl-r{display:grid;grid-template-columns:48px 1fr 64px 70px;gap:4px;align-items:center;font-size:11px;padding:5px 8px;border-radius:8px;background:rgba(0,0,0,.35);margin-bottom:3px;border:1px solid transparent}
 .bl-t{font-size:10px;color:var(--cyan);font-weight:800}.bl-r b{font-family:var(--font-d)}.bl-o{font-family:var(--font-d);color:var(--gold);text-align:right}.bl-r span:nth-child(3){text-align:right}
 .bl-r.win{border-color:var(--gold);background:rgba(255,211,107,.2);animation:blink .4s 5}.bl-r.lose{opacity:.35}
+
+/* ===== v10 THE ABYSS UPDATE ===== */
+#jpbar{flex:0 0 auto;display:flex;align-items:center;gap:6px;justify-content:center;padding:3px 10px;font-family:var(--font-d);font-size:9px;letter-spacing:.12em;background:linear-gradient(90deg,transparent,rgba(255,211,107,.16),transparent);border-bottom:1px solid rgba(255,211,107,.25);position:relative;z-index:4;white-space:nowrap;overflow:hidden}
+#jpbar .jl{color:#e8c27a}#jpv{color:var(--gold);font-size:13px;letter-spacing:.04em;font-variant-numeric:tabular-nums}#jpbar .ju{color:#e8c27a}
+#fever{margin-left:6px;color:#ff9a4e;font-family:var(--font);font-weight:800;font-size:10px;letter-spacing:0}
+#feverfx{position:fixed;inset:0;z-index:3;pointer-events:none;border:3px solid #ff7a2e;box-shadow:inset 0 0 34px rgba(255,122,46,.7);opacity:0}
+body.fever #feverfx{animation:fvp .9s ease-in-out infinite alternate}@keyframes fvp{from{opacity:.25}to{opacity:.95}}
+.jp-title{font-family:var(--font-d);font-weight:900;font-size:26px;letter-spacing:.06em;background:linear-gradient(180deg,#fff7d1,#ffd36b 50%,#ff8a1f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.jp-ring{position:relative;width:236px;height:236px;margin:0 auto;border-radius:50%;background:radial-gradient(circle,#1a1040,#05060f);border:2px solid var(--gold);box-shadow:0 0 26px rgba(255,211,107,.35)}
+.jp-l{position:absolute;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-d);font-weight:900;font-size:13px;color:var(--c);border:2px solid var(--c);background:#05060f;opacity:.45}
+.jp-l.on,.jp-l.hit{opacity:1;background:var(--c);color:#001;box-shadow:0 0 18px var(--c)}.jp-l.hit{animation:blink .2s 8}
+.jp-c{position:absolute;inset:0;display:grid;place-items:center;align-content:center;font-family:var(--font-d)}.jp-c small{font-size:10px;color:var(--dim);letter-spacing:.2em}.jp-c b{font-size:20px;color:var(--gold)}
+.jp-pay{display:flex;justify-content:space-around;font-family:var(--font-d);font-size:10px;margin-top:10px;font-weight:700}
+/* dive */
+.dv{position:relative;min-height:100%;padding:8px 10px 0;max-width:560px;margin:0 auto;background:linear-gradient(180deg,hsl(calc(214 + var(--dp)*7) 75% calc(15% - var(--dp)*1.1%)),#02030a 85%);isolation:isolate}
+.dv-bub{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 12% 30%,rgba(111,182,255,.12) 0 6px,transparent 7px),radial-gradient(circle at 82% 18%,rgba(111,182,255,.1) 0 4px,transparent 5px),radial-gradient(circle at 68% 62%,rgba(111,182,255,.08) 0 9px,transparent 10px),radial-gradient(circle at 28% 78%,rgba(111,182,255,.08) 0 5px,transparent 6px)}
+.dv-top{display:flex;align-items:center;gap:8px}.dv-dep{flex:1;line-height:1.1}.dv-dep b{font-family:var(--font-d);font-size:24px;color:#6fb6ff;text-shadow:0 0 12px #2a6dff}.dv-dep span{font-size:12px;margin-left:4px}.dv-dep small{display:block;font-size:9px;color:var(--dim)}
+.dv-boss{margin-top:6px;padding:6px 10px;border-radius:10px;font-size:11px;background:rgba(255,30,80,.14);border:1px solid rgba(255,61,110,.6);color:#ffb3c4}
+.dv-sc{margin-top:8px}.dv-bar{height:10px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}.dv-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2a6dff,#3dffa8)}
+.dv-scn{display:flex;align-items:baseline;gap:6px;justify-content:center;font-family:var(--font-d);margin-top:3px}.dv-scn b{font-size:22px;color:#fff}.dv-scn span{font-size:11px;color:var(--dim)}
+.dv-relics{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:8px}
+.dv-rs{min-height:64px;border-radius:10px;background:rgba(0,0,0,.35);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;min-width:0;padding:2px}
+.dv-rs.empty{border-style:dashed;opacity:.5}.dv-rs span{font-size:8px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dv-calc{margin-top:8px;text-align:center}.dv-hn{font-size:13px;font-weight:800;min-height:20px}
+.dv-cm{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:2px}.dv-cm b{font-family:var(--font-d);font-size:20px;padding:3px 12px;border-radius:8px;min-width:78px;color:#fff;display:inline-block}
+.dv-cm b.c{background:#1a4a9a;text-align:right;box-shadow:0 0 10px rgba(42,109,255,.5)}.dv-cm b.m{background:#b0183f;text-align:left;box-shadow:0 0 10px rgba(255,61,110,.5)}.dv-cm i{font-style:normal;font-weight:900}
+.dv-tot{font-family:var(--font-d);font-weight:900;font-size:24px;color:var(--gold);min-height:30px;text-shadow:0 0 12px rgba(255,211,107,.6)}
+.dv-playa{display:flex;justify-content:center;align-items:center;min-height:106px}
+.dv-hand{display:flex;justify-content:center;padding:18px 2px 4px;min-height:110px}
+.dc{position:relative;flex:0 0 auto;width:13%;max-width:60px;aspect-ratio:5/7;margin-left:-1.1%;border-radius:7px;background:linear-gradient(160deg,#fff,#dbe7ff);border:1px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.5);color:#0b1030;cursor:pointer;transition:transform .12s;user-select:none}
+.dc:first-child{margin-left:0}.dc.red{color:#e0136e}
+.dc b{position:absolute;left:4px;top:2px;font-family:var(--font-d);font-weight:900;font-size:14px;line-height:1.1}.dc i{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);font-style:normal;font-size:24px;line-height:1}
+.dc u{position:absolute;bottom:1px;left:0;right:0;text-align:center;font-size:8px;text-decoration:none;color:#0a4a9a;font-weight:900}.dc em{position:absolute;top:2px;right:2px;font-size:7px;font-style:normal;color:#c0104e;font-weight:900}
+.dc.bn{background:linear-gradient(160deg,#eafcff,#9fe4ff)}.dc.ml{border-color:#ff5f8f;box-shadow:0 3px 8px rgba(0,0,0,.5),inset 0 0 0 2px #ff8fb0}
+.dc.sel{transform:translateY(-16px);box-shadow:0 0 0 2px #9fb3d9,0 8px 14px rgba(0,0,0,.5)}.dc.sel.scr{box-shadow:0 0 0 2.5px #3dffa8,0 0 14px #3dffa8}
+.dc.big{width:17%;max-width:72px;margin:0 3px;cursor:default}.dc.hit{box-shadow:0 0 0 2.5px var(--gold),0 0 16px var(--gold)}.dc.sealed{filter:grayscale(1) brightness(.45)}
+.dvfloat{position:fixed;z-index:61;pointer-events:none;font-family:var(--font-d);font-weight:900;font-size:17px;text-shadow:0 2px 0 #000,0 0 8px currentColor;white-space:nowrap}
+.dv-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--dim);padding:0 4px}.dv-meta button{border:1px solid var(--line);background:rgba(255,255,255,.05);border-radius:8px;padding:4px 10px;font-size:11px;cursor:pointer}
+.dv-offers{display:grid;gap:10px;padding:8px 2px}
+.dv-of{display:flex;gap:12px;align-items:center;padding:12px;border-radius:16px;background:rgba(6,10,30,.88);border:1.5px solid var(--c);cursor:pointer;transition:transform .15s;box-shadow:0 0 14px color-mix(in srgb,var(--c) 35%,transparent)}
+.dv-of:active{transform:scale(.97)}.dv-of.picked{transform:scale(1.04);background:color-mix(in srgb,var(--c) 25%,#05060f)}
+.dv-of small{font-size:9px;color:var(--c);font-family:var(--font-d);letter-spacing:.1em}.dv-of b{display:block;font-size:15px}.dv-of p{margin:2px 0 0;font-size:12px;color:#c5d3f5;line-height:1.5}
+.dv-of.r2{animation:urglow 1.2s infinite;--rc:var(--c)}
+.dv-hero{position:relative;text-align:center;padding:22px 12px;border-radius:18px;margin-bottom:10px;background:radial-gradient(ellipse at 50% 0,rgba(42,109,255,.45),transparent 70%),linear-gradient(180deg,#0a1a44,#03040c);border:1px solid rgba(111,182,255,.5);overflow:hidden}
+.dv-ht{font-family:var(--font-d);font-weight:900;font-size:30px;letter-spacing:.1em;color:#9fd0ff;text-shadow:0 0 18px #2a6dff}.dv-hs{font-size:12px;color:#c5d3f5;line-height:1.7;margin-top:6px}
+.dv-eye{width:54px;height:54px;border-radius:50%;margin:0 auto 8px;background:radial-gradient(circle,#fff 0 12%,#6fb6ff 14% 30%,#0a1a44 32% 55%,#2a6dff 57% 62%,transparent 64%);animation:embp 2.4s ease-in-out infinite}
+.dv-eye.sm{width:40px;height:40px;margin:0;flex:0 0 auto}
+.dv-stake{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;margin-bottom:8px;background:rgba(0,0,0,.35);border:1px solid rgba(111,182,255,.4)}.dv-stake.lock{opacity:.55}
+.dv-stake b{display:block;font-size:14px;color:#9fd0ff}.dv-stake small{display:block;font-size:10px;color:#c5d3f5;line-height:1.5}
+.dv-banner{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;margin:0 0 12px;border-radius:18px;cursor:pointer;color:#fff;border:1.5px solid #6fb6ff;background:linear-gradient(100deg,#0a1a54,#1a3a9a 55%,#3a1a7a);box-shadow:0 0 22px rgba(42,109,255,.45)}
+.dv-banner b{display:block;font-family:var(--font-d);font-size:17px;letter-spacing:.08em}.dv-banner small{font-size:11px;color:#c5d9ff}
+.dv-bn{font-family:var(--font-d);font-size:10px;font-weight:900;padding:4px 8px;border-radius:8px;background:linear-gradient(90deg,var(--mag),var(--gold));animation:blink 1s infinite}
+/* kabuki */
+.cc-row{display:flex;gap:8px}.cc-side{flex:1;min-width:0;text-align:center}.cc-l{font-size:12px;font-weight:800;margin-bottom:4px}
+.bowl{position:relative;height:112px;border-radius:0 0 90px 90px/0 0 100px 100px;background:radial-gradient(ellipse at 50% 0,#3a1260,#0a0214 75%);border:2px solid #c77dff;border-top-width:6px;display:flex;justify-content:center;align-items:flex-end;gap:5px;padding-bottom:26px;perspective:500px}
+.bowl.me{border-color:#ffd36b}.bowl .dwrap{zoom:.74}
+.cc-res{min-height:22px;font-size:13px;margin-top:4px}.cc-res b{font-family:var(--font-d);color:var(--gold)}
+.tsubo-area{position:relative;height:140px}.bon{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);display:flex;gap:16px;perspective:500px}
+.tsubo{position:absolute;left:50%;bottom:0;transform:translate(-50%,-170px);opacity:0;transition:transform .4s cubic-bezier(.3,1.3,.5,1),opacity .2s;z-index:3}.tsubo.down{transform:translate(-50%,0);opacity:1}
+.chspots{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}.chspots .spot{min-height:52px}.chspots .spot.big{min-height:98px}
+.kj{font-size:46px;font-weight:900;line-height:1.05;font-family:'Hiragino Mincho ProN','Yu Mincho',serif}
+.chspots .spot>.stack{left:auto;right:6px;bottom:16px;transform:scale(.9)}
 </style>
 </head>
 <body>
@@ -1004,7 +1066,7 @@ function stamp(text,{col='#ffd36b',col2,sub='',size=1,dur=1150,shake=1,ring=true
 async function settle(game,bet,ret,fromEl,dealer){record(game,bet,ret);const net=ret-bet;const msg=$('#gmsg');const big=net>=bet*10&&net>=1000;
   if(ret>0){if(net>0){AU.win();if(msg)msg.innerHTML=`<span class="neon-g">WIN +${fmt(net)} CR</span>`;
       if(!big){const r=fromEl?.getBoundingClientRect?.();if(r){FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#ffd36b',max:180,w:8});FX.shaft(r.left+r.width/2,r.top+r.height/2,{n:12,life:1})}flashColor('rgba(255,211,107,.55)',.6);stamp('WIN',{col:'#ffd36b',sub:`+${fmt(net)} CR`,size:net>=bet*3?1.1:.9,shake:net>=bet*3?1.5:1})}}
-    else{if(msg)msg.innerHTML='<span class="neon-c">PUSH（返却）</span>';stamp('PUSH',{col:'#29f3ff',size:.7,shake:0,dur:900})}
+    else if(net===0){if(msg)msg.innerHTML='<span class="neon-c">PUSH（返却）</span>';stamp('PUSH',{col:'#29f3ff',size:.7,shake:0,dur:900})}else{if(msg)msg.innerHTML=`<span class="neon-c">一部的中　収支 −${fmt(-net)} CR</span>`;stamp('HIT',{col:'#29f3ff',sub:`払い戻し ${fmt(ret)}（収支 −${fmt(-net)}）`,size:.7,shake:0,dur:1000})}
     award(ret,fromEl,{big:net>=bet*3})}
   else{AU.lose();vignette('rgba(255,30,80,.9)');if(msg)msg.innerHTML=`<span style="color:var(--red)">LOSE −${fmt(bet)} CR</span>`;stamp('LOSE',{col:'#ff3d6e',sub:`−${fmt(bet)} CR`,size:.75,shake:.6,ring:false,dur:950})}
   if(big){dealer&&dealerSay(dealer,'big');await sleep(500);await bigWin(net,bet)}
@@ -2480,6 +2542,326 @@ const _go9=go;go=function(v,a){const t=themeFor(v);if(t!==BGM_T)bgmNext=t;_go9(v
 
 /* ---------- app (PWA) on GitHub Pages ---------- */
 if('serviceWorker' in navigator&&/github\.io$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}}
+/* ================= v10: ABYSS DIVE — engine (pure logic, no DOM) ================= */
+const DV_HANDS=[
+  {n:'ハイカード',c:5,m:1,uc:10,um:1},{n:'ワンペア',c:10,m:2,uc:15,um:1},{n:'ツーペア',c:20,m:2,uc:20,um:1},{n:'スリーカード',c:30,m:3,uc:20,um:2},
+  {n:'ストレート',c:30,m:4,uc:30,um:3},{n:'フラッシュ',c:35,m:4,uc:15,um:2},{n:'フルハウス',c:40,m:4,uc:25,um:2},{n:'フォーカード',c:60,m:7,uc:30,um:3},{n:'ストレートフラッシュ',c:100,m:8,uc:40,um:4}];
+const DV_TARGET=[300,600,1200,2200,3800,6200,10000,15000];
+const DV_PAY=[0,500,1500,3000,6000,10000,16000,25000,50000];
+const DV_STAKES=[{n:'ノーマル',fee:2000,k:1,t:1},{n:'ハード',fee:5000,k:2.5,t:1.3},{n:'エキスパート',fee:12000,k:6,t:1.7},{n:'アビス',fee:30000,k:15,t:2.3}];
+const dvRank=c=>c.r===0?14:c.r+1;
+const dvChips=c=>c.r===0?11:c.r>=9?10:c.r+1;
+function dvDeck(){const d=[];for(let s=0;s<4;s++)for(let r=0;r<13;r++)d.push({r,s});return d}
+/* evaluate 1–5 played cards → {cat, idx:[indices of scoring cards]} */
+function dvEval(cs){const n=cs.length;const byR={};cs.forEach((c,i)=>{(byR[dvRank(c)]=byR[dvRank(c)]||[]).push(i)});
+  const groups=Object.entries(byR).map(([r,ix])=>({r:+r,ix})).sort((a,b)=>b.ix.length-a.ix.length||b.r-a.r);
+  const all=cs.map((_,i)=>i);let fl=n===5&&cs.every(c=>c.s===cs[0].s),st=false;
+  if(n===5&&groups.length===5){const v=groups.map(g=>g.r).sort((a,b)=>b-a);st=v[0]-v[4]===4||(v[0]===14&&v[1]===5&&v[4]===2)}
+  if(st&&fl)return{cat:8,idx:all};if(groups[0].ix.length===4)return{cat:7,idx:groups[0].ix};
+  if(groups[0].ix.length===3&&groups[1]&&groups[1].ix.length===2)return{cat:6,idx:all};
+  if(fl)return{cat:5,idx:all};if(st)return{cat:4,idx:all};if(groups[0].ix.length===3)return{cat:3,idx:groups[0].ix};
+  if(groups[0].ix.length===2&&groups[1]&&groups[1].ix.length===2)return{cat:2,idx:[...groups[0].ix,...groups[1].ix].sort((a,b)=>a-b)};
+  if(groups[0].ix.length===2)return{cat:1,idx:groups[0].ix};
+  let hi=0;cs.forEach((c,i)=>{if(dvRank(c)>dvRank(cs[hi]))hi=i});return{cat:0,idx:[hi]}}
+const HAS_PAIR=[1,2,3,6,7],HAS_TRIPS=[3,6,7];
+/* relics ("改造チップ"): card(c,ctx) per scoring card, hand(ctx) once per play. return {c:+chips,m:+mult,x:×mult} */
+const DV_RELICS=[
+  {id:'neon',n:'ネオン管',d:'いつでも 倍率+4',rar:0,col:'#29f3ff',hand:()=>({m:4})},
+  {id:'heart',n:'ハートビート',d:'得点になった♥1枚ごとに 倍率+3',rar:0,col:'#ff3d6e',card:c=>c.s===1?{m:3}:null},
+  {id:'spade',n:'スペードエッジ',d:'得点になった♠1枚ごとに チップ+30',rar:0,col:'#9fb3d9',card:c=>c.s===0?{c:30}:null},
+  {id:'dia',n:'ダイヤカッター',d:'得点になった♦1枚ごとに チップ+15・倍率+1',rar:0,col:'#ffd36b',card:c=>c.s===2?{c:15,m:1}:null},
+  {id:'club',n:'クラブハンマー',d:'得点になった♣1枚ごとに 倍率+3',rar:0,col:'#3dffa8',card:c=>c.s===3?{m:3}:null},
+  {id:'pair',n:'ペアリング',d:'ペアを含む役で 倍率+8',rar:0,col:'#ff2bd6',hand:x=>HAS_PAIR.includes(x.cat)?{m:8}:null},
+  {id:'trips',n:'トリプルコア',d:'3枚ぞろいを含む役で 倍率+14',rar:1,col:'#a86bff',hand:x=>HAS_TRIPS.includes(x.cat)?{m:14}:null},
+  {id:'line',n:'ストレートライン',d:'ストレートで チップ+100・倍率+10',rar:1,col:'#29f3ff',hand:x=>x.cat===4||x.cat===8?{c:100,m:10}:null},
+  {id:'flash',n:'フラッシュライト',d:'フラッシュで 倍率×2',rar:1,col:'#ffd36b',hand:x=>x.cat===5||x.cat===8?{x:2}:null},
+  {id:'house',n:'フルハウス邸',d:'フルハウスで 倍率×2.5',rar:1,col:'#ff7a2e',hand:x=>x.cat===6?{x:2.5}:null},
+  {id:'face',n:'絵札の宴',d:'得点になったJ・Q・K1枚ごとに 倍率+4',rar:0,col:'#ff8ff0',card:c=>c.r>=10?{m:4}:null},
+  {id:'ace',n:'エースの誇り',d:'得点になったA1枚ごとに チップ+20・倍率+4',rar:0,col:'#ffffff',card:c=>c.r===0?{c:20,m:4}:null},
+  {id:'even',n:'偶数回路',d:'得点になった偶数(2,4,6,8,10)1枚ごとに 倍率+4',rar:0,col:'#3dffa8',card:c=>c.r>=1&&c.r<=9&&c.r%2===1?{m:4}:null},
+  {id:'odd',n:'奇数回路',d:'得点になった奇数(A,3,5,7,9)1枚ごとに チップ+31',rar:0,col:'#ff7a2e',card:c=>c.r<=8&&c.r%2===0?{c:31}:null},
+  {id:'last',n:'ラストスタンド',d:'そのフロア最後の手で 倍率×3',rar:1,col:'#ff3d6e',hand:x=>x.handsLeft===0?{x:3}:null},
+  {id:'saver',n:'節約家',d:'残っている捨て札1回ごとに チップ+40',rar:0,col:'#9fd8ff',hand:x=>x.discardsLeft?{c:40*x.discardsLeft}:null},
+  {id:'mini',n:'ミニマリスト',d:'出したカードが3枚以下なら 倍率+15',rar:0,col:'#e9f4ff',hand:x=>x.played<=3?{m:15}:null},
+  {id:'held',n:'温存主義',d:'手札に残したカード1枚ごとに 倍率+2',rar:0,col:'#7affc0',hand:x=>x.held?{m:2*x.held}:null},
+  {id:'grow',n:'成長株',d:'手を出すたびに永続で 倍率+1（今 +{v}）',rar:1,col:'#3dffa8',state:1,hand:x=>x.st.grow?{m:x.st.grow}:null},
+  {id:'gamble',n:'ギャンブラー',d:'4回に1回の確率で 倍率×4',rar:1,col:'#ff2bd6',rand:1,hand:x=>x.roll<.25?{x:4}:null},
+  {id:'gold',n:'黄金比',d:'いつでも 倍率×1.5',rar:2,col:'#ffd36b',hand:()=>({x:1.5})},
+  {id:'deep',n:'深海圧',d:'今の階層×3 の倍率を加える',rar:1,col:'#2a6dff',hand:x=>({m:3*x.depth})},
+  {id:'echo',n:'エコー',d:'得点になる最初のカードが2回発動する',rar:2,col:'#a86bff',retrig:1},
+  {id:'burn',n:'捨て札の炎',d:'このフロアで捨て札を使うたび 倍率+5（今 +{v}）',rar:1,col:'#ff7a2e',state:1,hand:x=>x.st.burn?{m:x.st.burn}:null},
+  {id:'mother',n:'マザーの瞳',d:'フォーカード以上で 倍率×4',rar:2,col:'#ff2bd6',hand:x=>x.cat>=7?{x:4}:null},
+  {id:'high',n:'孤高',d:'ハイカードで チップ+60・倍率+12',rar:0,col:'#9fb3d9',hand:x=>x.cat===0?{c:60,m:12}:null},
+];
+const DV_R=Object.fromEntries(DV_RELICS.map(r=>[r.id,r]));
+const DV_BOSS={seal0:{n:'♠封じ',d:'♠のカードは得点にならない',seal:0},seal1:{n:'♥封じ',d:'♥のカードは得点にならない',seal:1},seal2:{n:'♦封じ',d:'♦のカードは得点にならない',seal:2},seal3:{n:'♣封じ',d:'♣のカードは得点にならない',seal:3},narrow:{n:'狭い通路',d:'手札が1枚少ない',hs:-1},silent:{n:'静寂',d:'捨て札が1回だけ',disc:1}};
+/* score a play. R: run, played: cards, heldN: cards left in hand. roll: rng for gambler (pass .5 for "expected off") */
+function dvScore(R,played,heldN,roll){const ev=dvEval(played);const H=DV_HANDS[ev.cat];const lv=(R.lv[ev.cat]||0);let chips=H.c+H.uc*lv,mult=H.m+H.um*lv;const events=[{t:'base',cat:ev.cat,chips,mult}];
+  const boss=R.boss?DV_BOSS[R.boss]:null;const relics=R.relics.map(id=>DV_R[id]);
+  const ctx={cat:ev.cat,played:played.length,held:heldN,handsLeft:R.hands-1,discardsLeft:R.discards,depth:R.depth,st:R.st||{},roll:roll==null?Math.random():roll};
+  const scoreCard=(i,again)=>{const c=played[i];if(boss&&boss.seal===c.s){events.push({t:'sealed',i});return}
+    let dc=dvChips(c)+(c.b||0),dm=c.m||0;chips+=dc;mult+=dm;events.push({t:'card',i,c:dc,m:dm,again});
+    relics.forEach((r,ri)=>{if(!r.card)return;const o=r.card(c,ctx);if(!o)return;if(o.c)chips+=o.c;if(o.m)mult+=o.m;if(o.x)mult*=o.x;events.push({t:'relic',ri,i,c:o.c||0,m:o.m||0,x:o.x||0})})};
+  ev.idx.forEach((i,k)=>{scoreCard(i);if(k===0&&relics.some(r=>r.retrig))scoreCard(i,true)});
+  relics.forEach((r,ri)=>{if(!r.hand)return;const o=r.hand(ctx);if(!o)return;if(o.c)chips+=o.c;if(o.m)mult+=o.m;if(o.x)mult*=o.x;events.push({t:'relic',ri,c:o.c||0,m:o.m||0,x:o.x||0})});
+  mult=Math.round(mult*10)/10;const total=Math.floor(chips*mult);return{cat:ev.cat,idx:ev.idx,chips,mult,total,events}}
+function dvNewRun(stake){return{stake,depth:1,deck:dvDeck(),relics:[],lv:{},st:{},score:0,best:0,plays:0,done:false}}
+function dvTarget(R){return Math.round(DV_TARGET[R.depth-1]*DV_STAKES[R.stake].t/50)*50}
+function dvStartFloor(R){R.boss=R.depth===4?'seal'+Math.floor(Math.random()*4):R.depth===8?(Math.random()<.5?'narrow':'silent'):null;const b=R.boss?DV_BOSS[R.boss]:{};
+  R.hands=4+(R.xh||0);R.discards=b.disc!=null?b.disc:3+(R.xd||0);R.hs=8+(b.hs||0);R.score=0;R.st=R.st||{};R.st.burn=0;
+  R.pile=R.deck.map((c,i)=>i);for(let i=R.pile.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[R.pile[i],R.pile[j]]=[R.pile[j],R.pile[i]]}R.hand=[];dvDraw(R)}
+function dvDraw(R){while(R.hand.length<R.hs&&R.pile.length)R.hand.push(R.pile.pop())}
+/* rewards offered after a floor */
+function dvOffers(R){const out=[];const own=new Set(R.relics);const pool=DV_RELICS.filter(r=>!own.has(r.id));const wt=r=>[10,5,2][r.rar];
+  const pickRelic=()=>{const cand=pool.filter(r=>!out.some(o=>o.id===r.id));let t=cand.reduce((a,r)=>a+wt(r),0),x=Math.random()*t;for(const r of cand){if((x-=wt(r))<0)return r}return cand[0]};
+  const ups=[()=>{const cat=[1,2,3,4,5,6][Math.floor(Math.random()*6)];return{k:'lv',cat,n:`役強化：${DV_HANDS[cat].n}`,d:`${DV_HANDS[cat].n}のレベル+2（チップ+${DV_HANDS[cat].uc*2}・倍率+${DV_HANDS[cat].um*2}）`}},
+    ()=>({k:'bonus',n:'ネオン加工',d:'デッキのランダム8枚に チップ+30'}),()=>({k:'multc',n:'倍率加工',d:'デッキのランダム5枚に 倍率+4'}),
+    ()=>({k:'thin',n:'デッキ圧縮',d:'デッキから2〜6のカードをランダムに8枚取り除く'}),()=>({k:'hand',n:'予備の手',d:'毎フロアの手数 +1'}),()=>({k:'disc',n:'予備の捨て札',d:'毎フロアの捨て札 +1'})];
+  const nRel=R.relics.length>=5?1:2;for(let i=0;i<nRel;i++){const r=pickRelic();if(r)out.push({k:'relic',id:r.id,n:r.n,d:r.d.replace('（今 +{v}）',''),rar:r.rar,col:r.col})}
+  const used=new Set();while(out.length<3){const j=Math.floor(Math.random()*ups.length);if(used.has(j))continue;used.add(j);const u=ups[j]();if((u.k==='hand'&&(R.xh||0)>=2)||(u.k==='disc'&&(R.xd||0)>=2)||(u.k==='thin'&&R.deck.length<36))continue;out.push(u)}
+  return out}
+function dvApply(R,o,replaceIdx){const rs=a=>{const ix=a.map((_,i)=>i);for(let i=ix.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ix[i],ix[j]]=[ix[j],ix[i]]}return ix};
+  if(o.k==='relic'){if(R.relics.length>=5)R.relics[replaceIdx==null?0:replaceIdx]=o.id;else R.relics.push(o.id)}
+  else if(o.k==='lv')R.lv[o.cat]=(R.lv[o.cat]||0)+2;
+  else if(o.k==='bonus')rs(R.deck).slice(0,8).forEach(i=>R.deck[i].b=(R.deck[i].b||0)+30);
+  else if(o.k==='multc')rs(R.deck).slice(0,5).forEach(i=>R.deck[i].m=(R.deck[i].m||0)+4);
+  else if(o.k==='thin'){const low=rs(R.deck).filter(i=>R.deck[i].r>=1&&R.deck[i].r<=5).slice(0,8);R.deck=R.deck.filter((_,i)=>!low.includes(i))}
+  else if(o.k==='hand')R.xh=(R.xh||0)+1;else if(o.k==='disc')R.xd=(R.xd||0)+1}
+function dvAfterPlay(R){R.plays++;R.st.grow=(R.st.grow||0)+(R.relics.includes('grow')?1:0)}
+function dvAfterDiscard(R){if(R.relics.includes('burn'))R.st.burn=(R.st.burn||0)+5}
+if(typeof module!=='undefined')module.exports={DV_HANDS,DV_TARGET,DV_STAKES,DV_RELICS,dvEval,dvScore,dvNewRun,dvTarget,dvStartFloor,dvDraw,dvOffers,dvApply,dvAfterPlay,dvAfterDiscard,dvRank};
+/* ================= v10: ABYSS DIVE — UI ================= */
+ACH.push({id:'dive4',name:'深海への一歩',desc:'アビス・ダイブでB4のボス階を突破',rw:{cr:3000}},{id:'diveclear',name:'アビスの底を見た者',desc:'アビス・ダイブをB8までクリア',rw:{t:5}},{id:'dive50k',name:'一撃必殺',desc:'アビス・ダイブの1手で30,000点以上',rw:{t:3}});
+SPECIALS.push({id:'divefloor',g:null,text:'アビス・ダイブで1フロア突破する',base:3500});
+THEMES.dive={bpm:100,ch:[[45,52,57],[43,50,55],[41,48,53],[40,47,52]],arp:[0,1,2,1,2,1,0,2],arpOct:12,wave:'triangle',bass:1,kick:[0,8],hat:[4,12],pad:.05,bell:1};
+const _tf10=themeFor;themeFor=function(v){return v==='dive'?'dive':_tf10(v)};
+const dvRec=()=>S.diveRec||(S.diveRec={best:[0,0,0,0],clears:[0,0,0,0],bestHand:0,runs:0});
+const dvRelicDesc=(r,R)=>r.d.replace('{v}',String((R&&R.st&&R.st[r.id])||0));
+function dvRelicIcon(r,size=40){return `<svg width="${size}" height="${size}" viewBox="0 0 40 40"><rect x="4" y="4" width="32" height="32" rx="7" fill="#0a0e24" stroke="${r.col}" stroke-width="2.5"/><g stroke="${r.col}" stroke-width="2" opacity=".7"><line x1="10" y1="1" x2="10" y2="4"/><line x1="20" y1="1" x2="20" y2="4"/><line x1="30" y1="1" x2="30" y2="4"/><line x1="10" y1="36" x2="10" y2="39"/><line x1="20" y1="36" x2="20" y2="39"/><line x1="30" y1="36" x2="30" y2="39"/></g><text x="20" y="26" text-anchor="middle" font-size="15" font-weight="900" fill="${r.col}" font-family="'M PLUS 1p',sans-serif">${r.n[0]}</text></svg>`}
+function dcard(c,di,cls=''){return `<div class="dc ${c.s===1||c.s===2?'red':''} ${c.b?'bn':''} ${c.m?'ml':''} ${cls}" data-d="${di}"><b>${RANKS[c.r]}</b><i>${SUITS[c.s]}</i>${c.b?`<u>+${c.b}</u>`:''}${c.m?`<em>倍+${c.m}</em>`:''}</div>`}
+function dvFloat(el,text,col){if(!el)return;const r=el.getBoundingClientRect();const f=h(`<div class="dvfloat" style="left:${r.left+r.width/2}px;top:${r.top}px;color:${col}">${text}</div>`);document.body.appendChild(f);f.animate([{transform:'translate(-50%,0) scale(.6)',opacity:0},{transform:'translate(-50%,-22px) scale(1.25)',opacity:1,offset:.3},{transform:'translate(-50%,-46px) scale(1)',opacity:0}],{duration:750,easing:'ease-out'}).onfinish=()=>f.remove()}
+function dvHandTable(R){return `<table class="stat">${DV_HANDS.map((H,i)=>{const lv=R?(R.lv[i]||0):0;return `<tr><td>${H.n}${lv?` <span class="neon-g">Lv${lv+1}</span>`:''}</td><td><span style="color:#5fb0ff">${H.c+H.uc*lv}</span> × <span style="color:#ff5f8f">${H.m+H.um*lv}</span></td></tr>`}).reverse().join('')}</table>`}
+function dvRules(R){showModal(`<div style="font-family:var(--font-d);font-size:10px;letter-spacing:.3em;color:var(--dim)">HOW TO PLAY</div><h2 style="margin:4px 0 8px">ABYSS DIVE</h2>
+  <div class="rsec"><b>どんなゲーム？</b><p>ポーカーの役で得点を稼ぎながら、深海の8階層（B1〜B8）を潜っていくモードです。CRは入場料だけ。中では減りません。</p></div>
+  <div class="rsec"><b>遊び方</b><ol><li>手札8枚から最大5枚を選んで「出す」。役の <span style="color:#5fb0ff">チップ</span> × <span style="color:#ff5f8f">倍率</span> が得点になる</li><li>役を作ったカードの数字もチップに加算（Aは11、絵札は10）</li><li>いらないカードは「捨てる」で引き直せる（回数制限あり）</li><li>決められた手数のうちに目標点を超えればフロア突破</li><li>突破するたびに、ごほうびを3つから1つ選べる。「改造チップ」は持っているだけで得点を増やしてくれる（最大5個）</li><li>B4とB8はボス階。特別なルールで邪魔してくる</li></ol></div>
+  <div class="rsec"><b>役の強さ（チップ × 倍率）</b>${dvHandTable(R)}</div>
+  <div class="rsec tip">💡 改造チップは組み合わせが命。「♥で倍率アップ」を拾ったらフラッシュ狙い、のように、拾ったチップに合わせて戦い方を変えよう。倍率を「×」で掛けるチップは、右側に置くほど強い。</div>
+  <button class="btn gold" style="width:100%;margin-top:8px" onclick="closeModal()">わかった！</button>`)}
+
+VIEWS.dive=function(v){leaveGuard=null;const R=S.dive;if(!R)return dvEntry(v);if(R.phase==='reward')return dvReward(v);dvPlay(v)};
+
+/* ---------- entry ---------- */
+function dvEntry(v){const rec=dvRec();const unl=S.diveUnlock||0;
+  v.innerHTML=`<div class="wrap dv-entry"><div class="gtop" style="padding:0 0 8px">${backBtn()}<div><div class="title" style="color:#6fb6ff">ABYSS DIVE</div><div class="sub">深海8階層・ポーカーローグライク</div></div><button class="navbtn" style="margin-left:auto;width:auto;padding:0 12px;font-weight:800;font-size:12px;color:var(--gold);border-color:rgba(255,211,107,.5)" id="dvHelp">？ルール</button></div>
+   <div class="dv-hero"><div class="dv-eye"></div><div class="dv-ht">ABYSS DIVE</div><div class="dv-hs">カジノの真下に眠る、マザーの記憶領域。<br>役を作り、改造チップを集め、最深部B8を目指せ。</div></div>
+   <div class="kv"><div><small>最高到達（ノーマル）</small><b>${rec.best[0]?'B'+rec.best[0]:'-'}</b></div><div><small>1手の最高得点</small><b>${fmt(rec.bestHand)}</b></div></div>
+   ${DV_STAKES.map((s,i)=>{const lock=i>unl;return `<div class="dv-stake ${lock?'lock':''}"><div style="flex:1;min-width:0"><b>${s.n}${rec.clears[i]?` <span class="neon-g" style="font-size:10px">CLEAR×${rec.clears[i]}</span>`:''}</b><small>入場料 ${fmt(s.fee)} CR ／ 完全クリアで ${fmt(DV_PAY[8]*s.k)} CR＋チケット×${3*(i+1)}${s.t>1?` ／ 目標点 ×${s.t}`:''}</small><small class="dim">途中で力尽きても、突破した階層ぶんの賞金あり${rec.best[i]?`（最高 B${rec.best[i]}）`:''}</small></div>${lock?`<span class="dim" style="font-size:10px;white-space:nowrap">${DV_STAKES[i-1].n}を<br>クリアで開放</span>`:`<button class="btn sm dvgo" data-s="${i}" style="background:linear-gradient(180deg,#9fd0ff,#2a6dff);color:#fff">DIVE</button>`}</div>`}).join('')}</div>`;
+  $('#dvHelp').onclick=()=>dvRules(null);
+  $$('.dvgo',v).forEach(b=>b.onclick=()=>{const s=+b.dataset.s;if(!spend(DV_STAKES[s].fee)){toast('クレジットが足りません');return}const R=dvNewRun(s);dvStartFloor(R);R.phase='play';S.dive=R;dvRec().runs++;save();AU.rise(1);flashColor('#2a6dff',.7);stamp('DIVE!',{col:'#6fb6ff',sub:'B1 ― 浅瀬',size:1,shake:2});setTimeout(()=>go('dive'),700)});
+  if(!S.seenDive){S.seenDive=1;save();setTimeout(()=>dvRules(null),500)}}
+
+/* ---------- play ---------- */
+const DV_ZONE=['浅瀬','薄明の層','沈黙の回廊','番人の間','記憶の海溝','光なき底','マザーの鼓動','最深部'];
+function dvPlay(v){const R=S.dive;const T=dvTarget(R);const boss=R.boss?DV_BOSS[R.boss]:null;const sel=[];let busy=false;let sortMode=S.dvSort||0;
+  v.innerHTML=`<div class="dv" style="--dp:${R.depth}"><div class="dv-bub"></div>
+   <div class="dv-top"><button class="navbtn" id="dvBack"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dv-dep"><b>B${R.depth}</b><span>/8　${DV_ZONE[R.depth-1]}</span><small>${DV_STAKES[R.stake].n}</small></div><button class="navbtn" id="dvInfo" style="width:auto;padding:0 10px;font-size:11px;font-weight:800;color:var(--gold)">役</button><button class="navbtn" id="dvQuit" style="width:auto;padding:0 10px;font-size:11px;font-weight:800;color:var(--red)">離脱</button></div>
+   ${boss?`<div class="dv-boss">⚠ BOSS：<b>${boss.n}</b>　${boss.d}</div>`:''}
+   <div class="dv-sc"><div class="dv-bar"><i id="dvBar"></i></div><div class="dv-scn"><b id="dvScore">${fmt(R.score)}</b><span>/ ${fmt(T)}</span></div></div>
+   <div class="dv-relics" id="dvRel">${[0,1,2,3,4].map(i=>{const r=R.relics[i]&&DV_R[R.relics[i]];return `<div class="dv-rs ${r?'':'empty'}" data-i="${i}">${r?dvRelicIcon(r,42)+`<span>${r.n}</span>`:''}</div>`}).join('')}</div>
+   <div class="dv-calc"><div id="dvHn" class="dv-hn">カードを選ぼう</div><div class="dv-cm"><b id="dvC" class="c">0</b><i>×</i><b id="dvM" class="m">0</b></div><div id="dvTot" class="dv-tot"></div></div>
+   <div class="dv-playa" id="dvPlayA"></div>
+   <div class="dv-hand" id="dvHand"></div>
+   <div class="dv-meta"><span>山札 <b id="dvPile">${R.pile.length}</b></span><button id="dvSort">並び：${sortMode?'マーク':'数字'}</button></div>
+   <div class="ctrl"><div class="actions"><button class="btn red" id="dvDis">捨てる<br><small id="dvDn">残り${R.discards}</small></button><button class="btn gold" id="dvGo" style="flex:1.6;font-family:var(--font-d);font-size:17px">出す<br><small id="dvHnn" style="font-family:var(--font)">残り${R.hands}手</small></button></div></div></div>`;
+  const setBar=()=>{$('#dvBar').style.width=Math.min(100,R.score/T*100)+'%'};setBar();
+  const order=()=>{const a=R.hand.slice();const key=sortMode?(i=>R.deck[i].s*100-dvRank(R.deck[i])):(i=>-dvRank(R.deck[i])*10+R.deck[i].s);return a.sort((x,y)=>key(x)-key(y))};
+  const selOrdered=()=>order().filter(i=>sel.includes(i));
+  function renderHand(anim){const hd=$('#dvHand');hd.innerHTML=order().map(i=>dcard(R.deck[i],i,sel.includes(i)?'sel':'')).join('');$$('.dc',hd).forEach((e,k)=>{e.onclick=()=>tap(+e.dataset.d);if(anim)e.animate([{transform:'translateY(60px)',opacity:0},{transform:'none',opacity:1}],{duration:260,delay:k*25,easing:'cubic-bezier(.2,.9,.3,1)',fill:'backwards'})});$('#dvPile').textContent=R.pile.length;preview()}
+  function preview(){const cs=selOrdered().map(i=>R.deck[i]);const go=$('#dvGo'),ds=$('#dvDis');go.disabled=!cs.length||busy;ds.disabled=!cs.length||busy||R.discards<1;$('#dvTot').textContent='';
+    if(!cs.length){$('#dvHn').textContent='カードを選ぼう（最大5枚）';$('#dvC').textContent='0';$('#dvM').textContent='0';return}const ev=dvEval(cs);const H=DV_HANDS[ev.cat],lv=R.lv[ev.cat]||0;$('#dvHn').innerHTML=`${H.n}${lv?` <span class="neon-g">Lv${lv+1}</span>`:''}`;$('#dvC').textContent=H.c+H.uc*lv;$('#dvM').textContent=H.m+H.um*lv;
+    $$('#dvHand .dc').forEach(e=>e.classList.toggle('scr',sel.includes(+e.dataset.d)&&ev.idx.includes(selOrdered().indexOf(+e.dataset.d))))}
+  function tap(i){if(busy)return;const k=sel.indexOf(i);if(k>=0)sel.splice(k,1);else{if(sel.length>=5){toast('出せるのは5枚まで');return}sel.push(i)}AU.card();$$('#dvHand .dc').forEach(e=>e.classList.toggle('sel',sel.includes(+e.dataset.d)));preview()}
+  renderHand(true);
+  $('#dvSort').onclick=()=>{sortMode=sortMode?0:1;S.dvSort=sortMode;$('#dvSort').textContent=`並び：${sortMode?'マーク':'数字'}`;renderHand()};
+  $('#dvBack').onclick=()=>{if(busy)return;save();toast('ダイブを中断しました。ロビーから再開できます');go('lobby')};
+  $('#dvInfo').onclick=()=>dvRules(R);
+  $('#dvQuit').onclick=async()=>{if(busy)return;if(await confirmBox('離脱する？',`ここで引き上げて、B${R.depth-1}までの賞金 ${fmt(DV_PAY[R.depth-1]*DV_STAKES[R.stake].k)} CR を受け取ります。`,'引き上げる','btn red'))dvEnd(v,false)};
+  $$('#dvRel .dv-rs').forEach(e=>e.onclick=()=>{const id=R.relics[+e.dataset.i];if(!id)return;const r=DV_R[id];showModal(`<div class="center">${dvRelicIcon(r,72)}<h2 style="margin:8px 0;color:${r.col}">${r.n}</h2><p style="font-size:14px">${dvRelicDesc(r,R)}</p><button class="btn" onclick="closeModal()">閉じる</button></div>`)});
+  $('#dvDis').onclick=async()=>{if(busy||!sel.length||R.discards<1)return;busy=true;const out=sel.slice();$$('#dvHand .dc.sel').forEach(e=>e.animate([{transform:'translateY(-14px)'},{transform:'translateY(-90px) rotate(20deg)',opacity:0}],{duration:260,fill:'forwards'}));AU.whoosh();await sleep(260);
+    R.hand=R.hand.filter(i=>!out.includes(i));R.discards--;dvAfterDiscard(R);dvDraw(R);sel.length=0;save();$('#dvDn').textContent=`残り${R.discards}`;busy=false;renderHand(true)};
+  $('#dvGo').onclick=async()=>{if(busy||!sel.length)return;busy=true;preview();const ord=selOrdered();const played=ord.map(i=>R.deck[i]);const res=dvScore(R,played,R.hand.length-played.length);
+    const pa=$('#dvPlayA');pa.innerHTML=played.map((c,k)=>dcard(c,ord[k],'big')).join('');R.hand=R.hand.filter(i=>!ord.includes(i));sel.length=0;$('#dvHand').innerHTML=order().map(i=>dcard(R.deck[i],i)).join('');
+    const pcs=$$('.dc',pa);pcs.forEach((e,k)=>e.animate([{transform:'translateY(70px) scale(.7)',opacity:0},{transform:'none',opacity:1}],{duration:240,delay:k*40,fill:'backwards',easing:'cubic-bezier(.2,1.2,.4,1)'}));AU.whoosh();await sleep(240+played.length*40);
+    let chips=0,mult=0,step=0;const cE=$('#dvC'),mE=$('#dvM');const D=S.fxlv===1?110:170;const bump=(el)=>el.animate([{transform:'scale(1.5)'},{transform:'scale(1)'}],{duration:200});
+    const setC=x=>{chips=x;cE.textContent=fmt(Math.round(chips));bump(cE)};const setM=x=>{mult=Math.round(x*10)/10;mE.textContent=mult%1?mult.toFixed(1):fmt(mult);bump(mE)};
+    for(const e of res.events){if(!document.body.contains(pa))return;step++;
+      if(e.t==='base'){setC(e.chips);setM(e.mult);await sleep(D);continue}
+      if(e.t==='sealed'){const el=pcs[e.i];el.classList.add('sealed');dvFloat(el,'封印','#7d8bb3');AU.tone(160,.12,{type:'sawtooth',vol:.05});await sleep(D);continue}
+      if(e.t==='card'){const el=pcs[e.i];el.classList.add('hit');el.animate([{transform:'translateY(0) scale(1)'},{transform:'translateY(-16px) scale(1.18)'},{transform:'none'}],{duration:240});dvFloat(el,`+${e.c}`+(e.again?' ↻':''),'#5fb0ff');setC(chips+e.c);if(e.m){setM(mult+e.m);setTimeout(()=>dvFloat(el,`倍+${e.m}`,'#ff5f8f'),90)}AU.tone(520+step*45,.09,{type:'triangle',vol:.1});await sleep(D);continue}
+      if(e.t==='relic'){const rs=$(`#dvRel .dv-rs[data-i="${e.ri}"]`);rs.animate([{transform:'scale(1)'},{transform:'scale(1.35) rotate(-6deg)',filter:'brightness(2)'},{transform:'none'}],{duration:280});const tgt=e.i!=null?pcs[e.i]:rs;
+        if(e.c){setC(chips+e.c);dvFloat(tgt,`+${e.c}`,'#5fb0ff')}if(e.m){setM(mult+e.m);dvFloat(e.c?rs:tgt,`倍+${e.m}`,'#ff5f8f')}if(e.x){setM(mult*e.x);dvFloat(rs,`×${e.x}`,'#ffd36b');AU.slam(1.5);const r=rs.getBoundingClientRect();FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#ffd36b',max:90,w:6})}
+        AU.tone(700+step*50,.1,{type:'square',vol:.05});await sleep(D+40)}}
+    setC(res.chips);setM(res.mult);await sleep(200);const tot=res.total;const tE=$('#dvTot');tE.textContent='= '+fmt(tot);tE.animate([{transform:'scale(2.4)',opacity:0},{transform:'scale(1)',opacity:1}],{duration:300,easing:'cubic-bezier(.2,1.5,.4,1)'});AU.slam(1);
+    const r=pa.getBoundingClientRect();FX.burst(r.left+r.width/2,r.top+r.height/2,clamp(Math.round(Math.log10(tot+1)*8),8,50),{to:(()=>{const b=$('#dvScore').getBoundingClientRect();return{x:b.left+b.width/2,y:b.top+b.height/2}})(),onArrive:()=>{},spread:.9});
+    const big=tot>=T*.6;if(big){shakeApp(1.5);flashColor('#6fb6ff',.5);await stamp(fmt(tot),{col:tot>=T?'#ffd36b':'#6fb6ff',sub:tot>=T?'ONE SHOT!!':DV_HANDS[res.cat].n,size:1,shake:tot>=T?3:1.5});if(tot>=T)lightning(innerWidth/2,innerHeight*.4,2,'#ffd36b')}else await sleep(350);
+    const from=R.score;R.score+=tot;R.hands--;dvAfterPlay(R);const rec=dvRec();if(tot>rec.bestHand)rec.bestHand=tot;if(tot>=30000)achv('dive50k');
+    const t0=performance.now();await new Promise(ok=>{const f=t=>{const p=Math.min(1,(t-t0)/500);const sE=$('#dvScore');if(!sE){ok();return}sE.textContent=fmt(from+(R.score-from)*p);$('#dvBar').style.width=Math.min(100,(from+(R.score-from)*p)/T*100)+'%';if(p<1)requestAnimationFrame(f);else ok()};requestAnimationFrame(f)});
+    if(!document.body.contains(pa))return;$('#dvHnn').textContent=`残り${R.hands}手`;
+    if(R.score>=T){emit('divefloor');if(R.depth===4)achv('dive4');FX.confetti(70);AU.big();await stamp('FLOOR CLEAR',{col:'#3dffa8',sub:`B${R.depth} 突破！`,size:.9,shake:2});
+      if(R.depth>=8){dvEnd(v,true);return}R.offers=dvOffers(R);R.phase='reward';save();go('dive');return}
+    if(R.hands<=0){save();vignette('rgba(255,30,80,.9)');await stamp('DIVE FAILED',{col:'#ff3d6e',sub:`B${R.depth}で力尽きた…`,size:.85,shake:1.5,ring:false});dvEnd(v,false);return}
+    dvDraw(R);save();pa.innerHTML='';busy=false;renderHand(true)};
+  if(R.score===0&&R.hands===4+(R.xh||0)&&!R.introShown){R.introShown=R.depth;if(boss){setTimeout(()=>{vignette('rgba(255,30,80,.8)');stamp('BOSS FLOOR',{col:'#ff3d6e',sub:`${boss.n}：${boss.d}`,size:.75,shake:2})},400)}}}
+
+/* ---------- reward ---------- */
+function dvReward(v){const R=S.dive;const of=R.offers;
+  v.innerHTML=`<div class="dv" style="--dp:${R.depth}"><div class="dv-bub"></div><div class="center" style="padding:16px 12px 6px"><div class="dim" style="font-family:var(--font-d);letter-spacing:.3em;font-size:11px">B${R.depth} CLEAR</div><h2 style="font-family:var(--font-d);margin:6px 0;color:#3dffa8;text-shadow:0 0 12px #3dffa8">ごほうびを1つ選ぼう</h2><div class="dim" style="font-size:11px">次は B${R.depth+1} ― ${DV_ZONE[R.depth]}（目標 ${fmt(Math.round(DV_TARGET[R.depth]*DV_STAKES[R.stake].t/50)*50)} 点）${R.depth+1===4||R.depth+1===8?'　<b style="color:var(--red)">⚠ ボス階</b>':''}</div></div>
+   <div class="dv-offers">${of.map((o,i)=>`<div class="dv-of ${o.k==='relic'?'rel r'+o.rar:''}" data-i="${i}" style="--c:${o.col||'#6fb6ff'}"><div class="dv-oi">${o.k==='relic'?dvRelicIcon(DV_R[o.id],54):`<svg width="54" height="54" viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="#0a0e24" stroke="#6fb6ff" stroke-width="2.5"/><path d="M20 10 V30 M12 18 L20 10 L28 18" stroke="#6fb6ff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`}</div><div style="flex:1;min-width:0"><small>${o.k==='relic'?['改造チップ','改造チップ・レア','改造チップ・激レア'][o.rar]:'強化'}</small><b>${o.n}</b><p>${o.d}</p></div></div>`).join('')}</div>
+   <div class="dv-relics" style="margin-top:14px">${[0,1,2,3,4].map(i=>{const r=R.relics[i]&&DV_R[R.relics[i]];return `<div class="dv-rs ${r?'':'empty'}" data-i="${i}">${r?dvRelicIcon(r,42)+`<span>${r.n}</span>`:''}</div>`}).join('')}</div><div class="center dim" style="font-size:10px;margin-top:4px">いま持っている改造チップ（${R.relics.length}/5）</div></div>`;
+  const next=()=>{R.depth++;R.offers=null;R.phase='play';R.introShown=0;dvStartFloor(R);save();AU.rise(.8);flashColor('#2a6dff',.5);stamp(`B${R.depth}`,{col:'#6fb6ff',sub:DV_ZONE[R.depth-1],size:1.1,shake:1.5});setTimeout(()=>go('dive'),600)};
+  $$('.dv-of',v).forEach(e=>e.onclick=()=>{const o=of[+e.dataset.i];if(e.dataset.done)return;
+    if(o.k==='relic'&&R.relics.length>=5){showModal(`<h2>どれと入れ替える？</h2><p class="dim" style="font-size:12px">改造チップは5個まで。<b style="color:${o.col}">${o.n}</b> と入れ替えるチップを選んでください。</p><div style="display:grid;gap:6px">${R.relics.map((id,i)=>`<button class="btn ghost dvrep" data-i="${i}" style="text-align:left;display:flex;gap:8px;align-items:center">${dvRelicIcon(DV_R[id],30)}<span><b>${DV_R[id].n}</b><br><small style="font-weight:400">${dvRelicDesc(DV_R[id],R)}</small></span></button>`).join('')}</div><button class="btn ghost sm" style="margin-top:10px" onclick="closeModal()">やめる</button>`);$$('.dvrep').forEach(b=>b.onclick=()=>{closeModal();dvApply(R,o,+b.dataset.i);next()});return}
+    $$('.dv-of',v).forEach(x=>x.dataset.done=1);e.classList.add('picked');const r=e.getBoundingClientRect();FX.firework(r.left+r.width/2,r.top+r.height/2,{col:o.col||'#6fb6ff'});AU.gacha(o.k==='relic'?o.rar+1:1);dvApply(R,o);setTimeout(next,500)})}
+
+/* ---------- end of run ---------- */
+function dvEnd(v,cleared){const R=S.dive;const st=DV_STAKES[R.stake];const done=cleared?8:R.depth-1;const pay=Math.round(DV_PAY[done]*st.k);const rec=dvRec();rec.best[R.stake]=Math.max(rec.best[R.stake],done);
+  let tk=0;if(cleared){rec.clears[R.stake]++;tk=3*(R.stake+1);S.tickets=(S.tickets||0)+tk;S.diveUnlock=Math.max(S.diveUnlock||0,Math.min(3,R.stake+1));achv('diveclear')}
+  const relics=R.relics.slice();S.dive=null;save();
+  v.innerHTML=`<div class="dv" style="--dp:${Math.max(1,done)}"><div class="dv-bub"></div><div class="center" style="padding:26px 14px"><div class="dim" style="font-family:var(--font-d);letter-spacing:.3em;font-size:11px">${st.n}</div>
+   <div style="font-family:var(--font-d);font-weight:900;font-size:34px;margin:8px 0;color:${cleared?'#ffd36b':'#6fb6ff'};text-shadow:0 0 16px currentColor">${cleared?'ABYSS CLEARED':'RESULT'}</div>
+   <p style="font-size:14px">${cleared?'最深部B8を突破した。マザーの記憶が、静かに光っている。':done?`B${done}まで突破した。`:'B1で力尽きた…。'}</p>
+   <div class="kv" style="text-align:left"><div><small>突破した階層</small><b>${done} / 8</b></div><div><small>獲得賞金</small><b>${fmt(pay)} CR</b></div><div><small>出した手の数</small><b>${R.plays}</b></div><div><small>ガチャチケット</small><b>${tk?'×'+tk:'-'}</b></div></div>
+   <div class="dv-relics">${relics.map(id=>`<div class="dv-rs">${dvRelicIcon(DV_R[id],42)}<span>${DV_R[id].n}</span></div>`).join('')}</div>
+   ${cleared&&R.stake<3?`<p class="neon-g" style="font-size:12px">難易度「${DV_STAKES[R.stake+1].n}」が開放されました！</p>`:''}
+   <div class="row" style="justify-content:center;margin-top:16px"><button class="btn ghost" onclick="go('lobby')">ロビーへ</button><button class="btn" style="background:linear-gradient(180deg,#9fd0ff,#2a6dff);color:#fff" onclick="go('dive')">もう一度潜る</button></div></div></div>`;
+  if(pay>0)setTimeout(()=>{award(pay,null,{big:cleared});if(cleared)bigWin(pay,st.fee)},500)}
+
+/* ---------- lobby banner ---------- */
+const _dl10=decorateLobby;decorateLobby=function(){_dl10();const fl=$('.hero');if(fl&&!$('#dvBanner')){const R=S.dive;fl.insertAdjacentHTML('afterend',`<button class="dv-banner" id="dvBanner" onclick="go('dive')"><span class="dv-eye sm"></span><span style="flex:1;text-align:left"><b>ABYSS DIVE</b><small>${R?`ダイブ中：B${R.depth}（${DV_STAKES[R.stake].n}）― タップで再開`:'深海8階層のポーカーローグライク'}</small></span><span class="dv-bn">${R?'CONTINUE':'NEW'}</span></button>`)}};
+
+const _cb10=checkBankrupt;checkBankrupt=function(){if(CUR==='dive'&&S.dive)return;_cb10()};
+/* ================= v10: KABUKI FLOOR — chinchiro & cho-han ================= */
+DEALERS.ocho={id:'ocho',name:'OCHO',jp:'お蝶',desc:'伝説の壺振りサイボーグ',kind:'cyber',col:'#c77dff',hc:'#1a0a2a',hair:'long',eyes:'norm',skin:'#ffe8d6',tie:'#ff3d6e',
+  lines:{greet:['おいでなさい。ここは歌舞伎フロア、粋と度胸の賭場だよ。','あら、いい目をしてるじゃないか。座りな。','ようこそ。今夜の賽は、よく転がるよ。'],bet:['よござんすか？','さあ、張った張った！','入ります。'],win:['お見事。粋な勝ちっぷりだねぇ。','ふふ、ツイてるじゃないか。','いい目が出たね。'],lose:['賽の目は気まぐれさ。','次があるよ、次が。','惜しかったねぇ。'],big:['こいつは…大した度胸だ！','あたしの壺が震えてるよ！','伝説になるよ、今の一番は！']}};
+FLOORS.push({id:'kabuki',name:'KABUKI FLOOR',jp:'歌舞伎フロア',ref:'新宿・歌舞伎町風',need:50000,desc:'提灯とホロ桜が揺れる和の賭場。丼と壺が鳴り響く。',bg:'radial-gradient(circle at 15% 15%,rgba(199,125,255,.55),transparent 55%),radial-gradient(circle at 90% 85%,rgba(255,61,110,.45),transparent 55%),linear-gradient(135deg,#1a0630,#12040e)',color:'#c77dff',dealer:'ocho',games:['chinchiro','chohan']});
+Object.assign(GAMES,{chinchiro:{name:'チンチロリン',en:'CHINCHIRO',floor:'kabuki',desc:'丼にサイコロ3つ。役で勝負',isNew:true},chohan:{name:'丁半',en:'CHO-HAN',floor:'kabuki',desc:'壺の中は偶数か奇数か',isNew:true}});
+Object.assign(GAME_ICON,{
+  chinchiro:'<svg viewBox="0 0 40 40" class="gi"><path d="M4 16 Q20 44 36 16Z" fill="#2a0a4a" stroke="#c77dff" stroke-width="2"/><ellipse cx="20" cy="16" rx="16" ry="5" fill="#12041e" stroke="#c77dff" stroke-width="2"/><rect x="11" y="10" width="7" height="7" rx="1.5" fill="#fff" transform="rotate(-12 14 13)"/><rect x="21" y="9" width="7" height="7" rx="1.5" fill="#fff" transform="rotate(14 24 12)"/><circle cx="14.5" cy="13.5" r="1.3" fill="#e0136e"/><circle cx="24.5" cy="12.5" r="1" fill="#111"/></svg>',
+  chohan:'<svg viewBox="0 0 40 40" class="gi"><path d="M10 30 L13 8 H27 L30 30Z" fill="#3a2410" stroke="#ffd36b" stroke-width="2"/><path d="M12 14 H28 M11 22 H29" stroke="#ffd36b" stroke-width="1.2"/><rect x="6" y="30" width="28" height="4" rx="2" fill="#c77dff"/><text x="20" y="25" text-anchor="middle" font-size="9" fill="#ffd36b" font-weight="900">丁半</text></svg>'});
+RULES.chinchiro={what:'丼（どんぶり）にサイコロ3つを振って、出た「役」の強さで親（お蝶）と勝負する日本の伝統ギャンブル。',steps:['BETにチップを置いて「勝負」','先に親が振る。次にあなたが「振る」（役が出るまで最大3回）','2つが同じ目なら、残り1つの数字が「目」になる（例：3-3-5 →「5の目」）','3回振っても役が出なければ「目なし」（いちばん弱い）','強い方の勝ち。同じ強さなら引き分け'],pays:[['ピンゾロ（1-1-1）','最強。勝つと5倍'],['ゾロ目（2-2-2〜6-6-6）','勝つと3倍'],['シゴロ（4-5-6）','勝つと2倍'],['目あり（6の目〜1の目）','勝つと1倍'],['ヒフミ（1-2-3）','最弱。出した側が2倍払い'],['負けたとき','相手の役の倍率ぶん払う（所持金の範囲で）']],tips:'負けるときも倍払いがあるのがチンチロの怖さ。ピンゾロに負けると5倍なので、賭けすぎ注意。'};
+RULES.chohan={what:'壺（つぼ）の中のサイコロ2つの合計が、偶数（丁）か奇数（半）かを当てる、時代劇でおなじみの賭け。',steps:['丁（偶数）か半（奇数）にチップを置く','「勝負」でお蝶が壺を振って伏せる','壺が開いて、2つの合計で決着'],pays:[['丁・半','0.95:1（5%は場代）'],['ゾロ目（同じ目2つ）','4:1'],['ピンゾロ（1-1）','30:1'],['ゾロ目は必ず「丁」','']],tips:'確率はちょうど半々。流れを読むか、直感を信じるか。'};
+THEMES.kabuki={bpm:96,ch:[[50,55,57],[51,55,58],[50,53,57],[48,51,55]],mel:[74,75,79,81,82,81,79,75,74,70,69,70,74,75,74,69],wave:'triangle',pluck:1,gong:1,wood:[0,4,10,14],pad:.03};
+ALBUM.push({sec:'お蝶',dealer:'ocho',items:[1,2,3,4,5].map(l=>({id:`ocho_${l}`,name:`お蝶 絆Lv${l}「${BOND_TITLE[l-1]}」`,open:()=>bondLv('ocho')>=l,cond:()=>`お蝶の卓で あと${Math.max(0,BOND_NEED[l-1]-((S.bond||{}).ocho||0))}回`}))});
+ACH.push({id:'pinzoro',name:'ピンゾロ',desc:'チンチロリンでピンゾロを出す',rw:{t:3}});
+SPECIALS.push({id:'ccwin',g:'chinchiro',text:'チンチロリンで2倍以上の役で勝つ',base:5000});
+{const a=ACH.find(a=>a.id==='allgames');if(a)a.desc=`全${Object.keys(GAMES).length}ゲームを遊ぶ`}
+
+function tumble(el,val,delay=0){const [x,y]=FACE_ROT[val];const sx=360*ri(2,4)*(Math.random()<.5?-1:1),sy=360*ri(2,4);el.style.transition='none';el.style.transform=`rotateX(${+el.dataset.rx||0}deg) rotateY(${+el.dataset.ry||0}deg)`;void el.offsetWidth;el.style.transition='';el.style.transitionDelay=delay+'s';el.style.transform=`rotateX(${x+sx}deg) rotateY(${y+sy}deg) rotateZ(${ri(-12,12)}deg)`;el.dataset.rx=x;el.dataset.ry=y}
+function restDice(box){$$('.die',box).forEach(d=>{const f=ri(1,6);const [x,y]=FACE_ROT[f];d.style.transform=`rotateX(${x-15}deg) rotateY(${y+15}deg)`;d.dataset.rx=x;d.dataset.ry=y})}
+async function throwDice(box,vals){const ws=$$('.dwrap',box),ds=$$('.die',box);AU.dice();ws.forEach((w,i)=>w.animate([{transform:`translate(${rnd(-60,60)}px,-130px) scale(1.4)`},{transform:`translate(${rnd(-12,12)}px,0) scale(1)`,offset:.55},{transform:'translateY(-22px)',offset:.74},{transform:'none'}],{duration:1150,delay:i*80,easing:'cubic-bezier(.3,.6,.4,1)'}));ds.forEach((d,i)=>tumble(d,vals[i],i*.08));
+  setTimeout(()=>{AU.dice();[1900,2300,2100].forEach((f,k)=>AU.tone(f,.12,{type:'triangle',vol:.06,at:k*.07}))},650);await sleep(1500)}
+
+/* ---------- CHINCHIRO ---------- */
+function ccEval(d){const s=[...d].sort((a,b)=>a-b);if(s[0]===s[2])return s[0]===1?{n:'ピンゾロ',str:1000,mult:5,pin:1}:{n:`${s[0]}のゾロ目`,str:900+s[0],mult:3};
+  if(s.join('')==='456')return{n:'シゴロ',str:800,mult:2};if(s.join('')==='123')return{n:'ヒフミ',str:-100,mult:2,hifumi:1};
+  if(s[0]===s[1])return{n:`${s[2]}の目`,str:s[2],mult:1};if(s[1]===s[2])return{n:`${s[0]}の目`,str:s[0],mult:1};return null}
+const CC_NONE={n:'目なし',str:0,mult:1};
+function ccOutcome(me,op){if(me.str===op.str)return{r:0,mult:1};if(me.str>op.str)return{r:1,mult:op.hifumi?Math.max(me.mult,2):me.mult};return{r:-1,mult:me.hifumi?Math.max(op.mult,2):op.mult}}
+GAME_MOUNT.chinchiro=(v)=>{const st={bets:{},chip:500,phase:'bet',last:0};const cpus=pickCpus(2);
+  v.innerHTML=gameHeader('chinchiro')+dealerHTML('ocho')+`<div class="seats">${cpus.map(c=>seatHTML(c)).join('')}</div>
+  <div class="table" style="--feltline:rgba(199,125,255,.55)"><div class="cc-row"><div class="cc-side"><div class="cc-l" style="color:#c77dff">親 ・ お蝶</div><div class="bowl" id="bO">${dieHTML()}${dieHTML()}${dieHTML()}</div><div class="cc-res" id="rO">-</div></div>
+   <div class="cc-side"><div class="cc-l" style="color:#ffd36b">あなた</div><div class="bowl me" id="bM">${dieHTML()}${dieHTML()}${dieHTML()}</div><div class="cc-res" id="rM">-</div></div></div>
+   <div class="spot" id="ccSpot" style="width:84px;height:84px;border-radius:50%;margin:10px auto 0;border-color:#c77dff"><span class="lab" style="font-size:10px">BET</span></div></div>
+  <div class="msg" id="gmsg">BETにチップを置いて「勝負」</div>
+  <div class="ctrl"><div id="ccBet">${chipBarHTML()}<div class="actions"><button class="btn ghost" id="clr">クリア</button><button class="btn ghost" id="rebet">リベット</button><button class="btn gold" id="deal" style="flex:2;font-family:var(--font-d)">勝負</button></div></div>
+   <div id="ccPlay" style="display:none" class="actions"><button class="btn mag" id="roll" style="font-size:18px;font-family:var(--font-d)">振る</button></div></div>`;
+  dealerSay('ocho','greet');setupChipBar(st,100);restDice(v);const spot=$('#ccSpot');
+  spot.onclick=()=>{if(st.phase==='bet')placeBet(st,'main',spot)};$('#clr').onclick=()=>{if(st.phase==='bet')clearBets(st,()=>spot)};
+  $('#rebet').onclick=()=>{if(st.phase!=='bet'||!st.last||totalBets(st.bets))return;if(S.cr<st.last){toast('クレジットが足りません');return}spend(st.last);st.bets={main:st.last};flyChip(breakChips(st.last).pop(),$('#wallet'),spot).then(()=>renderStack(spot,st.last));refreshChipBar()};
+  leaveGuard=async()=>{if(st.phase==='bet'){refund(totalBets(st.bets));return true}toast('勝負の途中です');return false};
+  const alive=()=>document.body.contains(spot);
+  async function rollFor(box,resEl,who){let res=null;for(let t=1;t<=3;t++){if(who==='me'){$('#roll').disabled=false;$('#roll').textContent=`振る（${t}/3）`;await new Promise(ok=>{$('#roll').onclick=()=>{$('#roll').disabled=true;ok()}});if(!alive())return null}
+      const d=[ri(1,6),ri(1,6),ri(1,6)];await throwDice(box,d);if(!alive())return null;res=ccEval(d);resEl.innerHTML=res?`<b>${res.n}</b>`:`<span class="dim">${d.join('-')}　目なし（${t}/3）</span>`;
+      if(res){const r=box.getBoundingClientRect();const col=res.hifumi?'#ff3d6e':res.mult>1?'#ffd36b':'#e9f4ff';FX.ring(r.left+r.width/2,r.top+r.height/2,{col,max:150,w:8});if(res.mult>1||res.hifumi){await stamp(res.n,{col,sub:who==='me'?'あなたの役':'親の役',size:.9,shake:res.pin?3:1.5});if(res.pin&&who==='me')achv('pinzoro')}break}await sleep(350)}
+    if(!res){res=CC_NONE;resEl.innerHTML='<b class="dim">目なし</b>'}return res}
+  $('#deal').onclick=async()=>{if(st.phase!=='bet')return;const bet=st.bets.main||0;if(!bet){toast('先にベットしてください');return}st.phase='play';$('#ccBet').style.display='none';$('#ccPlay').style.display='flex';$('#roll').disabled=true;$('#roll').textContent='親の番…';$('#rO').textContent='-';$('#rM').textContent='-';$('#gmsg').textContent='';
+    dealerSay('ocho','custom','親のあたしから振らせてもらうよ。');const op=await rollFor($('#bO'),$('#rO'),'op');if(!op)return;
+    dealerSay('ocho','custom',op.hifumi?'あちゃ、ヒフミだ…。さ、あんたの番だよ。':op.mult>1?`${op.n}だよ。これは強いよ？`:`${op.n}。さあ、あんたの番だ。`);
+    const me=await rollFor($('#bM'),$('#rM'),'me');if(!me)return;$('#ccPlay').style.display='none';
+    cpus.forEach(c=>{const el=$(`.seat[data-cpu="${c.id}"]`);let r=null;for(let t=0;t<3&&!r;t++)r=ccEval([ri(1,6),ri(1,6),ri(1,6)]);r=r||CC_NONE;const o=ccOutcome(r,op);const amt=Math.max(100,Math.round(cpuBank(c.id)*.02/100)*100);cpuAdj(c.id,o.r*amt*o.mult);el.querySelector('.mn').textContent=fmt(cpuBank(c.id));cpuSay(el,`${r.n}！${o.r>0?pick(c.win):o.r<0?pick(c.lose):'分かれか…'}`,2200)});
+    const o=ccOutcome(me,op);let total=bet,ret=0;
+    if(o.r>0){ret=bet*(1+o.mult);if(o.mult>=2)emit('ccwin');$('#gmsg').innerHTML=`<span class="neon-g">${me.n} の勝ち！${o.mult>1?` ${o.mult}倍づけ！`:''}</span>`}
+    else if(o.r===0){ret=bet;$('#gmsg').textContent='分かれ（引き分け）'}
+    else{const extra=Math.min(S.cr,bet*(o.mult-1));if(extra>0){spend(extra);total+=extra;renderStack(spot,total);$('#gmsg').innerHTML=`<span style="color:var(--red)">${op.n}に負け… ${o.mult}倍払い！</span>`;await sleep(500)}sweepLose(spot)}
+    await settle('chinchiro',total,ret,spot,'ocho');st.last=bet;await sleep(900);if(!alive())return;renderStack(spot,0);st.bets={};st.phase='bet';$('#ccBet').style.display='';refreshChipBar();save()};
+};
+
+/* ---------- CHO-HAN ---------- */
+GAME_MOUNT.chohan=(v)=>{const st={bets:{},chip:500,busy:false,last:null,hist:[]};const cpus=pickCpus(3);
+  v.innerHTML=gameHeader('chohan')+dealerHTML('ocho')+`<div class="seats">${cpus.map(c=>seatHTML(c)).join('')}</div>
+  <div class="table" style="--feltline:rgba(199,125,255,.55)"><div class="tsubo-area"><div class="bon" id="bon">${dieHTML()}${dieHTML()}</div><div class="tsubo" id="tsubo"><svg viewBox="0 0 120 110" width="150"><defs><linearGradient id="tsg" x1="0" x2="1"><stop offset="0" stop-color="#3a2410"/><stop offset=".5" stop-color="#8a5a20"/><stop offset="1" stop-color="#2a1808"/></linearGradient></defs><path d="M22 104 L32 10 Q60 0 88 10 L98 104Z" fill="url(#tsg)" stroke="#ffd36b" stroke-width="2"/><path d="M29 36 Q60 28 91 36 M26 64 Q60 56 94 64" stroke="#ffd36b" stroke-width="1.5" fill="none" opacity=".7"/><text x="60" y="56" text-anchor="middle" font-size="20" fill="#ffd36b" font-weight="900" opacity=".85">蝶</text></svg></div></div>
+   <div class="center" id="chRes" style="font-family:var(--font-d);font-weight:900;min-height:22px"></div><div class="history" id="hist"></div>
+   <div class="chspots" id="chs"><div class="spot big" data-k="cho" style="border-color:#ff3d6e"><span class="kj" style="color:#ff3d6e">丁</span><span class="pay">偶数 ／ 0.95:1</span></div><div class="spot big" data-k="han" style="border-color:#5fb0ff"><span class="kj" style="color:#5fb0ff">半</span><span class="pay">奇数 ／ 0.95:1</span></div>
+    <div class="spot" data-k="zoro" style="border-color:#ffd36b"><span class="lab neon-g">ゾロ目</span><span class="pay">4:1</span></div><div class="spot" data-k="pin" style="border-color:#c77dff"><span class="lab" style="color:#c77dff">ピンゾロ</span><span class="pay">30:1</span></div></div></div>
+  <div class="msg" id="gmsg">丁か半か、張っておくれ</div>
+  <div class="ctrl">${chipBarHTML()}<div class="actions"><button class="btn ghost" id="clr">クリア</button><button class="btn ghost" id="rebet">リベット</button><button class="btn gold" id="deal" style="flex:2;font-family:var(--font-d)">勝負</button></div></div>`;
+  dealerSay('ocho','greet');setupChipBar(st,100);restDice(v);const spotFor=k=>$(`#chs [data-k="${k}"]`);
+  leaveGuard=async()=>{if(st.busy){toast('勝負の途中です');return false}refund(totalBets(st.bets));return true};
+  $$('#chs .spot').forEach(sp=>sp.onclick=()=>{if(!st.busy)placeBet(st,sp.dataset.k,sp)});$('#clr').onclick=()=>{if(!st.busy)clearBets(st,spotFor)};
+  $('#rebet').onclick=()=>{if(st.busy||!st.last||totalBets(st.bets))return;const need=totalBets(st.last);if(S.cr<need){toast('クレジットが足りません');return}spend(need);st.bets={...st.last};for(const k in st.bets){const sp=spotFor(k);flyChip(breakChips(st.bets[k]).pop(),$('#wallet'),sp).then(()=>renderStack(sp,st.bets[k]))}refreshChipBar()};
+  const tsubo=$('#tsubo');
+  $('#deal').onclick=async()=>{if(st.busy)return;const tb=totalBets(st.bets);if(!tb){toast('先にベットしてください');return}st.busy=true;$('#deal').disabled=true;$('#chRes').textContent='';
+    const cb=cpus.map(c=>{const el=$(`.seat[data-cpu="${c.id}"]`);const k=Math.random()<.5?'cho':'han';const amt=Math.max(100,Math.round(cpuBank(c.id)*(.01+c.p.aggr*.03)/100)*100);cpuAdj(c.id,-amt);el.querySelector('.mn').textContent=fmt(cpuBank(c.id));cpuSay(el,k==='cho'?'丁！':'半！',1500);return{c,el,k,amt}});
+    dealerSay('ocho','custom','入ります。');const d=[ri(1,6),ri(1,6)];$$('#bon .die').forEach((e,i)=>tumble(e,d[i]));
+    tsubo.classList.add('down');AU.slam(1.3);await sleep(450);for(let k=0;k<3;k++){tsubo.animate([{transform:'translate(-50%,0) rotate(0)'},{transform:'translate(-58%,-6px) rotate(-7deg)'},{transform:'translate(-42%,-6px) rotate(7deg)'},{transform:'translate(-50%,0) rotate(0)'}],{duration:330});AU.dice();await sleep(340)}
+    dealerSay('ocho','custom','丁か半か…… 勝負！');AU.heart();await sleep(1100);if(!document.body.contains(tsubo))return;
+    tsubo.classList.remove('down');AU.whoosh();await sleep(450);const sum=d[0]+d[1],cho=sum%2===0,zoro=d[0]===d[1],pin=zoro&&d[0]===1;
+    $('#chRes').innerHTML=`${d[0]} ・ ${d[1]} ＝ ${sum}`;st.hist.push(cho);$('#hist').innerHTML=st.hist.slice(-14).map(c=>`<i style="background:${c?'#a0103a':'#103a7a'}">${c?'丁':'半'}</i>`).join('');
+    await stamp(cho?'丁':'半',{col:cho?'#ff3d6e':'#5fb0ff',sub:`${d[0]}・${d[1]}${pin?'　ピンゾロ！':zoro?'　ゾロ目！':''}`,size:1.5,shake:zoro?2.5:1.5});
+    const pay={cho:cho?1.95:0,han:!cho?1.95:0,zoro:zoro?5:0,pin:pin?31:0};let ret=0,winSp=null;for(const k in st.bets){const sp=spotFor(k);if(pay[k]){ret+=st.bets[k]*pay[k];sp.classList.add('win');setTimeout(()=>sp.classList.remove('win'),2500);winSp=winSp||sp}else sweepLose(sp)}
+    cb.forEach(b=>{const w=(b.k==='cho')===cho;if(w)cpuAdj(b.c.id,Math.floor(b.amt*1.95));b.el.querySelector('.mn').textContent=fmt(cpuBank(b.c.id));if(Math.random()<.6)cpuSay(b.el,pick(w?b.c.win:b.c.lose))});
+    await settle('chohan',tb,Math.floor(ret),winSp||$('#chs'),'ocho');st.last={...st.bets};await sleep(900);for(const k in st.bets)renderStack(spotFor(k),0);st.bets={};st.busy=false;const dl=$('#deal');if(dl)dl.disabled=false;save()};
+};
+/* ================= v10: GRAND JACKPOT · FEVER TIME · WHAT'S NEW ================= */
+ACH.push({id:'jp1',name:'ジャックポット・チャンス',desc:'ジャックポット・チャンスを引く',rw:{cr:2000}},{id:'jpgrand',name:'グランド・ジャックポット',desc:'GRANDを当てる',rw:{t:10}},{id:'fever',name:'フィーバー！',desc:'フィーバータイムに突入する',rw:{cr:1500}});
+const JP_SEED=100000;
+(function(){const hud=$('#hud');hud.insertAdjacentHTML('afterend',`<div id="jpbar"><span class="jl">GRAND JACKPOT</span><b id="jpv">-</b><span class="ju">CR</span><span id="fever"></span></div>`);document.body.insertAdjacentHTML('beforeend','<div id="feverfx"></div>')})();
+const jpShow={v:0,raf:0};
+function jpRender(){const el=$('#jpv');if(!el)return;const tgt=S.jp||JP_SEED;if(!jpShow.v){jpShow.v=tgt;el.textContent=fmt(tgt);return}if(jpShow.raf)return;const f=()=>{const d=tgt2()-jpShow.v;if(Math.abs(d)<1){jpShow.v=tgt2();el.textContent=fmt(jpShow.v);jpShow.raf=0;return}jpShow.v+=d*.12;el.textContent=fmt(jpShow.v);jpShow.raf=requestAnimationFrame(f)};const tgt2=()=>S.jp||JP_SEED;jpShow.raf=requestAnimationFrame(f)}
+function updFever(){const n=S.streak||0,on=n>=3;document.body.classList.toggle('fever',on);const el=$('#fever');if(el)el.innerHTML=on?`🔥 FEVER ${n}連勝　勝ち分+10%`:''}
+let jpPending=false;
+const _rec10=record;record=function(game,bet,ret){const before=S.streak||0;_rec10(game,bet,ret);if(bet<=0)return;S.jp=(S.jp||JP_SEED)+bet*.01+ri(20,140);jpRender();
+  const after=S.streak||0;if(before<3&&after>=3){achv('fever');setTimeout(()=>{stamp('FEVER TIME!',{col:'#ff7a2e',sub:'連勝が続くかぎり 勝ち分+10%',size:.85,shake:2});flashColor('#ff7a2e',.6);AU.rise(.8)},1700)}else if(before>=3&&after<3){setTimeout(()=>toast('🔥 フィーバー終了…また3連勝で突入！'),1500)}updFever();
+  if(!jpPending&&Math.random()<clamp(bet/150000,.006,.03)){jpPending=true;setTimeout(tryJackpot,3200)}save()};
+const _st10=settle;settle=async function(game,bet,ret,fromEl,dealer){const fv=(S.streak||0)>=3;const net=ret-bet;await _st10(game,bet,ret,fromEl,dealer);if(fv&&net>0){const bonus=Math.max(100,Math.round(net*.1/100)*100);setTimeout(()=>{stamp('FEVER BONUS',{col:'#ff7a2e',sub:`+${fmt(bonus)} CR`,size:.65,shake:.8});award(bonus,null)},700)}};
+function tryJackpot(){if(!jpPending)return;if(window.__noJP){jpPending=false;return}if($('#modal').classList.contains('on')||$('#banner').classList.contains('on')||scenePlaying||CUR==='duel'||CUR==='dive'||(CUR==='poker'&&PK.inHand)||bankruptOpen||lcOpen||S.cr<1){setTimeout(tryJackpot,2500);return}runJackpot()}
+function runJackpot(){const SL=['MINI','MAJOR','MINI','MINI','MAJOR','MINI','GRAND','MINI','MAJOR','MINI','MAJOR','MINI'];const COL={MINI:'#29f3ff',MAJOR:'#ff2bd6',GRAND:'#ffd36b'};const pool=S.jp||JP_SEED;const PAY={MINI:Math.max(2000,Math.round(pool*.03/100)*100),MAJOR:Math.round(pool*.15/100)*100,GRAND:Math.round(pool)};
+  const x=Math.random();const tier=x<.08?'GRAND':x<.38?'MAJOR':'MINI';const cand=SL.map((s,i)=>s===tier?i:-1).filter(i=>i>=0);const target=pick(cand);
+  achv('jp1');AU.big();flashColor('#ffd36b',.8);lightning(innerWidth/2,innerHeight*.4,2,'#ffd36b');$('#modal').dataset.lock='1';
+  showModal(`<div class="center"><div class="jp-title">JACKPOT CHANCE</div><p class="dim" style="font-size:12px;margin:4px 0 10px">光が止まったところの賞金をゲット！</p>
+   <div class="jp-ring" id="jpRing">${SL.map((s,i)=>{const a=i/12*Math.PI*2-Math.PI/2;return `<div class="jp-l" data-i="${i}" style="left:${50+42*Math.cos(a)}%;top:${50+42*Math.sin(a)}%;--c:${COL[s]}">${s[0]==='G'?'G':s==='MAJOR'?'M':'m'}</div>`}).join('')}<div class="jp-c"><small>GRAND</small><b>${fmt(PAY.GRAND)}</b></div></div>
+   <div class="jp-pay"><span style="color:${COL.MINI}">MINI ${fmt(PAY.MINI)}</span><span style="color:${COL.MAJOR}">MAJOR ${fmt(PAY.MAJOR)}</span><span style="color:${COL.GRAND}">GRAND ${fmt(PAY.GRAND)}</span></div>
+   <button class="btn gold" id="jpStop" style="width:100%;margin-top:12px;font-family:var(--font-d);font-size:18px">STOP</button></div>`);
+  const lamps=$$('#jpRing .jp-l');let pos=0,timer=null,stopping=false;const light=()=>{lamps.forEach((l,i)=>l.classList.toggle('on',i===pos%12))};
+  const spin=()=>{pos++;light();AU.tick()};timer=setInterval(spin,70);
+  const stop=async()=>{if(stopping)return;stopping=true;$('#jpStop').disabled=true;clearInterval(timer);let steps=((target-pos%12)+12)%12+24;let d=70;while(steps>0){await sleep(d);pos++;light();AU.tick();steps--;if(steps<14)d+=22;if(steps<5)d+=60}
+    if(!$('#jpRing'))return;const l=lamps[target];l.classList.add('hit');const r=l.getBoundingClientRect();FX.ring(r.left+r.width/2,r.top+r.height/2,{col:COL[tier],max:240,w:12});AU.slam(1);await sleep(700);
+    delete $('#modal').dataset.lock;closeModal();jpPending=false;const win=PAY[tier];S.jp=tier==='GRAND'?JP_SEED:Math.max(JP_SEED*.5,pool-win);jpRender();save();
+    await stamp(tier+'!',{col:COL[tier],sub:`+${fmt(win)} CR`,size:tier==='GRAND'?1.2:1,shake:tier==='GRAND'?3:2});if(tier==='GRAND'){achv('jpgrand');FX.confetti(120)}award(win,null,{big:true});if(tier!=='MINI')bigWin(win,Math.max(100,win/(tier==='GRAND'?60:30)))};
+  $('#jpStop').onclick=stop;setTimeout(()=>{if(!stopping)stop()},6000)}
+
+/* ---------- what's new ---------- */
+const NEWS_VER=10;
+const _dl11=decorateLobby;decorateLobby=function(){_dl11();jpRender();updFever();
+  if(S.ch==null||window.__noJP){S.seenVer=NEWS_VER;return}
+  if((S.seenVer||0)<NEWS_VER)setTimeout(()=>{if(CUR!=='lobby'||$('#modal').classList.contains('on')||scenePlaying)return;S.seenVer=NEWS_VER;save();AU.big();FX.confetti(80);
+    showModal(`<div class="center"><div class="dim" style="font-family:var(--font-d);letter-spacing:.3em;font-size:10px">MAJOR UPDATE</div><h2 style="font-size:24px;margin:6px 0;background:linear-gradient(90deg,#6fb6ff,#ff2bd6);-webkit-background-clip:text;background-clip:text;color:transparent">THE ABYSS UPDATE</h2></div>
+     <div class="rsec"><b>🌊 ABYSS DIVE（新モード）</b><p>ポーカーの役で得点を稼ぎ、改造チップを集めて深海8階層に挑むローグライク。ロビーの青いバナーから。</p></div>
+     <div class="rsec"><b>🏮 歌舞伎フロア（新フロア）</b><p>チンチロリンと丁半が遊べる和の賭場。最高到達額 50,000CR で開放。壺振りの「お蝶」が待っています。</p></div>
+     <div class="rsec"><b>💰 グランド・ジャックポット</b><p>画面上の賞金プールは、遊ぶたびに増え続けます。どのゲーム中でも、突然「JACKPOT CHANCE」が来るかも。</p></div>
+     <div class="rsec"><b>🔥 フィーバータイム</b><p>3連勝以上で突入。連勝が続くかぎり、勝ち分に+10%のボーナス。</p></div>
+     <button class="btn gold" style="width:100%" onclick="closeModal()">遊んでみる！</button>`)},1600)};
+setTimeout(()=>{try{checkPeak();jpRender();updFever()}catch(e){}},3000);
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
