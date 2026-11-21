@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#04050c">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NEON ABYSS">
 <title>NEON ABYSS — 2189 Ocean Casino</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -537,6 +544,39 @@ button{font-family:inherit;color:inherit}
 .iv-in{max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:8px}
 .imgview img{max-width:100%;max-height:82vh;border-radius:14px;box-shadow:0 0 40px rgba(255,43,214,.35)}
 .iv-cap{font-size:13px;text-align:center}
+
+/* ===== v9 race / duel / cup / my casino ===== */
+.rcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}
+.rcard{min-width:0;padding:6px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid color-mix(in srgb,var(--c) 45%,transparent)}
+.rc-h{display:flex;align-items:center;gap:5px;font-size:10px;margin-bottom:5px}.rc-h i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 6px currentColor;flex:0 0 auto}.rc-h b{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-f{color:var(--gold);font-weight:800;white-space:nowrap}
+.rc-b{display:grid;grid-template-columns:1fr 1fr;gap:4px}.rc-b .spot{min-height:46px;border-color:var(--c)}.rc-b .spot .lab{font-size:11px}.rc-b .spot .pay{font-family:var(--font-d);color:var(--c);font-weight:700;font-size:12px}
+.rc-b .spot{min-width:0}.rc-b .spot>.stack{left:auto;right:2px;bottom:12px;transform:scale(.62)}
+.duel .du-head{text-align:center;font-family:var(--font-d);font-weight:900;font-size:12px;letter-spacing:.2em;color:var(--oc);margin-bottom:8px}
+.du-opp{display:flex;gap:12px;align-items:center;padding:10px;border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--oc) 22%,#05060f),#05060f);border:1.5px solid var(--oc);box-shadow:0 0 20px color-mix(in srgb,var(--oc) 40%,transparent)}
+.du-av{width:70px;height:70px;border-radius:50%;overflow:hidden;border:2px solid var(--oc,#ff3d6e);box-shadow:0 0 14px var(--oc,#ff3d6e);flex:0 0 auto}.du-av svg{width:100%;height:100%}.du-av.sm{width:40px;height:40px}
+.du-opp b{display:block;font-size:15px}.du-opp small{display:block;font-size:10px;color:var(--dim)}
+.du-hpbar{position:relative;height:12px;border-radius:9px;background:rgba(255,255,255,.1);margin-top:6px;overflow:hidden}.du-hpbar i{display:block;height:100%;background:linear-gradient(90deg,#ff3d6e,var(--oc));transition:width .5s}
+.du-hpbar::after{content:attr(data-t);position:absolute;inset:0;font-size:9px;font-family:var(--font-d);text-align:center;line-height:12px;color:#fff}
+.du-sk{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}.du-sk span{font-size:9px;padding:2px 6px;border-radius:6px;background:rgba(0,0,0,.4);border:1px solid var(--oc);color:var(--oc)}
+.du-tab{margin:10px 0 0;min-height:250px}.du-round{text-align:center;font-family:var(--font-d);font-weight:900;font-size:13px;letter-spacing:.2em;color:var(--dim);margin:8px 0}
+.du-me{display:flex;justify-content:center;gap:10px;align-items:center;margin-top:8px;font-family:var(--font-d);font-size:12px}
+.du-me i{font-style:normal;font-size:22px;color:#333a55;margin:0 2px}.du-me i.on{color:#ff3d6e;text-shadow:0 0 10px #ff3d6e}
+.bossbar{display:flex;align-items:center;gap:10px;margin-top:8px;padding:8px;border-radius:12px;background:rgba(255,30,80,.1);border:1px solid rgba(255,61,110,.6);animation:bossg 1.4s infinite}
+@keyframes bossg{50%{box-shadow:0 0 16px rgba(255,61,110,.6)}}
+.bossbar b{display:block;font-size:13px}.bossbar small{font-size:10px;color:var(--dim)}
+.cupc{display:flex;align-items:center;gap:10px;padding:12px;border-radius:14px;margin-bottom:8px;background:rgba(0,0,0,.35);border:1px solid var(--c)}.cupc b{display:block;color:var(--c);font-family:var(--font-d)}.cupc small{font-size:11px;color:var(--dim)}
+.bracket{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;align-items:center}
+.bcol{display:flex;flex-direction:column;gap:6px;justify-content:space-around;min-height:300px}
+.bh{font-size:10px;text-align:center;color:var(--dim);font-family:var(--font-d)}
+.bp{font-size:10px;padding:6px 4px;border-radius:8px;text-align:center;background:rgba(0,0,0,.4);border:1px solid var(--c);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bp.me{background:rgba(255,211,107,.18);font-weight:900}.bp.out{opacity:.3;text-decoration:line-through}.bp.champ{font-size:12px;padding:10px 4px;box-shadow:0 0 16px var(--c);font-weight:900}
+.mcbox{padding:12px;border-radius:16px;background:linear-gradient(180deg,rgba(30,22,80,.5),rgba(4,5,15,.8));border:1px solid rgba(255,211,107,.4);margin-bottom:10px}
+.mcname{text-align:center;font-family:var(--font-d);font-weight:900;font-size:16px;color:var(--gold);cursor:pointer}
+.mcb{max-width:320px;margin:0 auto}
+.mctr{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid var(--line);margin-bottom:6px}.mctr b{display:block;font-size:13px}.mctr small{display:block;font-size:10px;color:var(--dim)}
+.mcpips{display:flex;gap:3px;margin-top:4px}.mcpips i{width:16px;height:5px;border-radius:3px;background:rgba(255,255,255,.12)}.mcpips i.on{background:var(--gold);box-shadow:0 0 6px var(--gold)}
+.cplv{font-family:var(--font-d);font-size:8px;color:var(--gold);border:1px solid rgba(255,211,107,.5);border-radius:4px;padding:0 3px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -1452,7 +1492,7 @@ GAME_MOUNT.poker=(v)=>{const SB=100,BB=200;
     if(toCall===0){$('#aF').onclick=()=>PK.wait({t:'fold'});$('#aF').textContent='フォールド'}
     const sl=$('#rSl');if(sl){const setV=x=>{x=clamp(Math.round(x/(BB/2))*(BB/2),minTo,maxTo);sl.value=x;$('#rV').textContent=x>=maxTo?'ALL-IN':fmt(x)};sl.oninput=()=>setV(+sl.value);$('#rHalf').onclick=()=>setV(PK.cur+potNow/2);$('#rPot').onclick=()=>setV(PK.cur+potNow+toCall);$('#aR').onclick=()=>PK.wait({t:'raise',to:+sl.value})}
   })}
-  async function cpuAct(i){const p=PK.players[i];const per=p.cpu.p;await sleep(rnd(500,1100));
+  async function cpuAct(i){const p=PK.players[i];const per=cpuPer(p.cpu);await sleep(rnd(500,1100));
     const toCall=PK.cur-p.bet;const nOpp=live().length-1;const potNow=PK.pot+PK.players.reduce((a,q)=>a+(q?q.bet:0),0);
     const eq=equity(p.hole,PK.board,Math.max(1,nOpp),PK.board.length?260:180);const e=clamp(eq+(Math.random()-.5)*per.noise*.35,0,1);const rel=e*(nOpp+1);
     const potOdds=toCall/(potNow+toCall||1);const R=Math.random();
@@ -2134,6 +2174,271 @@ const _dl8=decorateLobby;decorateLobby=function(){_dl8();const hero=$('.hero');i
   const lf=$('.lobbyfoot');if(lf&&!$('#lfAlb')){const nw=Object.keys(S.albNew||{}).filter(id=>IMGS[id]).length;lf.insertAdjacentHTML('afterbegin',`<button class="gamebtn" id="lfAlb" onclick="go('album')" style="position:relative"><svg viewBox="0 0 40 40" class="gi"><rect x="6" y="8" width="28" height="24" rx="3" fill="none" stroke="#ff2bd6" stroke-width="2"/><circle cx="15" cy="16" r="3" fill="#ffd36b"/><path d="M8 30 L17 21 L23 26 L28 20 L33 26 V30Z" fill="#29f3ff"/></svg><b>アルバム</b><small>${allAlbum().filter(i=>i.open()).length}/${allAlbum().length}</small>${nw?'<span class="albnew">NEW</span>':''}</button>`)}};
 /* boot screen gets the key visual too */
 (function(){const b=$('#boot');if(b){b.style.background=`linear-gradient(180deg,rgba(3,4,12,.55),rgba(3,4,12,.92)),url(${IMG_THUMB.key_visual}) center/cover`}})();
+/* ================= v9a: NEON GRAND PRIX (drone race) ================= */
+GAMES.race={name:'ネオン・グランプリ',en:'DRONE RACE',floor:'strip',desc:'6機のドローンで1着予想',isNew:true};
+FLOORS.find(f=>f.id==='strip').games.unshift('race');
+GAME_ICON.race='<svg viewBox="0 0 40 40" class="gi"><rect x="13" y="17" width="14" height="7" rx="3" fill="#29f3ff"/><g stroke="#fff" stroke-width="1.5"><line x1="13" y1="18" x2="7" y2="13"/><line x1="27" y1="18" x2="33" y2="13"/><line x1="13" y1="23" x2="7" y2="28"/><line x1="27" y1="23" x2="33" y2="28"/></g><ellipse cx="7" cy="13" rx="5" ry="1.5" fill="#ff2bd6"/><ellipse cx="33" cy="13" rx="5" ry="1.5" fill="#ff2bd6"/><ellipse cx="7" cy="28" rx="5" ry="1.5" fill="#ff2bd6"/><ellipse cx="33" cy="28" rx="5" ry="1.5" fill="#ff2bd6"/><path d="M2 36 H38" stroke="#ffd36b" stroke-width="2" stroke-dasharray="3 3"/></svg>';
+RULES.race={what:'6機のレース用ドローンが海上都市を飛ぶ「ネオン・グランプリ」。どの機体が勝つかを予想して賭けます。見ているだけでも楽しいレースゲーム。',steps:['各機体の「調子」と「オッズ」を見て、賭けたい機体の「単勝」か「複勝」をタップ','単勝＝1着を当てる／複勝＝2着以内に入れば当たり','START でレース開始。ルナの実況つき','オッズは毎レース変わる。調子が良い機体ほど低倍率'],pays:[['単勝','賭け金 × 単勝オッズ'],['複勝','賭け金 × 複勝オッズ'],['オッズの意味','×3.4 なら 1,000CR が 3,400CR になって戻る']],tips:'本命（低オッズ）は手堅く、大穴（高オッズ）は一発逆転。調子◎の機体は要チェック。'};
+const DRONES=[
+  {name:'ネオン・ファルコン',sh:'ファルコン',col:'#29f3ff',base:1.35},
+  {name:'クリムゾン・ボルト',sh:'ボルト',col:'#ff3d6e',base:1.2},
+  {name:'ゴールド・ラッシュ',sh:'ラッシュ',col:'#ffd36b',base:1.1},
+  {name:'ヴァイオレット・ゴースト',sh:'ゴースト',col:'#a86bff',base:1.0},
+  {name:'グリーン・ストーム',sh:'ストーム',col:'#3dffa8',base:.88},
+  {name:'ピンク・ミラージュ',sh:'ミラージュ',col:'#ff2bd6',base:.75},
+];
+function plOrder(w){const idx=w.map((_,i)=>i),ws=[...w],out=[];while(idx.length){let t=ws.reduce((a,b)=>a+b,0),x=Math.random()*t,k=0;for(;k<ws.length;k++){if((x-=ws[k])<0)break}k=Math.min(k,ws.length-1);out.push(idx[k]);idx.splice(k,1);ws.splice(k,1)}return out}
+function raceCard(){const form=DRONES.map(()=>rnd(.6,1.55));const w=DRONES.map((d,i)=>d.base*form[i]);const tot=w.reduce((a,b)=>a+b,0);const pw=w.map(x=>x/tot);
+  const top2=Array(6).fill(0);const N=4000;for(let n=0;n<N;n++){const o=plOrder(w);top2[o[0]]++;top2[o[1]]++}
+  const odds=pw.map(p=>Math.max(1.2,Math.floor(.88/p*10)/10));const place=top2.map((c,i)=>Math.min(odds[i],Math.max(1.05,Math.floor(.88/(c/N)*10)/10)));
+  return{form,w,odds,place}}
+const formMark=f=>f>1.3?'◎':f>1.05?'○':f>.8?'△':'▲';
+GAME_MOUNT.race=(v)=>{const st={bets:{},chip:100,busy:false,card:raceCard(),hist:[],last:null};
+  v.innerHTML=gameHeader('race')+dealerHTML('luna')+`<div class="table" style="padding:8px"><canvas id="rc" width="720" height="420" style="width:100%;aspect-ratio:720/420;border-radius:14px;display:block;background:#04050f"></canvas>
+   <div class="history" id="hist"></div><div class="rcards" id="rcards"></div></div>
+  <div class="msg" id="gmsg">調子とオッズを見て、単勝か複勝に賭けよう</div>
+  <div class="ctrl">${chipBarHTML()}<div class="actions"><button class="btn ghost" id="clr">クリア</button><button class="btn ghost" id="rebet">リベット</button><button class="btn gold" id="go" style="flex:2;font-family:var(--font-d)">START</button></div></div>`;
+  dealerSay('luna','custom','ネオン・グランプリへようこそ〜！実況はルナがお届けするよっ☆');setupChipBar(st);
+  leaveGuard=async()=>{if(st.busy){toast('レース中です');return false}refund(totalBets(st.bets));return true};
+  const spotFor=k=>$(`#rcards [data-k="${k}"]`);
+  const renderCards=()=>{const c=st.card;$('#rcards').innerHTML=DRONES.map((d,i)=>`<div class="rcard" style="--c:${d.col}"><div class="rc-h"><i style="background:${d.col}"></i><b>${i+1}. ${d.name}</b><span class="rc-f">調子 ${formMark(c.form[i])}</span></div><div class="rc-b"><div class="spot" data-k="w:${i}"><span class="lab">単勝</span><span class="pay">×${c.odds[i].toFixed(1)}</span></div><div class="spot" data-k="p:${i}"><span class="lab">複勝</span><span class="pay">×${c.place[i].toFixed(1)}</span></div></div></div>`).join('');
+    $$('#rcards .spot').forEach(sp=>sp.onclick=()=>{if(!st.busy)placeBet(st,sp.dataset.k,sp)})};
+  renderCards();
+  $('#clr').onclick=()=>{if(!st.busy)clearBets(st,spotFor)};
+  $('#rebet').onclick=()=>{if(st.busy||!st.last||totalBets(st.bets))return;const need=totalBets(st.last);if(S.cr<need){toast('クレジットが足りません');return}spend(need);st.bets={...st.last};for(const k in st.bets){const sp=spotFor(k);flyChip(breakChips(st.bets[k]).pop(),$('#wallet'),sp).then(()=>renderStack(sp,st.bets[k]))}refreshChipBar()};
+  /* --- canvas race --- */
+  const cv=$('#rc'),x=cv.getContext('2d');const W=720,H=420,L=4200,LANE=52,TOP=80;
+  const bgCity=[...Array(40)].map((_,i)=>({x:i*140+rnd(0,80),h:rnd(40,140),w:rnd(40,90),c:pick(['#29f3ff','#ff2bd6','#a86bff','#ffd36b'])}));
+  function drawDrone(px,py,col,t,lead){x.save();x.translate(px,py);const s=lead?1.15:1;x.scale(s,s);
+    x.fillStyle=col;x.globalAlpha=.25;x.beginPath();x.ellipse(-26,0,26,6,0,0,7);x.fill();x.globalAlpha=1;
+    x.strokeStyle='#dfe8ff';x.lineWidth=2;x.beginPath();x.moveTo(-12,-8);x.lineTo(12,8);x.moveTo(-12,8);x.lineTo(12,-8);x.stroke();
+    x.fillStyle='#101530';x.fillRect(-9,-6,18,12);x.fillStyle=col;x.fillRect(-7,-4,14,8);x.fillStyle='#fff';x.fillRect(4,-2,3,4);
+    [[-12,-8],[12,-8],[-12,8],[12,8]].forEach(([a,b],k)=>{x.fillStyle=col;x.globalAlpha=.75;x.beginPath();x.ellipse(a,b,7*Math.abs(Math.cos(t*40+k)),2.2,0,0,7);x.fill();x.globalAlpha=1});x.restore()}
+  function frame(pos,camX,t,order){x.clearRect(0,0,W,H);const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0a0628');g.addColorStop(1,'#030410');x.fillStyle=g;x.fillRect(0,0,W,H);
+    // city parallax
+    bgCity.forEach(b=>{let bx=((b.x-camX*.25)%5600+5600)%5600-200;if(bx>W)return;x.fillStyle='#120c34';x.fillRect(bx,TOP-b.h+10,b.w,b.h);x.fillStyle=b.c;x.globalAlpha=.6;for(let yy=TOP-b.h+16;yy<TOP;yy+=12)x.fillRect(bx+6,yy,b.w-12,2);x.globalAlpha=1});
+    // lanes
+    for(let i=0;i<6;i++){const y=TOP+i*LANE;x.fillStyle=i%2?'rgba(41,243,255,.04)':'rgba(255,43,214,.04)';x.fillRect(0,y,W,LANE);x.strokeStyle='rgba(120,200,255,.18)';x.beginPath();x.moveTo(0,y);x.lineTo(W,y);x.stroke()}
+    // pylons
+    for(let p=0;p<=L;p+=300){const sx=p-camX+120;if(sx<-20||sx>W+20)continue;x.fillStyle='rgba(255,211,107,.5)';x.fillRect(sx,TOP,2,LANE*6);x.fillStyle='#ffd36b';x.font='bold 13px Orbitron, sans-serif';x.fillText(Math.round((L-p)/10)+'m',sx+4,TOP-6)}
+    // finish
+    const fx=L-camX+120;if(fx<W+40){for(let k=0;k<12;k++){x.fillStyle=k%2?'#fff':'#111';x.fillRect(fx,TOP+k*LANE/2,14,LANE/2)}x.fillStyle='#ff2bd6';x.globalAlpha=.25;x.fillRect(fx+14,TOP,30,LANE*6);x.globalAlpha=1}
+    // drones
+    const leadI=order[0];DRONES.forEach((d,i)=>{const sx=pos[i]-camX+120,sy=TOP+i*LANE+LANE/2+Math.sin(t*3+i)*4;x.strokeStyle=d.col;x.globalAlpha=.5;x.lineWidth=3;x.beginPath();x.moveTo(sx-70,sy);x.lineTo(sx-18,sy);x.stroke();x.globalAlpha=1;drawDrone(sx,sy,d.col,t,i===leadI);x.fillStyle='#fff';x.font='bold 12px Orbitron, sans-serif';x.fillText(String(i+1),sx-30,sy-10)});
+    // HUD ranking
+    x.fillStyle='rgba(4,6,20,.8)';x.fillRect(W-200,6,194,TOP-14<64?64:TOP-14);x.font='bold 12px "M PLUS 1p", sans-serif';order.slice(0,3).forEach((i,r)=>{x.fillStyle=DRONES[i].col;x.fillText(`${r+1}位 ${DRONES[i].sh}`,W-190,24+r*18)})}
+  frame(DRONES.map(()=>0),0,0,[0,1,2,3,4,5]);
+  const renderHist=()=>{$('#hist').innerHTML=st.hist.slice(-10).map(i=>`<i style="width:auto;padding:0 6px;border-radius:9px;background:${DRONES[i].col}33;border-color:${DRONES[i].col};color:${DRONES[i].col}">${i+1}</i>`).join('')};
+  const CALL={start:['スタートしました〜っ！','各機いっせいに飛び出した！'],lead:n=>[`先頭は${n}！`,`${n}が前に出た〜！`,`おっと、${n}がトップを奪った！`],last:['最終コーナー！','残り500m！どうなる〜！？'],}
+  $('#go').onclick=async()=>{if(st.busy)return;const tb=totalBets(st.bets);if(!tb){toast('先にベットしてください');return}st.busy=true;$('#go').disabled=true;$('#gmsg').textContent='';
+    const c=st.card;const order=plOrder(c.w);const T=Array(6);let tt=9.5;order.forEach((i,r)=>{T[i]=tt;tt+=rnd(.12,.5)});const k=DRONES.map(()=>rnd(.75,1.35)),ph=DRONES.map(()=>rnd(0,6));
+    await stamp('READY…',{col:'#29f3ff',size:.8,shake:0,ring:false,dur:800});AU.slam(1.4);stamp('GO!',{col:'#3dffa8',size:1.1,shake:1.5,dur:800});dealerSay('luna','custom',pick(CALL.start));AU.whoosh();
+    const t0=performance.now();let lastLead=-1,lastCall=0,calledLast=false;const posAt=(i,t)=>{const u=Math.min(1,t/T[i]);const e=Math.pow(u,k[i]);return L*Math.min(1,e+.012*Math.sin(t*1.7+ph[i])*Math.sin(Math.PI*u))};
+    await new Promise(res=>{const f=n=>{if(!document.body.contains(cv)){res();return}const t=(n-t0)/1000;const pos=DRONES.map((_,i)=>posAt(i,t));const cur=[...DRONES.keys()].sort((a,b)=>pos[b]-pos[a]);const camX=clamp(Math.max(...pos)-460,0,L-480);
+        frame(pos,camX,t,cur);if(Math.random()<.25)AU.tone(rnd(90,130),.05,{type:'sawtooth',vol:.015});
+        if(cur[0]!==lastLead&&t-lastCall>1.4&&t<T[order[0]]-1){lastLead=cur[0];lastCall=t;dealerSay('luna','custom',pick(CALL.lead(DRONES[cur[0]].name)))}
+        if(!calledLast&&t>T[order[0]]*.75){calledLast=true;dealerSay('luna','custom',pick(CALL.last));AU.rise(1.2)}
+        if(t<T[order[5]]+.3)requestAnimationFrame(f);else res()};requestAnimationFrame(f)});
+    if(!document.body.contains(cv))return;
+    const w1=order[0],w2=order[1];st.hist.push(w1);renderHist();
+    dealerSay('luna','custom',`ゴ〜〜ル！！ 1着は${DRONES[w1].name}！`);await stamp(`1着 ${w1+1}番`,{col:DRONES[w1].col,sub:`${DRONES[w1].name}　2着 ${w2+1}番`,size:.9,shake:2});
+    let ret=0,winSp=null;for(const kk in st.bets){const [t,ii]=kk.split(':');const i=+ii;const sp=spotFor(kk);let r=0;if(t==='w'&&i===w1)r=st.bets[kk]*c.odds[i];if(t==='p'&&(i===w1||i===w2))r=st.bets[kk]*c.place[i];if(r>0){ret+=r;sp.classList.add('win');setTimeout(()=>sp.classList.remove('win'),2500);winSp=winSp||sp;if(t==='w')emit('race1')}else sweepLose(sp)}
+    await settle('race',tb,Math.floor(ret),winSp||$('#rcards'),'luna');
+    st.last={...st.bets};await sleep(900);for(const kk in st.bets)renderStack(spotFor(kk),0);st.bets={};st.card=raceCard();renderCards();st.busy=false;const g=$('#go');if(g)g.disabled=false;save()};
+};
+{const a=ACH.find(a=>a.id==='allgames');if(a)a.desc=`全${Object.keys(GAMES).length}ゲームを遊ぶ`}
+SPECIALS.push({id:'race1',g:'race',text:'ドローンレースで単勝を当てる',base:4500});
+/* ================= v9b: DUEL ENGINE · BOSS BATTLES · TOURNAMENT ================= */
+const SKILLS={
+  peek:{name:'未来視',desc:'次のカードを覗いてから引くか決める'},
+  jam:{name:'ジャミング',desc:'あなたのカード1枚を伏せてくる'},
+  double:{name:'クリティカル',desc:'20以上で勝つと2ダメージ'},
+  swap:{name:'すり替え',desc:'あなたの一番強いカードをすり替える'},
+  heal:{name:'自己修復',desc:'残りHP1で一度だけ回復'},
+};
+const BOSSES=[
+  {name:'ゼニガタ-9',title:'取り立てロボ',hp:3,stand:17,skills:['double'],col:'#ff3d6e',kind:'robot',seed:'zenigata9',intro:['よォ、新入り。ここで稼ぐなら、まずワシに勝ってもらおうか。','利子は…お前のプライドでいただくぜ。'],lose:'ぐぬぬ…計算外ダ…',win:'取り立て完了ォ！'},
+  {name:'ブラックファング',title:'黒龍会の用心棒',hp:3,stand:17,skills:['jam'],col:'#ff4a4a',kind:'human',seed:'blackfang',intro:['龍の門の先に行きたい？ 俺を倒してからにしな。','見えない札で戦えるか、試してやる。'],lose:'…通れ。お前は本物だ。',win:'出直してきな。'},
+  {name:'アーカイブ',title:'記録庫の番人',hp:4,stand:17,skills:['peek'],col:'#9fd8ff',kind:'robot',seed:'archive',intro:['アクセス権限ヲ確認シマス。','ワタシハ全テノ札ヲ記憶シテイル。次ノ一枚モ。'],lose:'アクセス、許可シマス。',win:'アクセス拒否。'},
+  {name:'レイヴン',title:'本気のハッカー',hp:4,stand:17,skills:['swap'],col:'#a86bff',kind:'human',seed:'raven',intro:['真実を知りたいなら、僕に勝ちなよ。','ただし、僕は札をすり替える。ズルじゃない、ハックさ。'],lose:'…はは、完敗だ。君、やっぱり面白い。',win:'残念。データが足りないね。'},
+  {name:'ジャッジ',title:'マザーの処刑人',hp:5,stand:18,skills:['double','heal'],col:'#ffd36b',kind:'robot',seed:'judge',intro:['マザーノ命令ニヨリ、アナタヲ処理シマス。','判決ハ…有罪。'],lose:'判決…ヲ…取リ消シ…',win:'刑ヲ執行シマシタ。'},
+  {name:'ミラー',title:'マザーの分身',hp:5,stand:17,skills:['peek','jam'],col:'#ff2bd6',kind:'robot',seed:'mirror',intro:['私はマザーの鏡。あなたの手は、全部映っているわ。','鏡に勝てる人間はいない。'],lose:'鏡が…割れた…？',win:'鏡の中で眠りなさい。'},
+  {name:'マザー',title:'NEON ABYSSの支配AI',hp:6,stand:17,skills:['peek','swap','heal'],col:'#ff2bd6',mother:true,intro:['最後の勝負よ、エンジニア。','私はこの街の確率そのもの。勝てるものなら、勝ってみなさい。'],lose:'……計算外。あなたの勝ちよ。',win:'これが確率。これが私。'},
+];
+const bossSvg=b=>b.mother?MOTHER_SVG:avatarSVG(b.seed,b.col,b.kind);
+const bossStake=ch=>Math.round(CH[ch].goal*.2/1000)*1000;
+
+/* ---------- duel view ---------- */
+let DUEL=null;
+VIEWS.duel=function(v,cfg){DUEL=cfg;const o=cfg.opp;const st={myHp:cfg.myHp||3,oHp:o.hp,round:0,redraw:1,healed:false,busy:true,shoe:newShoe(4)};
+  v.innerHTML=`<div class="wrap duel" style="--oc:${o.col}"><div id="shoe" style="position:fixed;right:20px;top:120px;width:1px;height:1px"></div><div class="du-head">${cfg.label||'DUEL'}</div>
+   <div class="du-opp"><div class="du-av">${o.svg}</div><div style="flex:1;min-width:0"><b>${o.name}</b><small>${o.title||''}</small><div class="du-hpbar"><i id="oHpB"></i></div><div class="du-sk">${(o.skills||[]).map(s=>`<span title="${SKILLS[s].desc}">${SKILLS[s].name}</span>`).join('')||'<span class="dim">スキルなし</span>'}</div></div></div>
+   <div class="table du-tab"><div class="center"><div class="cards" id="oC"></div><div class="handval" id="oT">-</div></div><div class="du-round" id="dR">ROUND 1</div><div class="center"><div class="cards" id="mC"></div><div class="handval" id="mT">-</div></div></div>
+   <div class="du-me"><span>YOU</span><span id="mHp"></span></div>
+   <div class="msg" id="gmsg">21に近い方が勝ち。負けるとHPが減る</div>
+   <div class="ctrl"><div class="actions"><button class="btn" id="dHit">HIT</button><button class="btn ghost" id="dStand">STAND</button><button class="btn mag" id="dRe">REDRAW ×1</button></div><div class="center dim" style="font-size:10px;margin-top:4px">REDRAW＝最後に引いたカードを引き直す（1戦1回）／ナチュラル21は2ダメージ</div></div></div>`;
+  leaveGuard=async()=>{if(!DUEL)return true;const ok=await confirmBox('勝負を降りる？','いま抜けると負け扱いになります。','降りる','btn red');if(ok){const c=DUEL;DUEL=null;c.onEnd(false,true)}return false};
+  const hearts=()=>{$('#mHp').innerHTML=[...Array(cfg.myHp||3)].map((_,i)=>`<i class="${i<st.myHp?'on':''}">♥</i>`).join('');$('#oHpB').style.width=(st.oHp/o.hp*100)+'%';$('#oHpB').parentElement.dataset.t=`${st.oHp} / ${o.hp}`};hearts();
+  const draw=()=>{if(st.shoe.length<15)st.shoe=newShoe(4);return st.shoe.pop()};
+  let resolveAct=null;const act=()=>new Promise(r=>{resolveAct=r});
+  $('#dHit').onclick=()=>resolveAct&&resolveAct('hit');$('#dStand').onclick=()=>resolveAct&&resolveAct('stand');$('#dRe').onclick=()=>{if(st.redraw>0&&resolveAct)resolveAct('re')};
+  const btns=on=>{['#dHit','#dStand'].forEach(s=>$(s).disabled=!on);$('#dRe').disabled=!on||st.redraw<1;$('#dRe').textContent=`REDRAW ×${st.redraw}`};
+  const has=s=>(o.skills||[]).includes(s);
+  const alive=()=>document.body.contains($('#mC'))&&DUEL===cfg;
+  async function hit(who){const r=$(who==='o'?'#oC':'#mC').getBoundingClientRect();if(who==='o'){FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#ff3d6e',max:220,w:12})}
+    else FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#29f3ff',max:220,w:12})}
+  async function damage(to,n){if(to==='o'){st.oHp=Math.max(0,st.oHp-n);const av=$('.du-av');av.animate([{transform:'translateX(-10px)',filter:'brightness(3)'},{transform:'translateX(10px)'},{transform:'none'}],{duration:400});AU.slam(1.2);shakeApp(1.2);await stamp(n>1?'CRITICAL HIT!':'HIT!',{col:'#3dffa8',sub:`${o.name}に ${n}ダメージ`,size:.8,shake:1.5})}
+    else{st.myHp=Math.max(0,st.myHp-n);vignette('rgba(255,30,80,.9)');AU.slam(.8);await stamp(n>1?'CRITICAL…':'DAMAGE',{col:'#ff3d6e',sub:`あなたに ${n}ダメージ`,size:.8,shake:2,ring:false})}hearts()}
+  async function round(){st.round++;$('#dR').textContent=`ROUND ${st.round}`;$('#oC').innerHTML='';$('#mC').innerHTML='';$('#oT').textContent='-';$('#mT').textContent='-';$('#gmsg').textContent='';
+    const m=[],oc=[],me=[],oe=[];const tv=h=>bjTotal(h).t;
+    for(let k=0;k<2;k++){m.push(draw());me.push(await dealCard($('#mC'),m[k],{dur:260}));oc.push(draw());oe.push(await dealCard($('#oC'),oc[k],{faceUp:k===0,dur:260}))}
+    if(!alive())return;let jammed=false;
+    if(has('jam')&&Math.random()<.35){jammed=true;me[1].classList.remove('flip');await stamp('JAMMING',{col:o.col,sub:'カードが1枚見えない！',size:.7,shake:1})}
+    const showMine=()=>{$('#mT').textContent=jammed?'??':(isBJ(m)?'BJ':tv(m))};showMine();$('#oT').textContent=bjv(oc[0]);
+    let mine=tv(m),bust=false;
+    if(!isBJ(m)){btns(true);while(true){$('#gmsg').textContent='HIT か STAND を選んで';const a=await act();if(!alive())return;btns(false);
+        if(a==='stand')break;if(a==='re'){st.redraw--;const old=me.pop();m.pop();old.animate([{opacity:1},{opacity:0,transform:'translateY(-40px)'}],{duration:220}).onfinish=()=>old.remove();await sleep(220);const c=draw();m.push(c);me.push(await dealCard($('#mC'),c,{dur:240}));AU.zap()}
+        else{const c=draw();m.push(c);me.push(await dealCard($('#mC'),c,{dur:240}))}
+        mine=tv(m);showMine();if(mine>21){bust=true;break}if(mine===21)break;btns(true)}}
+    btns(false);if(jammed){flipCard(me[1]);jammed=false;showMine();await sleep(300)}mine=tv(m);if(mine>21)bust=true;
+    if(!bust&&has('swap')&&Math.random()<.3){let hi=0;m.forEach((c,i)=>{if(bjv(c)>bjv(m[hi]))hi=i});await stamp('SWAP!',{col:o.col,sub:`${o.name}がカードをすり替えた！`,size:.75,shake:1.5});const c=draw();m[hi]=c;const ne=cardEl(c,true);$('#mC').replaceChild(ne,me[hi]);me[hi]=ne;ne.animate([{transform:'rotateY(90deg) scale(1.3)'},{transform:'none'}],{duration:400});mine=tv(m);showMine();if(mine>21)bust=true;await sleep(400)}
+    flipCard(oe[1]);$('#oT').textContent=isBJ(oc)?'BJ':tv(oc);await sleep(500);
+    if(!bust){while(true){const ot=bjTotal(oc);let want;if(has('peek')){const nx=st.shoe[st.shoe.length-1];const after=bjTotal([...oc,nx]).t;want=(ot.t<mine||ot.t<o.stand)&&after<=21;if(want||ot.t<o.stand){if(Math.random()<.5)await stamp('未来視',{col:o.col,size:.55,shake:0,ring:false,dur:700})}}else want=ot.t<o.stand||(o.stand>=18&&ot.soft&&ot.t<18)||(o.noise&&Math.random()<o.noise&&ot.t<19);
+        if(isBJ(oc)||!want||ot.t>=21)break;const c=draw();oc.push(c);oe.push(await dealCard($('#oC'),c,{dur:260}));$('#oT').textContent=tv(oc);await sleep(250)}}
+    if(!alive())return;const ot=tv(oc);const mBJ=isBJ(m)&&m.length===2,oBJ=isBJ(oc);
+    let winner=null,dmg=1;if(bust)winner='o';else if(ot>21)winner='m';else if(mBJ&&!oBJ){winner='m';dmg=2}else if(oBJ&&!mBJ){winner='o';dmg=2}else if(mine>ot)winner='m';else if(ot>mine)winner='o';
+    if(winner==='o'&&has('double')&&ot>=20&&ot<=21&&dmg<2){dmg=2;await stamp('クリティカル',{col:o.col,size:.6,shake:0,ring:false,dur:700})}
+    if(winner==='m'){me.forEach(e=>e.classList.add('hl'));await hit('o');await damage('o',dmg)}else if(winner==='o'){oe.forEach(e=>e.classList.add('hl'));await hit('m');await damage('m',dmg)}else{await stamp('DRAW',{col:'#9fb3d9',sub:`${mine} − ${ot}`,size:.7,shake:0,ring:false})}
+    if(st.oHp===1&&has('heal')&&!st.healed){st.healed=true;st.oHp++;hearts();await stamp('自己修復',{col:o.col,sub:`${o.name}のHPが回復した！`,size:.7,shake:.6})}}
+  (async()=>{await sleep(500);while(st.myHp>0&&st.oHp>0){await round();if(!alive())return;await sleep(500)}
+    const win=st.oHp<=0;if(win){FX.confetti(100);lightning(innerWidth/2,innerHeight*.4,3,'#3dffa8');await stamp('VICTORY',{col:'#3dffa8',sub:o.lose||'',size:1,shake:2.5})}else{await stamp('DEFEAT',{col:'#ff3d6e',sub:o.win||'',size:1,shake:1,ring:false})}
+    const c=DUEL;DUEL=null;leaveGuard=null;c&&c.onEnd(win,false)})()};
+
+/* ---------- boss battles gate each chapter ---------- */
+storyCheck=function(){if(S.ch==null||S.ch>=CH.length||S.stPend)return;if(S.cr>=CH[S.ch].goal&&S.bossReady!==S.ch){S.bossReady=S.ch;save();const b=BOSSES[S.ch];setTimeout(()=>{stamp('BOSS APPEARS',{col:'#ff3d6e',sub:`第${S.ch+1}章のボス「${b.name}」`,size:.8,shake:2});toast('⚔ ロビーのストーリー欄からボスに挑戦できます')},1800)}};
+function challengeBoss(){const ch=S.ch,b=BOSSES[ch],stake=bossStake(ch);if(S.cr<stake){toast(`参加費 ${fmt(stake)} CR が必要です`);return}
+  confirmBox(`BOSS：${b.name}`,`第${ch+1}章のボスに挑みます。<br>参加費 <b class="neon-g">${fmt(stake)} CR</b><br>勝てば章クリア＋賞金 <b class="neon-g">${fmt(stake*3)} CR</b>＋チケット×${ch+1}<br><small class="dim">相手のスキル：${b.skills.map(s=>SKILLS[s].name+'（'+SKILLS[s].desc+'）').join('、')}</small>`,'挑戦する','btn red').then(ok=>{if(!ok)return;if(!spend(stake))return;
+    SPK.boss={name:b.name,col:b.col,svg:()=>bossSvg(b)};playScene(b.intro.map(t=>['boss',t]),{title:`BOSS BATTLE ― 第${ch+1}章`,onEnd:()=>{
+      go('duel',{label:`BOSS ・ 第${ch+1}章`,myHp:3,opp:{...b,svg:bossSvg(b)},onEnd:(win)=>{if(win){S.bossWins=(S.bossWins||0)+1;S.stPend=1;S.tickets=(S.tickets||0)+ch+1;save();achv('boss1');if(ch===BOSSES.length-1)achv('motherdown');setTimeout(()=>award(stake*3,null,{big:true}),400);setTimeout(()=>go('lobby'),1800)}else{toast('また挑戦できます（参加費が必要）');setTimeout(()=>go('lobby'),1200)}}})}})})}
+const _rsp9=renderStoryPanel;renderStoryPanel=function(){_rsp9();const el=$('#stPanel');if(!el||S.ch==null||S.ch>=CH.length)return;if(S.bossReady===S.ch&&!S.stPend){const b=BOSSES[S.ch];el.insertAdjacentHTML('beforeend',`<div class="bossbar"><div class="du-av sm">${bossSvg(b)}</div><div style="flex:1;min-width:0"><b style="color:${b.col}">BOSS：${b.name}</b><small>${b.title}　HP${b.hp}　参加費 ${fmt(bossStake(S.ch))}</small></div><button class="btn red sm" id="bossGo">⚔ 挑む</button></div>`);$('#bossGo').onclick=challengeBoss}};
+ACH.push({id:'boss1',name:'はじめてのボス撃破',desc:'ボスに勝つ',rw:{t:2}},{id:'motherdown',name:'確率に勝った者',desc:'マザーを倒す',rw:{t:10}},{id:'cup',name:'ネオンカップ王者',desc:'トーナメントで優勝',rw:{t:3}});
+
+/* ---------- tournament ---------- */
+const CUPS=[{id:'rookie',name:'ルーキー杯',entry:1000,rank:0,col:'#29f3ff'},{id:'gold',name:'ゴールド杯',entry:10000,rank:2,col:'#ffd36b'},{id:'legend',name:'レジェンド杯',entry:100000,rank:5,col:'#ff2bd6'}];
+let CUP=null;
+const cpuOpp=c=>({name:c.name,title:`${c.title}・${c.style}`,hp:2,stand:Math.round(16+c.p.aggr*2),noise:c.p.noise,skills:c.id==='raven'?['swap']:c.id==='mina'?['peek']:c.id==='vargas'?['double']:[],col:c.col,svg:avatarSVG(c.id,c.col,c.kind),lose:pick(c.lose),win:pick(c.win)});
+VIEWS.cup=function(v){if(!CUP){v.innerHTML=`<div class="wrap"><div class="gtop" style="padding:0 0 8px">${backBtn()}<div><div class="title neon-c">NEON CUP</div><div class="sub">8人勝ち抜きトーナメント（ブラックジャック決闘）</div></div></div>
+     <div class="rsec"><b>ルール</b><p>1回戦→準決勝→決勝の3連勝で優勝。1戦はHP2どうしの決闘で、21に近い方がダメージを与えます。<br>賞金：優勝 参加費×5／準優勝 ×2／ベスト4 ×0.5</p></div>
+     ${CUPS.map(c=>{const lock=(S.rank||0)<c.rank;return `<div class="cupc" style="--c:${c.col}"><div style="flex:1"><b>${c.name}</b><small>参加費 ${fmt(c.entry)} CR ／ 優勝賞金 ${fmt(c.entry*5)} CR</small></div>${lock?`<span class="dim" style="font-size:11px">${VRANKS[c.rank].k}以上</span>`:`<button class="btn sm cupgo" data-id="${c.id}" style="background:${c.col};color:#001">エントリー</button>`}</div>`}).join('')}
+     <p class="dim center" style="font-size:10px">優勝回数：${S.cupWins||0}回</p></div>`;
+    $$('.cupgo',v).forEach(b=>b.onclick=()=>{const c=CUPS.find(x=>x.id===b.dataset.id);if(!spend(c.entry)){toast('クレジットが足りません');return}const opp=shuffle(CPUS.slice()).slice(0,7);CUP={cup:c,players:[{me:1,name:'あなた',col:'#ffd36b'},...opp.map(o=>({cpu:o,name:o.name,col:o.col}))],round:0,alive:[0,1,2,3,4,5,6,7]};AU.big();go('cup')});return}
+  const P=CUP.players;const rounds=['1回戦','準決勝','決勝'];
+  v.innerHTML=`<div class="wrap"><div class="gtop" style="padding:0 0 8px"><div><div class="title" style="color:${CUP.cup.col}">${CUP.cup.name}</div><div class="sub">${CUP.done?'大会終了':rounds[CUP.round]}</div></div></div>
+   <div class="bracket">${[0,1,2].map(r=>`<div class="bcol"><div class="bh">${rounds[r]}</div>${(r===0?[0,1,2,3,4,5,6,7]:(CUP['r'+r]||[])).map(i=>`<div class="bp ${P[i].me?'me':''} ${CUP.alive.includes(i)?'':'out'}" style="--c:${P[i].col}">${P[i].name}</div>`).join('')}</div>`).join('')}<div class="bcol"><div class="bh">優勝</div>${CUP.champ!=null?`<div class="bp champ" style="--c:${P[CUP.champ].col}">👑 ${P[CUP.champ].name}</div>`:''}</div></div>
+   <div class="center" style="margin-top:14px">${CUP.done?`<button class="btn gold" id="cupEnd">ロビーへ</button>`:`<button class="btn gold" id="cupNext" style="font-family:var(--font-d)">${rounds[CUP.round]} を戦う</button>`}</div></div>`;
+  leaveGuard=async()=>{if(!CUP||CUP.done){CUP=null;return true}const ok=await confirmBox('大会を棄権する？','途中で抜けると賞金はもらえません。','棄権する','btn red');if(ok)CUP=null;return ok};
+  if(CUP.done){$('#cupEnd').onclick=()=>{CUP=null;leaveGuard=null;go('lobby')};return}
+  $('#cupNext').onclick=()=>{const field=CUP.round===0?[0,1,2,3,4,5,6,7]:CUP['r'+CUP.round];const pairs=[];for(let k=0;k<field.length;k+=2)pairs.push([field[k],field[k+1]]);const mine=pairs.find(p=>p.includes(0));const foe=P[mine[0]===0?mine[1]:mine[0]];
+    leaveGuard=null;go('duel',{label:`${CUP.cup.name} ・ ${rounds[CUP.round]}`,myHp:2,opp:cpuOpp(foe.cpu),onEnd:(win,forfeit)=>{const winners=pairs.map(p=>p.includes(0)?(win?0:(p[0]===0?p[1]:p[0])):(Math.random()<.5?p[0]:p[1]));pairs.forEach(p=>p.forEach(i=>{if(!winners.includes(i))CUP.alive=CUP.alive.filter(a=>a!==i)}));
+      const r=CUP.round;if(!win){const e=CUP.cup.entry;const prize=r===1?e*.5:r===2?e*2:0;if(prize){award(prize,null);toast(`🏆 ${r===2?'準優勝':'ベスト4'}！ 賞金 ${fmt(prize)} CR`)}CUP.done=true;CUP.champ=null;
+        // finish bracket quickly
+        let f=winners;for(let rr=r+1;rr<=2;rr++){CUP['r'+rr]=f;const nf=[];for(let k=0;k<f.length;k+=2)nf.push(Math.random()<.5?f[k]:f[k+1]);f=nf}CUP.champ=f[0]}
+      else if(r===2){CUP.champ=0;CUP.done=true;S.cupWins=(S.cupWins||0)+1;save();achv('cup');setTimeout(()=>{award(CUP.cup.entry*5,null,{big:true});stamp('CHAMPION',{col:CUP.cup.col,sub:CUP.cup.name+' 優勝！',size:1,shake:2.5})},600)}
+      else{CUP.round++;CUP['r'+CUP.round]=winners}
+      if(r<2&&win)CUP['r'+(r+1)]=winners;setTimeout(()=>go('cup'),win?900:500)}})}};
+/* ================= v9c: MY CASINO · CPU DRAMA · FLOOR BGM · APP ================= */
+/* ---------- my casino ---------- */
+const MC_TRACKS={
+  shop:{name:'店舗',desc:'売上の基本額',lv:['（未購入）','ネオン横丁の小部屋','2フロアの中型店','海上テラス付き','空中回廊つき大型店','NEON ABYSS級リゾート'],cost:[50000,120000,300000,800000,2000000],val:[0,30,70,160,360,800]},
+  staff:{name:'スタッフ',desc:'売上 +25%/Lv',lv:['なし','バイト1人','ディーラー3人','専属ホスト','人気ディーラー陣','伝説のスタッフ'],cost:[20000,60000,150000,400000,1000000]},
+  ad:{name:'宣伝',desc:'売上 +30%/Lv',lv:['なし','チラシ','ホロ看板','街頭ビジョン','空中ホロ広告','都市全体ジャック'],cost:[15000,50000,120000,300000,800000]},
+};
+const mc=()=>S.mc||(S.mc={shop:0,staff:0,ad:0,vault:0,name:'',total:0});
+const mcIncome=()=>{const m=mc();if(!m.shop)return 0;return Math.round(MC_TRACKS.shop.val[m.shop]*(1+.25*m.staff)*(1+.3*m.ad))};
+function mcBuildingSVG(m){const s=m.shop,neon=['#29f3ff','#ff2bd6','#ffd36b','#3dffa8','#a86bff'];const h=[0,60,90,120,150,180][s];const w=[0,110,140,170,200,230][s];
+  if(!s)return `<svg viewBox="0 0 260 220" width="100%"><rect x="70" y="120" width="120" height="80" fill="#151a30" stroke="#333a55"/><path d="M70 120 L130 90 L190 120" fill="#1a2040"/><text x="130" y="170" text-anchor="middle" fill="#7d8bb3" font-size="14" font-family="sans-serif">FOR SALE</text><line x1="80" y1="140" x2="180" y2="190" stroke="#ff3d6e" stroke-width="3"/></svg>`;
+  let g=`<svg viewBox="0 0 260 220" width="100%"><defs><linearGradient id="mcg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1650"/><stop offset="1" stop-color="#080a20"/></linearGradient></defs><rect x="0" y="200" width="260" height="20" fill="#05203a"/><path d="M0 206 Q65 200 130 206 T260 206" stroke="#29f3ff" stroke-width="1" fill="none" opacity=".5"/>`;
+  const x0=130-w/2,y0=200-h;g+=`<rect x="${x0}" y="${y0}" width="${w}" height="${h}" rx="6" fill="url(#mcg)" stroke="${neon[s-1]}" stroke-width="2"/>`;
+  for(let r=0;r<Math.floor(h/26);r++)for(let c=0;c<Math.floor(w/26);c++)g+=`<rect x="${x0+8+c*26}" y="${y0+10+r*26}" width="16" height="12" rx="2" fill="${neon[(r+c)%5]}" opacity="${.35+((r*7+c*3)%5)/10}"/>`;
+  if(s>=3)g+=`<rect x="${130-w/2-14}" y="${y0+h*.55}" width="${w+28}" height="6" rx="3" fill="${neon[2]}" opacity=".8"/>`;
+  if(s>=4)g+=`<rect x="122" y="${y0-40}" width="16" height="40" fill="#1e1650" stroke="${neon[1]}"/><circle cx="130" cy="${y0-46}" r="8" fill="${neon[1]}"/>`;
+  if(s>=5)g+=`<ellipse cx="130" cy="${y0-62}" rx="46" ry="8" fill="none" stroke="${neon[0]}" stroke-width="2"/>`;
+  if(m.ad>=2)g+=`<rect x="${x0-48}" y="${y0+10}" width="40" height="26" rx="4" fill="#0a0e24" stroke="${neon[1]}"/><rect x="${x0-44}" y="${y0+14}" width="32" height="18" fill="${neon[1]}" opacity=".5"/>`;
+  if(m.ad>=4)g+=`<path d="M20 30 Q130 -10 240 30" stroke="${neon[4]}" stroke-width="3" fill="none" opacity=".7"/>`;
+  g+=`<rect x="${130-34}" y="${y0-18}" width="68" height="16" rx="8" fill="#0a0e24" stroke="${neon[0]}"/><text x="130" y="${y0-6}" text-anchor="middle" fill="${neon[0]}" font-size="10" font-family="Orbitron,sans-serif" font-weight="900">CASINO</text>`;
+  for(let k=0;k<m.staff;k++)g+=`<circle cx="${130-30+k*15}" cy="194" r="4" fill="${neon[k%5]}"/>`;
+  return g+'</svg>'}
+VIEWS.mycasino=function(v){const m=mc();const inc=mcIncome();
+  v.innerHTML=`<div class="wrap"><div class="gtop" style="padding:0 0 8px">${backBtn()}<div><div class="title neon-g">MY CASINO</div><div class="sub">あなたのカジノ。どのゲームでも遊ぶたびに売上が入る</div></div></div>
+   <div class="mcbox"><div class="mcname" id="mcName">${m.shop?(m.name||'名前をつけよう ✎'):'潰れかけのフロア'}</div><div class="mcb">${mcBuildingSVG(m)}</div>
+    <div class="kv" style="margin:8px 0 0"><div><small>1ゲームごとの売上</small><b>${fmt(inc)} CR</b></div><div><small>金庫</small><b id="mcVault">${fmt(Math.floor(m.vault))} CR</b><button class="btn gold sm" id="mcCol" style="margin-top:6px;width:100%" ${m.vault<1?'disabled':''}>回収する</button></div></div>
+    <div class="dim" style="font-size:10px;margin-top:6px">累計売上 ${fmt(Math.floor(m.total))} CR ／ 時間ではなく「遊んだ回数」で貯まります</div></div>
+   ${Object.entries(MC_TRACKS).map(([k,t])=>{const lv=m[k],max=lv>=5,locked=k!=='shop'&&!m.shop;const cost=max?0:t.cost[lv];return `<div class="mctr"><div style="flex:1;min-width:0"><b>${t.name} <span class="neon-c">Lv${lv}</span></b><small>${t.lv[lv]}${max?'':` → ${t.lv[lv+1]}`}　（${t.desc}）</small><div class="mcpips">${[1,2,3,4,5].map(i=>`<i class="${i<=lv?'on':''}"></i>`).join('')}</div></div>${max?'<span class="neon-g" style="font-family:var(--font-d);font-size:11px">MAX</span>':locked?'<span class="dim" style="font-size:10px">店舗の購入が先</span>':`<button class="btn sm ${k==='shop'&&!lv?'gold':''} mcup" data-k="${k}" ${S.cr<cost?'disabled':''}>${k==='shop'&&!lv?'購入':'強化'}<br><small style="font-weight:400">${fmtK(cost)}</small></button>`}</div>`}).join('')}</div>`;
+  $('#mcCol').onclick=e=>{const n=Math.floor(m.vault);if(n<1)return;m.vault-=n;save();award(n,e.target,{big:n>=20000});stamp('売上回収',{col:'#ffd36b',sub:`+${fmt(n)} CR`,size:.8});setTimeout(()=>VIEWS.mycasino(v),1300)};
+  if(m.shop)$('#mcName').onclick=()=>{showModal(`<h2>カジノの名前</h2><input id="mcIn" maxlength="16" value="${(m.name||'').replace(/"/g,'')}" placeholder="例：ネオン・ドリーム" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#02030a;color:#fff;font-size:16px"><div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn ghost sm" onclick="closeModal()">キャンセル</button><button class="btn gold sm" id="mcOk">決定</button></div>`);$('#mcOk').onclick=()=>{m.name=$('#mcIn').value.trim().slice(0,16);save();closeModal();VIEWS.mycasino(v)}};
+  $$('.mcup',v).forEach(b=>b.onclick=async()=>{const k=b.dataset.k,t=MC_TRACKS[k],lv=m[k],cost=t.cost[lv];if(!await confirmBox(`${t.name}を強化`,`${t.lv[lv+1]}に強化します。<br>${fmt(cost)} CR`,'強化する','btn gold'))return;if(!spend(cost)){toast('クレジットが足りません');return}m[k]++;save();AU.big();
+    const r=$('.mcb').getBoundingClientRect();FX.firework(r.left+r.width/2,r.top+r.height/3,{col:'#ffd36b'});await stamp(k==='shop'&&lv===0?'OPEN!':'UPGRADE!',{col:'#ffd36b',sub:t.lv[m[k]],size:.85,shake:1.5});if(m.shop>=5&&m.staff>=5&&m.ad>=5)achv('tycoon');VIEWS.mycasino(v)})};
+ACH.push({id:'tycoon',name:'カジノ王',desc:'マイカジノを全部MAXにする',rw:{t:10}});
+
+/* ---------- CPU drama ---------- */
+const BANTER=[
+  ['{b}、さっきから運が良すぎない？','実力ですよ、{a}さん。'],['{b}、その手、ハッタリでしょ？','さあ、どうでしょうね。'],['今日こそ{b}に勝ってみせる！','その台詞、昨日も聞いたよ。'],
+  ['{b}、次のゲームで勝負しない？','望むところだ。'],['ちょっと{b}、私の席取らないで！','早い者勝ちです。'],['{b}って、普段なにしてる人？','…それは秘密。'],
+];
+const PAIRS={'vargas|celes':['奥様、宇宙クルーズの船、安く譲りますぜ！','あら、沈まない船ならいただくわ。'],'mina|raven':['あなたのハッタリ、確率的に3割は見抜けてます。','じゃあ残り7割で勝たせてもらうよ。'],'doc|pico':['若いの、無理な賭けは体に毒じゃ。','ドクター、それ診察代取りますか…？'],'kaito|omega':['…お前、賞金首のリストに載ってたぞ。','ワタシハ、更生シマシタ。'],'celes|pico':['あなた、うちのリゾートで働かない？','えっ、時給いくらですか！？'],'vargas|omega':['ロボのくせに勝負強ぇな！','学習シマシタ。アナタノ癖ヲ。']};
+let lastBanter=0;
+const _st9=settle;settle=async function(...args){await _st9(...args);if(Date.now()-lastBanter<15000||Math.random()>.18)return;const seats=$$('.seat[data-cpu]');if(seats.length<2)return;lastBanter=Date.now();
+  const [A,B]=shuffle(seats.slice()).slice(0,2);const a=CPU[A.dataset.cpu],b=CPU[B.dataset.cpu];const key=[a.id,b.id].sort().join('|');let L=PAIRS[key];let sa=A,sb=B,ca=a,cb=b;
+  if(L){const [x]=key.split('|');if(x!==a.id){sa=B;sb=A;ca=b;cb=a}}else L=pick(BANTER).map(s=>s.replace('{a}',a.name).replace('{b}',b.name));
+  setTimeout(()=>cpuSay(sa,L[0],2600),900);setTimeout(()=>cpuSay(sb,L[1],2600),2700)};
+/* rival growth: playing against someone often sharpens them */
+const cpuLv=id=>Math.min(5,1+Math.floor(((S.rival||{})[id]||0)/25));
+function cpuPer(c){const lv=cpuLv(c.id);const p=c.p;return{tight:p.tight,aggr:Math.min(.95,p.aggr+(lv-1)*.03),bluff:p.bluff,noise:p.noise*(1-(lv-1)*.15)}}
+const _seat9=seatHTML;seatHTML=function(c,extra){return _seat9(c,extra).replace('<div class="nm">'+c.name+'</div>',`<div class="nm">${c.name} <span class="cplv">Lv${cpuLv(c.id)}</span></div>`)};
+const _rec9=record;record=function(game,bet,ret){const before={};tableCpus.forEach(id=>before[id]=cpuLv(id));_rec9(game,bet,ret);if(bet<=0)return;
+  tableCpus.forEach(id=>{if(cpuLv(id)>before[id])setTimeout(()=>toast(`⚡ ${CPU[id].name}が腕を上げた！（Lv${cpuLv(id)}）`),1500)});
+  const m=mc();if(m.shop){const inc=mcIncome();m.vault+=inc;m.total+=inc}
+  S.rounds=(S.rounds||0)+1;(S.lent||[]).forEach(l=>{if(!l.done&&S.rounds>=l.due){l.done=1;const c=CPU[l.id];const back=Math.round(l.amt*(c.id==='vargas'?2:1.5));setTimeout(()=>{stamp('借りを返しに来た',{col:c.col,sub:`${c.name}「この前はありがとな！」 +${fmt(back)}`,size:.6,shake:.6});award(back,null)},2200)}});S.lent=(S.lent||[]).filter(l=>!l.done);save()};
+/* broke CPUs sometimes ask you for help in the lobby */
+const _dl9=decorateLobby;decorateLobby=function(){_dl9();
+  if($('#lfMc')==null){const lf=$('.lobbyfoot');if(lf){const m=mc();lf.insertAdjacentHTML('beforeend',`<button class="gamebtn" id="lfMc" onclick="go('mycasino')" style="position:relative"><svg viewBox="0 0 40 40" class="gi"><rect x="8" y="14" width="24" height="20" rx="2" fill="none" stroke="#ffd36b" stroke-width="2"/><path d="M6 15 L20 5 L34 15" fill="none" stroke="#ff2bd6" stroke-width="2"/><rect x="16" y="24" width="8" height="10" fill="#29f3ff"/></svg><b>マイカジノ</b><small>${m.shop?'金庫 '+fmtK(Math.floor(m.vault)):'50Kで開業'}</small>${m.vault>=1000?'<span class="albnew">$</span>':''}</button><button class="gamebtn" onclick="go('cup')"><svg viewBox="0 0 40 40" class="gi"><path d="M10 8 H30 V14 Q30 24 20 24 Q10 24 10 14Z" fill="none" stroke="#29f3ff" stroke-width="2"/><path d="M20 24 V30 M13 34 H27" stroke="#29f3ff" stroke-width="2"/><path d="M16 12 L18 16 L22 16 L19 19 L20 22 L17 20" fill="#ffd36b"/></svg><b>トーナメント</b><small>優勝 ${S.cupWins||0}回</small></button>`)}}
+  if(Math.random()<.22&&S.cr>=20000&&!$('#modal').classList.contains('on')&&!scenePlaying){const poor=CPUS.filter(c=>cpuBank(c.id)<6000&&!(S.lent||[]).some(l=>l.id===c.id));if(poor.length){const c=pick(poor);const amt=Math.min(10000,Math.max(3000,Math.round(S.cr*.05/1000)*1000));
+    setTimeout(()=>{if($('#modal').classList.contains('on')||CUR!=='lobby')return;showModal(`<div class="center"><div class="sc-av" style="--c:${c.col};margin:0 auto">${avatarSVG(c.id,c.col,c.kind)}</div><h2 style="margin:10px 0 4px;color:${c.col}">${c.name}</h2><p style="font-size:14px;line-height:1.7">「${c.id==='vargas'?'よォ…ちょいと負けが込んでな。少し回してくれねぇか？倍にして返す！':c.id==='pico'?'あのっ、すみません…配達のお給料、全部すっちゃって…':c.id==='celes'?'…勘違いしないで。一時的に現金が手元にないだけよ。':'少しだけ、お金を貸してもらえませんか…？'}」</p><p class="dim" style="font-size:12px">${fmt(amt)} CR を貸しますか？（あとで多めに返ってくるかも）</p><div class="row" style="justify-content:center;gap:8px"><button class="btn ghost" id="lnNo">断る</button><button class="btn gold" id="lnYes">貸す</button></div></div>`);
+      $('#lnNo').onclick=()=>{closeModal();toast(`${c.name}はしょんぼり帰っていった…`)};$('#lnYes').onclick=()=>{if(!spend(amt))return;cpuAdj(c.id,amt);S.lent=[...(S.lent||[]),{id:c.id,amt,due:(S.rounds||0)+ri(12,35)}];save();closeModal();toast(`🤝 ${c.name}に ${fmt(amt)} CR 貸した。いつか返しに来るはず…`)}},1200)}}};
+
+/* ---------- floor BGM themes ---------- */
+const mnote=n=>440*Math.pow(2,(n-69)/12);
+const THEMES={
+  lobby:{bpm:112,ch:[[57,60,64],[53,57,60],[55,59,62],[52,56,59]],arp:[0,1,2,1,0,2,1,2],wave:'triangle',bass:1,kick:[0,8],hat:[4,12],pad:.045},
+  strip:{bpm:124,ch:[[57,60,64],[53,57,60],[48,52,55],[55,59,62]],arp:[0,2,1,2,0,2,1,2,0,2,1,2,1,2,0,2],arpOct:24,wave:'square',bass:1,kick:[0,4,8,12],hat:[2,6,10,14],pad:.035,arpVol:.022},
+  dragon:{bpm:92,ch:[[50,53,57],[50,55,57],[48,53,55],[50,53,57]],mel:[74,76,79,81,79,76,74,72,74,76,72,69,72,74,76,74],wave:'triangle',pluck:1,gong:1,wood:[0,6,10],pad:.03},
+  riviera:{bpm:78,ch:[[50,53,57,60],[55,59,62,65],[48,52,55,59],[57,60,64,67]],arp:[0,2,3,1],wave:'sine',walk:1,brush:[4,12],pad:.05},
+  sky:{bpm:86,ch:[[52,56,59,63],[49,52,56,59],[45,49,52,56],[47,51,54,57]],arp:[0,1,2,3,2,1],arpOct:24,wave:'sine',bell:1,pad:.055},
+  race:{bpm:152,ch:[[57,60,64],[55,59,62],[53,57,60],[52,56,59]],arp:[0,1,2,1,2,1,0,1,2,1,2,1,0,2,1,2],arpOct:12,wave:'sawtooth',bass:1,kick:[0,4,8,12],hat:[2,6,10,14],snare:[4,12],pad:.03,arpVol:.018},
+  boss:{bpm:140,ch:[[45,48,51],[45,48,52],[44,47,50],[46,49,52]],arp:[0,0,1,0,2,0,1,0],arpOct:-12,wave:'sawtooth',bass:2,kick:[0,3,8,11],snare:[4,12],hat:[2,6,10,14],pad:.04,arpVol:.03},
+};
+let BGM_T='lobby',bgmNext=null;
+AU.startBgm=function(){if(!this.ctx)return;const self=this;this.bgmGain.gain.cancelScheduledValues(this.ctx.currentTime);this.bgmGain.gain.linearRampToValueAtTime(.3,this.ctx.currentTime+1.2);if(this.bgmTimer)return;
+  let step=0,bar=0,next=this.ctx.currentTime+.1;
+  const osc=(f,t,d,{type='triangle',vol=.03,att=.01,dest=self.bgmGain,slide=0}={})=>{const o=self.ctx.createOscillator(),g=self.ctx.createGain();o.type=type;o.frequency.setValueAtTime(f,t);if(slide)o.frequency.exponentialRampToValueAtTime(f*slide,t+d);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+att);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(dest);o.start(t);o.stop(t+d+.05)};
+  const nz=(t,d,vol,freq,type='highpass')=>{const len=Math.floor(self.ctx.sampleRate*d),b=self.ctx.createBuffer(1,len,self.ctx.sampleRate),da=b.getChannelData(0);for(let i=0;i<len;i++)da[i]=(Math.random()*2-1)*(1-i/len);const s=self.ctx.createBufferSource();s.buffer=b;const f=self.ctx.createBiquadFilter();f.type=type;f.frequency.value=freq;const g=self.ctx.createGain();g.gain.value=vol;s.connect(f);f.connect(g);g.connect(self.bgmGain);s.start(t)};
+  const tick=()=>{if(!self.ctx)return;while(next<self.ctx.currentTime+.15){const T=THEMES[BGM_T];const sp=60/T.bpm/4;const ch=T.ch[bar%T.ch.length];const s=step%16;
+      if(s===0){if(bgmNext){BGM_T=bgmNext;bgmNext=null}ch.forEach(n=>osc(mnote(n),next,sp*16,{type:T.wave==='square'?'sawtooth':'triangle',vol:T.pad/ch.length*2,att:.3}));if(T.gong&&bar%2===0)osc(mnote(38),next,3,{type:'sine',vol:.08,slide:.97});}
+      if(T.arp){const a=T.arp[s%T.arp.length];if(T.arp.length>=8||s%2===0)osc(mnote(ch[a%ch.length]+12+(T.arpOct||0)),next,sp*1.8,{type:T.wave,vol:T.arpVol||.03})}
+      if(T.mel&&s%2===0){const n=T.mel[(bar*8+s/2)%T.mel.length];osc(mnote(n),next,sp*3,{type:'triangle',vol:.04,att:.002})}
+      if(T.bell&&s%4===2)osc(mnote(ch[(s/2)%ch.length]+36),next,1.6,{type:'sine',vol:.02,att:.002});
+      if(T.bass&&(s===0||s===8||(T.bass>1&&s%4===2)))osc(mnote(ch[0]-12),next,sp*3.5,{type:'sawtooth',vol:.045});
+      if(T.walk&&s%4===0)osc(mnote(ch[(s/4)%ch.length]-12),next,sp*3.6,{type:'sine',vol:.07});
+      if(T.kick&&T.kick.includes(s)){const o=self.ctx.createOscillator(),g=self.ctx.createGain();o.frequency.setValueAtTime(120,next);o.frequency.exponentialRampToValueAtTime(40,next+.14);g.gain.setValueAtTime(.12,next);g.gain.exponentialRampToValueAtTime(.0001,next+.2);o.connect(g);g.connect(self.bgmGain);o.start(next);o.stop(next+.22)}
+      if(T.hat&&T.hat.includes(s))nz(next,.04,.05,7000);if(T.snare&&T.snare.includes(s))nz(next,.12,.09,1800,'bandpass');if(T.brush&&T.brush.includes(s))nz(next,.18,.03,3000,'bandpass');if(T.wood&&T.wood.includes(s))osc(mnote(84),next,.06,{type:'square',vol:.02,att:.001});
+      next+=sp;step++;if(step%16===0)bar++}};
+  this.bgmTimer=setInterval(tick,40)};
+AU.stopBgm=function(){if(!this.ctx)return;this.bgmGain.gain.cancelScheduledValues(this.ctx.currentTime);this.bgmGain.gain.linearRampToValueAtTime(0,this.ctx.currentTime+.8);clearInterval(this.bgmTimer);this.bgmTimer=null};
+function themeFor(v){if(v==='race')return'race';if(v==='duel')return'boss';if(v==='cup')return'boss';if(GAMES[v])return GAMES[v].floor;return'lobby'}
+const _go9=go;go=function(v,a){const t=themeFor(v);if(t!==BGM_T)bgmNext=t;_go9(v,a)};
+
+/* ---------- app (PWA) on GitHub Pages ---------- */
+if('serviceWorker' in navigator&&/github\.io$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}}
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
