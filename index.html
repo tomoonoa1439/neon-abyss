@@ -680,6 +680,9 @@ body.fever #feverfx{animation:fvp .9s ease-in-out infinite alternate}@keyframes 
 #tabbar svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
 #tabbar button.on{color:var(--cyan)}#tabbar button.on svg{filter:drop-shadow(0 0 5px var(--cyan))}
 .resume{width:100%;margin:0 0 12px;padding:10px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(8,12,34,.85);color:var(--txt);font-size:13px;text-align:left;cursor:pointer}.resume b{color:var(--cyan)}
+.ev p{font-size:14px;line-height:1.7;margin:8px 0}.ev-t{font-family:var(--font-d);font-weight:900;font-size:22px;margin-top:10px}
+.ev-n{font-family:var(--font-d);font-weight:900;font-size:24px;margin:8px 0 12px}.ev-n small{font-size:14px}
+.ev-alleys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ev-al{font-size:28px;padding:12px 4px}.ev-al small{font-size:10px}
 </style>
 </head>
 <body>
@@ -2876,11 +2879,12 @@ function runJackpot(){const SL=['MINI','MAJOR','MINI','MINI','MAJOR','MINI','GRA
   $('#jpStop').onclick=stop;setTimeout(()=>{if(!stopping)stop()},6000)}
 
 /* ---------- what's new ---------- */
-const NEWS_VER=11;
+const NEWS_VER=12;
 const _dl11=decorateLobby;decorateLobby=function(){_dl11();jpRender();updFever();
   if(S.ch==null||window.__noJP){S.seenVer=NEWS_VER;return}
   if((S.seenVer||0)<NEWS_VER)setTimeout(()=>{if(CUR!=='lobby'||$('#modal').classList.contains('on')||scenePlaying)return;S.seenVer=NEWS_VER;save();AU.big();FX.confetti(80);
     showModal(`<div class="center"><div class="dim" style="font-family:var(--font-d);letter-spacing:.3em;font-size:10px">MAJOR UPDATE</div><h2 style="font-size:24px;margin:6px 0;background:linear-gradient(90deg,#6fb6ff,#ff2bd6);-webkit-background-clip:text;background-clip:text;color:transparent">THE ABYSS UPDATE</h2></div>
+     <div class="rsec" style="border-color:#ff3d6e"><b style="color:#ff3d6e">🕵 ハプニング発生中</b><p>遊んでいると、たまに事件が起きます。スリの銀次（所持金の半分を盗む。追いかけて捕まえれば取り返せる）、福の神、税務ロボ、落とし物の財布、占い師。良いことも悪いことも。</p></div>
      <div class="rsec" style="border-color:#ffe14a"><b style="color:#ffe14a">⚡ THRILL UPDATE ― 青天井、解禁</b><p>全ゲームに「どこまで上がるの！？」を追加。ルーレットに最大×500のライトニング、連勝で配当が上がり続けるドラゴンタイガー、キャリーオーバー総取りのレース…。各ゲームの「？ルール」に説明があります。</p></div>
      <div class="rsec"><b>🎲 ダブルアップ</b><p>どのゲームでも、勝ったあとに挑戦可能。色を当てれば×2、マークなら×4。やめない限り、倍々に。</p></div>
      <div class="rsec"><b>🌊 ABYSS DIVE（新モード）</b><p>ポーカーの役で得点を稼ぎ、改造チップを集めて深海8階層に挑むローグライク。ロビーの青いバナーから。</p></div>
@@ -3013,6 +3017,45 @@ setTimeout(tabbar,100);
 
 /* ---------- rules: explain the sky-high part ---------- */
 Object.entries({roulette:'⚡ライトニング：毎スピン1〜5個の数字が光り、その数字の1点賭けは配当が ×50〜×500 に。',roulette_hi:'⚡ライトニング：毎スピン1〜5個の数字が光り、1点賭けの配当が ×50〜×500 に。',sicbo:'⚡ライトニング：毎回2〜4個の「合計」が光り、配当が最大50倍に跳ね上がる（例 60:1 → 3000:1）。',baccarat:'🐉龍の息吹：配る前に PLAYER／BANKER／TIE の枠が光ることがあり、勝つと配当が ×2〜×20。',bigsix:'🎰当たるたびに倍率ルーレットが回り、配当がさらに ×2〜×100。',keno:'⭐ゴールデンナンバー：選んだ数字のうち1個（5個以上選ぶと2個）が金色に。当たれば配当 ×5、2個とも当たれば ×25。',videopoker:'✨役ができると、次のハンドの配当に倍率がつく（ジャックス×2 〜 フォーカード以上×12）。',dragontiger:'🔥闘気：連勝するほど配当が ×2→×3→×5→×8→×13… と上がり続ける。上限なし。負けるとリセット。',blackjack:'⚡ライトニング・チェーン：勝つと次の手に倍率（17-18で+2、19で+3、20で+4、21で+6、BJで+8）。勝ち続けるかぎり加算され続ける。',craps:'🎲ホットシューター：勝ちが続くほど配当 ×2→×3→×4… 上限なし。',hilo:'🎁連続ボーナス：3・5・7・10・13・16・20・25・30連続で、倍率がさらに ×1.5〜×100。上限なし。',poker:'🔥HOT POT：3割の確率で、そのハンドのポットが ×2〜×25 に。',race:'💰キャリーオーバー：3連単が外れたレースの賭け金がすべて貯まり、3連単を当てた人が総取り。'}).forEach(([g,t])=>{if(RULES[g])RULES[g].tips+=`<br><br><b style="color:#ffe14a">【青天井ルール】</b><br>${t}<br><br>🎲 どのゲームでも、勝ったあとは「ダブルアップ」に挑戦できます。色当て×2、マーク当て×4。何回でも続けられます。`});
+/* ================= v12: HAPPENINGS — random street events ================= */
+ACH.push({id:'ginji',name:'御用だ！',desc:'スリの銀次を捕まえる',rw:{t:3}},{id:'honest',name:'正直者',desc:'落とし物の財布を届ける',rw:{t:1}},{id:'fuku',name:'福の神に会った',desc:'福の神に出会う',rw:{cr:1000}});
+const EV={pending:null,cool:0};
+const evAv=(seed,col,kind='human')=>`<div class="sc-av" style="--c:${col};margin:0 auto">${avatarSVG(seed,col,kind)}</div>`;
+function evModal(html){$('#modal').dataset.lock='1';showModal(`<div class="center ev">${html}</div>`)}
+function evClose(){delete $('#modal').dataset.lock;closeModal();save();setTimeout(checkBankrupt,1500)}
+function evLose(n){n=Math.min(S.cr,Math.floor(n));if(n>0){spend(n);floatDelta(-n)}return n}
+const EVENTS={
+  ginji:{w:30,ok:()=>S.cr>=2000,run(){const loss=evLose(S.cr/2);S.ev.ginji=(S.ev.ginji||0)+1;vignette('rgba(255,30,80,.9)');glitch();AU.lose();shakeApp(2);
+    evModal(`${evAv('ginji','#7d8bb3')}<div class="ev-t" style="color:#ff3d6e">スリだ！！</div><p>人混みで誰かにぶつかった…と思ったら、財布が軽い。<br><b>「スリの銀次」</b>に所持金の半分をやられた！</p><div class="ev-n" style="color:#ff3d6e">−${fmt(loss)} NOA</div><p class="dim" style="font-size:12px">まだ遠くへは行っていない。3つの路地のどれかに逃げ込んだ。<br>追いかける？（当たれば取り返して、さらに迷惑料も）</p><div class="ev-alleys">${['ネオン横丁','配管の裏道','屋台通り'].map((n,i)=>`<button class="btn ghost ev-al" data-i="${i}">🚪<br><small>${n}</small></button>`).join('')}</div><button class="btn ghost sm" id="evNo" style="margin-top:10px">あきらめる</button>`);
+    const hide=ri(0,2);$('#evNo').onclick=()=>{evClose();toast('銀次は闇に消えた…')};
+    $$('.ev-al').forEach(b=>b.onclick=async()=>{$$('.ev-al,#evNo').forEach(x=>x.disabled=true);for(let k=0;k<3;k++){AU.heart();b.animate([{transform:'scale(1.08)'},{transform:'none'}],{duration:250});await sleep(280)}
+      if(+b.dataset.i===hide){const back=Math.floor(loss*1.3);evClose();achv('ginji');lightning(innerWidth/2,innerHeight*.4,3,'#3dffa8');await stamp('御用だ！',{col:'#3dffa8',sub:`銀次を捕まえた！ +${fmt(back)} NOA`,size:1,shake:2.5});award(back,null,{big:true});toast('💰 盗まれた分に、迷惑料3割を上乗せして取り返した！')}
+      else{b.innerHTML='💨<br><small>いない…</small>';await sleep(700);evClose();stamp('逃げられた…',{col:'#ff3d6e',size:.8,shake:1,ring:false})}})}},
+  fuku:{w:15,ok:()=>true,run(){const x=wpick([[1.5,60],[2,30],[3,10]]);const gain=Math.max(3000,Math.floor(S.cr*(x-1)));achv('fuku');AU.big();FX.confetti(100);flashColor('#ffd36b',.8);
+    evModal(`${evAv('fukunokami','#ffd36b')}<div class="ev-t" style="color:#ffd36b">福の神、降臨</div><p>ホロ提灯の下で、にこにこ笑う老人に袖を引かれた。<br>「お主、いい顔をしておる。ほれ」</p><div class="ev-n" style="color:#ffd36b">所持金が ${x}倍！<br><small>+${fmt(gain)} NOA</small></div><button class="btn gold" id="evOk" style="width:100%">ありがたく頂く</button>`);
+    $('#evOk').onclick=()=>{evClose();award(gain,null,{big:true});stamp('福来たる',{col:'#ffd36b',sub:`+${fmt(gain)} NOA`,size:1,shake:2})}}},
+  tax:{w:15,ok:()=>S.cr>=5000,run(){const due=Math.floor(S.cr*.2);AU.slam(.8);vignette('rgba(120,160,255,.7)');
+    evModal(`${evAv('marusa3','#9fd8ff','robot')}<div class="ev-t" style="color:#9fd8ff">税務ロボ「マルサ-3」</div><p>「ピピッ。カジノ税ノ調査デス。<br>所持金ノ 20% ヲ徴収シマス」</p><div class="ev-n" style="color:#9fd8ff">請求額 ${fmt(due)} NOA</div><div style="display:grid;gap:8px"><button class="btn ghost" id="evPay">素直に払う（−${fmt(due)}）</button><button class="btn red" id="evRun">ごまかす<br><small style="font-weight:400">半分の確率で見逃される。バレたら2倍取られる</small></button></div>`);
+    $('#evPay').onclick=()=>{evLose(due);evClose();toast('🧾 納税しました。えらい！')};
+    $('#evRun').onclick=async()=>{$$('#evPay,#evRun').forEach(x=>x.disabled=true);for(let k=0;k<3;k++){AU.heart();await sleep(300)}evClose();if(Math.random()<.5){AU.win();stamp('セーフ！',{col:'#3dffa8',sub:'「…異常ナシ。失礼シマシタ」',size:.9,shake:1.5})}else{const n=evLose(due*2);stamp('バレた！',{col:'#ff3d6e',sub:`追徴課税 −${fmt(n)} NOA`,size:.9,shake:2,ring:false});vignette('rgba(255,30,80,.9)')}}}},
+  wallet:{w:20,ok:()=>true,run(){const amt=Math.max(2000,Math.round(S.peak*.08/100)*100);AU.coin();
+    evModal(`<div style="font-size:54px">👛</div><div class="ev-t" style="color:#ff2bd6">分厚い財布を拾った</div><p>足元に、ずっしり重い財布が落ちている。<br>中身はざっと <b class="neon-g">${fmt(amt)} NOA</b>。周りには誰もいない…。</p><div style="display:grid;gap:8px"><button class="btn mag" id="evTake">ネコババする<br><small style="font-weight:400">7割でそのまま自分のもの。3割で持ち主に見つかり、同額の罰金</small></button><button class="btn" id="evGive">落とし物として届ける<br><small style="font-weight:400">きっと、いいことがある</small></button></div>`);
+    $('#evTake').onclick=async()=>{$$('#evTake,#evGive').forEach(x=>x.disabled=true);for(let k=0;k<3;k++){AU.heart();await sleep(300)}evClose();if(Math.random()<.7){award(amt,null);stamp('ラッキー',{col:'#ff2bd6',sub:`+${fmt(amt)} NOA`,size:.9,shake:1.5})}else{const n=evLose(amt);stamp('見つかった！',{col:'#ff3d6e',sub:`持ち主はマダム・セレスだった… −${fmt(n)} NOA`,size:.75,shake:2,ring:false})}};
+    $('#evGive').onclick=()=>{evClose();achv('honest');const r=Math.random();if(r<.5){S.tickets=(S.tickets||0)+3;stamp('お礼',{col:'#3dffa8',sub:'ガチャチケット×3 をもらった',size:.85,shake:1})}else if(r<.85){const g=Math.floor(amt*.5);award(g,null);stamp('お礼',{col:'#3dffa8',sub:`謝礼 +${fmt(g)} NOA`,size:.85,shake:1})}else{const g=amt*3;award(g,null,{big:true});stamp('大富豪の財布だった',{col:'#ffd36b',sub:`謝礼 +${fmt(g)} NOA！`,size:.8,shake:2.5})}save()}}},
+  fortune:{w:20,ok:()=>true,run(){const fee=Math.min(S.cr,Math.max(500,Math.round(S.cr*.03/100)*100));
+    evModal(`${evAv('misty','#a86bff')}<div class="ev-t" style="color:#a86bff">占い師ミスティ</div><p>路地の奥で、水晶玉がぼんやり光っている。<br>「あなたの運命、視てあげましょうか…？」</p><div style="display:grid;gap:8px"><button class="btn" id="evSee" style="background:linear-gradient(180deg,#c9a6ff,#7a3ad6);color:#fff">占ってもらう（${fmt(fee)} NOA）<br><small style="font-weight:400">大吉・吉・凶のどれかが出る</small></button><button class="btn ghost" id="evSkip">通りすぎる</button></div>`);
+    $('#evSkip').onclick=()=>evClose();
+    $('#evSee').onclick=async()=>{$$('#evSee,#evSkip').forEach(x=>x.disabled=true);evLose(fee);for(let k=0;k<4;k++){AU.tone(400+k*120,.3,{type:'sine',vol:.08});await sleep(320)}evClose();const r=wpick([['dai',20],['kichi',50],['kyo',30]]);
+      if(r==='dai'){S.luck={x:3,n:5};stamp('大吉',{col:'#ffd36b',sub:'これから5ゲーム、勝ち分が3倍！',size:1.2,shake:2.5});FX.confetti(80)}else if(r==='kichi'){S.luck={x:2,n:5};stamp('吉',{col:'#3dffa8',sub:'これから5ゲーム、勝ち分が2倍！',size:1.2,shake:1.5})}else{S.luck={x:.5,n:3};stamp('凶',{col:'#ff3d6e',sub:'これから3ゲーム、勝ち分が半分に…',size:1.2,shake:1.5,ring:false});vignette('rgba(120,60,200,.8)')}save();luckHud()}}},
+};
+function luckHud(){const el=$('#fever');if(!el)return;const l=S.luck;const base=(S.streak||0)>=3?`🔥 FEVER ${S.streak}連勝　勝ち分+10%`:'';el.innerHTML=base+(l&&l.n>0?`　<span style="color:${l.x>1?'#ffd36b':'#c9a6ff'}">🔮${l.x>1?'運気×'+l.x:'凶'} 残り${l.n}</span>`:'')}
+const _uf12=updFever;updFever=function(){_uf12();luckHud()};
+function runEvent(id){EV.pending=null;EV.cool=12;S.ev=S.ev||{};EVENTS[id].run()}
+function tryEvent(){if(!EV.pending)return;if(window.__noJP){EV.pending=null;return}if($('#modal').classList.contains('on')||$('#banner').classList.contains('on')||document.querySelector('#stampLayer .stamp')||$('.dubtn')||scenePlaying||jpPending||CUR==='duel'||CUR==='dive'||CUR==='cup'||(CUR==='poker'&&(PK.active||PK.inHand))||bankruptOpen||lcOpen){setTimeout(tryEvent,2500);return}
+  const id=EV.pending;if(!EVENTS[id].ok()){EV.pending=null;return}runEvent(id)}
+const _rec12=record;record=function(game,bet,ret){_rec12(game,bet,ret);if(bet<=0)return;if(EV.cool>0){EV.cool--;return}if(!EV.pending&&Math.random()<.07){const c=Object.entries(EVENTS).filter(([k,e])=>e.ok());if(!c.length)return;EV.pending=wpick(c.map(([k,e])=>[k,e.w]));setTimeout(tryEvent,4200)}};
+/* fortune buff on wins */
+const _st12=settle;settle=async function(game,bet,ret,fromEl,dealer){const l=S.luck;const on=l&&l.n>0&&bet>0;if(on&&ret>bet)ret=Math.floor(bet+(ret-bet)*l.x);await _st12(game,bet,ret,fromEl,dealer);if(on){if(ret>bet)toast(l.x>1?`🔮 占いの運気で 勝ち分×${l.x}！`:'🔮 凶の影響で 勝ち分が半分に…');l.n--;if(l.n<=0){S.luck=null;toast('🔮 占いの効果が切れた')}save();luckHud()}};
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
