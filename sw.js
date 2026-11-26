@@ -1,5 +1,5 @@
 /* NEON ABYSS service worker: plays offline after the first visit */
-const CACHE='neon-abyss-v13';
+const CACHE='neon-abyss-v14';
 const CORE=['./','index.html','manifest.json','icon-192.png','icon-512.png','apple-touch-icon.png',
   'img/key_visual.webp','img/key_visual_s.webp','img/luna_1.webp','img/luna_1_s.webp','img/luna_av.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()))});
