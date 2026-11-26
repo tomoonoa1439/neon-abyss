@@ -686,6 +686,23 @@ body.fever #feverfx{animation:fvp .9s ease-in-out infinite alternate}@keyframes 
 .ktrack{font-size:12px;text-align:center;margin:6px 0 2px;color:#c5d3f5}.ktrack b{color:var(--gold);font-family:var(--font-d)}
 .evcoin{width:74px;height:74px;margin:14px auto 0;perspective:500px}.evc-in{position:relative;width:100%;height:100%;transform-style:preserve-3d}
 .evc-in b{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;font-size:26px;color:#5a2c00;background:radial-gradient(circle at 35% 30%,#fff6c8,#ffd36b 55%,#c9771a);border:3px solid #8a4b00;backface-visibility:hidden;-webkit-backface-visibility:hidden}.evc-in b.bk{transform:rotateY(180deg);background:radial-gradient(circle at 35% 30%,#fff,#c9d3e6 55%,#7a869e);border-color:#3c4458;color:#1a2030}
+
+/* v14 arcade */
+.rk-wrap{position:relative;border-radius:12px;overflow:hidden}.rk-wrap canvas{width:100%;display:block}
+.rk-m{position:absolute;left:0;right:0;top:26%;text-align:center;font-family:var(--font-d);font-weight:900;font-size:52px;color:#fff;text-shadow:0 0 18px currentColor;pointer-events:none}
+.rk-s{position:absolute;left:8px;right:8px;bottom:8px;text-align:center;font-size:12px;pointer-events:none}
+.mn-top{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px;text-align:center}.mn-top div{background:rgba(0,0,0,.35);border-radius:10px;padding:5px}.mn-top small{display:block;font-size:10px;opacity:.7}.mn-top b{font-family:var(--font-d);font-size:17px;color:var(--gold)}
+.mn-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;max-width:380px;margin:0 auto}
+.mn-c{aspect-ratio:1;border-radius:10px;border:2px solid rgba(61,255,168,.55);background:linear-gradient(145deg,#0d3a2c,#061a18);font-size:24px;color:#fff;padding:0;cursor:pointer}
+.mn-c.open{background:#06101c;border-color:rgba(61,255,168,.25)}.mn-c.bomb{background:#5a0a1e;border-color:#ff3d6e}.mn-c.dimd{opacity:.45}.mn-c .gem{color:#3dffa8;text-shadow:0 0 10px #3dffa8}
+.pl-slots{display:grid;grid-template-columns:repeat(13,1fr);gap:2px;width:90.3%;margin:-4px auto 0}.pl-slots i{font-style:normal;font-family:var(--font-d);font-size:9px;font-weight:700;text-align:center;padding:5px 0;border-radius:5px;background:var(--c);color:#04050f;overflow:hidden}
+.sc-card{max-width:340px;margin:0 auto;border-radius:16px;padding:12px;background:linear-gradient(135deg,#3a2a00,#5a1a4a 50%,#0a2a4a);border:2px solid #ffd36b}
+.sc-head{text-align:center;font-family:var(--font-d);font-weight:900;font-size:20px;color:#ffd36b;letter-spacing:.1em;margin-bottom:8px}.sc-head small{display:block;font-family:inherit;font-size:10px;color:#fff;opacity:.8;letter-spacing:0;font-weight:400}
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sc-c{position:relative;aspect-ratio:1;border-radius:12px;border:0;padding:0;background:#f4f1e6;font-size:38px;cursor:pointer;overflow:hidden}
+.sc-cv{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#aab3c6,#aab3c6 6px,#c9d3e6 6px,#c9d3e6 12px);color:#5a657e;font-family:var(--font-d);font-weight:900;font-size:26px;transition:opacity .25s,transform .25s}
+.sc-c.open .sc-cv{opacity:0;transform:scale(1.4)}.sc-c.reach{box-shadow:0 0 0 3px #ff2bd6,0 0 14px #ff2bd6}.sc-c.hit{box-shadow:0 0 0 4px #ffd36b,0 0 20px #ffd36b;background:#fff6c9}
+.sc-pt{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;margin-top:10px;font-size:10.5px;color:#fff}.sc-pt b{color:#ffd36b}
 </style>
 </head>
 <body>
@@ -2882,11 +2899,12 @@ function runJackpot(){const SL=['MINI','MAJOR','MINI','MINI','MAJOR','MINI','GRA
   $('#jpStop').onclick=stop;setTimeout(()=>{if(!stopping)stop()},6000)}
 
 /* ---------- what's new ---------- */
-const NEWS_VER=13;
+const NEWS_VER=14;
 const _dl11=decorateLobby;decorateLobby=function(){_dl11();jpRender();updFever();
   if(S.ch==null||window.__noJP){S.seenVer=NEWS_VER;return}
   if((S.seenVer||0)<NEWS_VER)setTimeout(()=>{if(CUR!=='lobby'||$('#modal').classList.contains('on')||scenePlaying)return;S.seenVer=NEWS_VER;save();AU.big();FX.confetti(80);
     showModal(`<div class="center"><div class="dim" style="font-family:var(--font-d);letter-spacing:.3em;font-size:10px">MAJOR UPDATE</div><h2 style="font-size:24px;margin:6px 0;background:linear-gradient(90deg,#6fb6ff,#ff2bd6);-webkit-background-clip:text;background-clip:text;color:transparent">THE ABYSS UPDATE</h2></div>
+     <div class="rsec" style="border-color:#3dffa8"><b style="color:#3dffa8">🕹 NEON ARCADE（新フロア・4ゲーム）</b><p>🚀アビス・ロケット（爆発前に脱出、最大×5000）／💣ボム・パネル（めくるほど倍率アップ）／🔴ネオン・プリンコ（最大×1000）／👑ホロ・スクラッチ（3つそろえば最大1000倍）。最初から遊べます。</p></div>
      <div class="rsec" style="border-color:#c77dff"><b style="color:#c77dff">🐴 ネオン競馬（新ゲーム）</b><p>歌舞伎フロアに8頭立ての競馬が登場。脚質と馬場状態を読んで3連単まで。オッズ100倍以上が当たると「万馬券ボーナス」で払い戻し2倍。</p></div>
      <div class="rsec"><b>🎭 ハプニングが10種類に</b><p>一発屋のジョー、酔っ払いの大富豪、停電、必勝法売りのマルコ、流れ星が追加。</p></div>
      <div class="rsec" style="border-color:#ff3d6e"><b style="color:#ff3d6e">🕵 ハプニング発生中</b><p>遊んでいると、たまに事件が起きます。スリの銀次（所持金の半分を盗む。追いかけて捕まえれば取り返せる）、福の神、税務ロボ、落とし物の財布、占い師。良いことも悪いことも。</p></div>
@@ -3168,6 +3186,139 @@ Object.assign(EVENTS,{
     $('#evNo').onclick=()=>evClose();$('#evBuy').onclick=async()=>{$$('#evBuy,#evNo').forEach(x=>x.disabled=true);evLose(fee);for(let k=0;k<3;k++){AU.heart();await sleep(300)}evClose();if(Math.random()<.4){S.luck={x:2,n:10};save();luckHud();stamp('本物だった！',{col:'#3dffa8',sub:'これから10ゲーム、勝ち分2倍！',size:.9,shake:2})}else{stamp('サギだった…',{col:'#ff3d6e',sub:'紙には「気合い」とだけ書いてある',size:.9,shake:1.5,ring:false})}}}},
   star:{w:12,ok:()=>true,run(){const x=wpick([[2,60],[3,30],[5,10]]);S.jp=Math.round((S.jp||100000)*x);jpRender();save();FX.bolt(-10,40,innerWidth*.6,90,{col:'#fff',life:.6});flashColor('#9fd8ff',.6);AU.gacha(3);stamp('流れ星！',{col:'#9fd8ff',sub:`グランド・ジャックポットが ${x}倍に！`,size:.95,shake:2});EV.pending=null}},
 });
+/* ================= v14: NEON ARCADE — rocket / bomb panels / plinko / scratch ================= */
+DEALERS.pixel={id:'pixel',name:'PIXEL',jp:'ピクセル',desc:'ゲーム好きのドット絵ロボ',kind:'robot',col:'#3dffa8',hc:'#c9d3e6',hair:'helm',eyes:'visor',skin:'#c9d6ff',tie:'#3dffa8',
+  lines:{greet:['イラッシャイ！ココハ アーケードフロア ダヨ！','ピコピコ！キョウモ ハイスコア ネラオウ！','コイン イレテネ！ジャナカッタ、NOA ダッタ！'],bet:['スタート！','レッツ ゴー！','ピコーン！'],win:['ナイス プレイ！','ヤッタネ！ピコピコ！','スコア アップ！'],lose:['ゲーム オーバー…','コンティニュー スル？','ドンマイ！モウ イッカイ！'],big:['ハ、ハイスコア コウシン！！','スゴスギテ バグリソウ！','デンセツノ プレイヤー ダ！']}};
+FLOORS.splice(1,0,{id:'arcade',name:'NEON ARCADE',jp:'ネオン・アーケード',ref:'秋葉原風',need:0,desc:'ピコピコ音が鳴り響くゲームセンター。倍率は、あなたがやめるまで上がり続ける。',bg:'radial-gradient(circle at 85% 15%,rgba(61,255,168,.5),transparent 55%),radial-gradient(circle at 10% 90%,rgba(41,243,255,.45),transparent 55%),linear-gradient(135deg,#04241a,#060a2a)',color:'#3dffa8',dealer:'pixel',games:['rocket','mines','plinko','scratch']});
+Object.assign(GAMES,{rocket:{name:'アビス・ロケット',en:'ABYSS ROCKET',floor:'arcade',desc:'爆発する前に降りろ',isNew:true},mines:{name:'ボム・パネル',en:'BOMB PANEL',floor:'arcade',desc:'めくるほど倍率アップ',isNew:true},plinko:{name:'ネオン・プリンコ',en:'PLINKO',floor:'arcade',desc:'玉を落として最大×1000',isNew:true},scratch:{name:'ホロ・スクラッチ',en:'SCRATCH',floor:'arcade',desc:'3つそろえば当たり',isNew:true}});
+Object.assign(GAME_ICON,{
+  rocket:'<svg viewBox="0 0 40 40" class="gi"><path d="M4 36 Q14 34 22 22" stroke="#3dffa8" stroke-width="2" fill="none" stroke-dasharray="3 3"/><path d="M22 22 L28 6 Q36 8 34 16 L26 26Z" fill="#e9f4ff" stroke="#29f3ff" stroke-width="1.5"/><circle cx="29" cy="14" r="2.5" fill="#ff2bd6"/><path d="M22 22 L18 30 L26 26Z" fill="#ff7a2e"/></svg>',
+  mines:'<svg viewBox="0 0 40 40" class="gi">'+[0,1,2].map(r=>[0,1,2].map(c=>`<rect x="${5+c*11}" y="${5+r*11}" width="9" height="9" rx="2" fill="${r===1&&c===1?'#ff3d6e':(r+c)%2?'#3dffa8':'#0a3a2a'}" stroke="#3dffa8" stroke-width="1"/>`).join('')).join('')+'<circle cx="20.5" cy="20.5" r="2.5" fill="#111"/></svg>',
+  plinko:'<svg viewBox="0 0 40 40" class="gi">'+[0,1,2,3].map(r=>[...Array(r+2)].map((_,c)=>`<circle cx="${20-(r+1)*4+c*8}" cy="${8+r*7}" r="1.6" fill="#29f3ff"/>`).join('')).join('')+'<circle cx="22" cy="5" r="3" fill="#ffd36b"/><rect x="4" y="33" width="32" height="4" rx="2" fill="#ff2bd6"/></svg>',
+  scratch:'<svg viewBox="0 0 40 40" class="gi"><rect x="5" y="8" width="30" height="24" rx="4" fill="#0a0e24" stroke="#ffd36b" stroke-width="2"/><circle cx="13" cy="20" r="4" fill="#ffd36b"/><circle cx="23" cy="20" r="4" fill="#ffd36b"/><rect x="28" y="15" width="6" height="10" rx="2" fill="#7d8bb3"/><path d="M27 28 L36 34" stroke="#e9f4ff" stroke-width="3" stroke-linecap="round"/></svg>'});
+RULES.rocket={what:'ロケットが飛んでいる間、倍率がどんどん上がっていきます。好きなところで「脱出」すれば、賭け金×その倍率をゲット。でも、いつ爆発するかは誰にもわかりません。',steps:['賭け額を選んで LAUNCH','倍率が ×1.00 から上がり続ける','「脱出」を押すと、その時点の倍率で払い戻し','脱出する前に爆発したら、賭け金は全部なくなる','脱出したあとも、ロケットがどこまで行ったか最後まで見られる'],pays:[['払い戻し','賭け金 × 脱出したときの倍率'],['爆発する確率','×2までに約半分、×10までに約9割が爆発'],['上限','×5000']],tips:'「もう少しだけ…」が命取り。目標の倍率を決めてから乗るのがコツ。'};
+RULES.mines={what:'25枚のパネルのどこかに爆弾が隠れています。安全なパネルをめくるたびに倍率が上がり、好きなところでやめられます。爆弾をめくったら全部失います。',steps:['爆弾の数（1・3・5・10・15個）と賭け額を選んで START','パネルをタップしてめくる。安全なら倍率アップ','「回収」でその時点の倍率ぶんを獲得','爆弾を引いたら賭け金は没収','爆弾が多いほど、1枚あたりの倍率の上がり方が大きい'],pays:[['払い戻し','賭け金 × 現在の倍率'],['爆弾3個・全部めくる','×2,254'],['爆弾10個・全部めくる','×320万']],tips:'爆弾1個でコツコツか、10個で一撃か。次の1枚の倍率は、画面に出ています。'};
+RULES.plinko={what:'上から玉を落とすと、ピンに当たって左右に跳ねながら落ちていきます。落ちたポケットの倍率が、そのまま配当です。',steps:['リスク（低・中・高・極）と1球あたりの賭け額を選ぶ','「1球」か「10球」で玉を落とす','端のポケットほど高倍率、真ん中は低倍率','玉は何球でも同時に落とせる'],pays:[['低リスク','×0.5 〜 ×10'],['中リスク','×0.3 〜 ×33'],['高リスク','×0.2 〜 ×170'],['極リスク','×0 〜 ×1000']],tips:'端に落ちる確率はとても低い（極リスクの×1000は約2000球に1回）。だからこそ、入った瞬間がたまらない。'};
+RULES.scratch={what:'9マスのスクラッチカードを削って、同じマークが3つそろえば当たり。宝くじ売り場の、あのドキドキ。',steps:['カードの値段を選んで「買う」','マスをタップして1枚ずつ削る（「全部削る」も可）','同じマークが3つ出たら、そのマークの賞金をゲット'],pays:[['👑 クラウン ×3','カード代の1000倍'],['💎 ダイヤ ×3','200倍'],['7 セブン ×3','50倍'],['⭐ スター ×3','10倍'],['🔔 ベル ×3','5倍'],['🍒 チェリー ×3','2倍'],['🪙 コイン ×3','1倍（カード代が戻る）']],tips:'2つそろって「あと1つ！」の瞬間がいちばん熱い。最後の1マスはゆっくり削ろう。'};
+THEMES.arcade={bpm:132,ch:[[60,64,67],[57,60,64],[53,57,60],[55,59,62]],arp:[0,2,1,2,0,2,1,2,0,1,2,1,2,1,0,2],arpOct:24,wave:'square',bass:1,kick:[0,4,8,12],hat:[2,6,10,14],pad:.025,arpVol:.02};
+ALBUM.push({sec:'ピクセル',dealer:'pixel',items:[1,2,3,4,5].map(l=>({id:`pixel_${l}`,name:`ピクセル 絆Lv${l}「${BOND_TITLE[l-1]}」`,open:()=>bondLv('pixel')>=l,cond:()=>`ピクセルの卓で あと${Math.max(0,BOND_NEED[l-1]-((S.bond||{}).pixel||0))}回`}))});
+ACH.push({id:'rocket50',name:'成層圏の向こうへ',desc:'アビス・ロケットで×50以上で脱出',rw:{t:5}},{id:'minesall',name:'爆弾処理班',desc:'ボム・パネルで安全なパネルを全部めくる',rw:{t:5}},{id:'plinkoedge',name:'奇跡の一球',desc:'プリンコで×100以上のポケットに入れる',rw:{t:3}},{id:'crown3',name:'クラウン×3',desc:'スクラッチで1000倍を当てる',rw:{t:10}});
+SPECIALS.push({id:'rocket5',g:'rocket',text:'ロケットで×5以上で脱出する',base:5000},{id:'mines5',g:'mines',text:'ボム・パネルで5枚以上めくって回収',base:5000});
+{const a=ACH.find(a=>a.id==='allgames');if(a)a.desc=`全${Object.keys(GAMES).length}ゲームを遊ぶ`}
+const _goA=go;go=function(v,a){if(!S.unlocked.includes('arcade'))S.unlocked.push('arcade');_goA(v,a)};
+const A_BETS=[100,1000,10000,100000,1000000];
+const xfmt=m=>m>=100?fmt(Math.floor(m)):m>=10?m.toFixed(1):m.toFixed(2);
+
+/* ---------- ABYSS ROCKET (crash) ---------- */
+GAME_MOUNT.rocket=(v)=>{const st={bet:1000,busy:false,hist:S.rkHist||[]};const cpus=pickCpus(3);
+  v.innerHTML=gameHeader('rocket')+dealerHTML('pixel')+`<div class="seats">${cpus.map(c=>seatHTML(c)).join('')}</div>
+  <div class="table" style="padding:8px;--feltline:rgba(61,255,168,.5)"><div class="rk-wrap"><canvas id="rk" width="720" height="440"></canvas><div class="rk-m" id="rkM">×1.00</div><div class="rk-s" id="rkS"></div></div><div class="history" id="hist"></div></div>
+  <div class="msg" id="gmsg">賭け額を選んで LAUNCH</div>
+  <div class="ctrl">${betSel(st,A_BETS)}<div class="actions"><button class="btn gold" id="rkGo" style="font-family:var(--font-d);font-size:18px">LAUNCH</button></div></div>`;
+  dealerSay('pixel','greet');bindBetSel(st);const cv=$('#rk'),x=cv.getContext('2d'),W=720,H=440;
+  const stars=[...Array(50)].map(()=>[rnd(0,W),rnd(0,H),rnd(.5,2)]);
+  const renderHist=()=>{$('#hist').innerHTML=st.hist.slice(-12).map(c=>`<i style="width:auto;padding:0 6px;border-radius:9px;background:${c>=10?'#7a5a00':c>=2?'#0a4a34':'#4a1020'}">×${xfmt(c)}</i>`).join('')};renderHist();
+  function draw(m,t,boom,out){x.clearRect(0,0,W,H);const g=x.createLinearGradient(0,0,0,H);const dp=Math.min(1,Math.log10(m)/2.5);g.addColorStop(0,`rgb(${4+dp*20},${5+dp*4},${20+dp*40})`);g.addColorStop(1,'#04050f');x.fillStyle=g;x.fillRect(0,0,W,H);
+    x.fillStyle='#fff';stars.forEach(([sx,sy,r])=>{x.globalAlpha=.3+r/4;x.fillRect((sx-t*30*r)%W<0?(sx-t*30*r)%W+W:(sx-t*30*r)%W,(sy+t*20*r)%H,r,r)});x.globalAlpha=1;
+    const px=u=>60+u*560,py=u=>H-50-Math.pow(u,1.7)*310;x.strokeStyle=boom?'#ff3d6e':'#3dffa8';x.lineWidth=5;x.beginPath();for(let u=0;u<=1.001;u+=.02)u?x.lineTo(px(u),py(u)):x.moveTo(px(u),py(u));x.stroke();
+    x.fillStyle=boom?'rgba(255,61,110,.12)':'rgba(61,255,168,.1)';x.beginPath();x.moveTo(px(0),H-50);for(let u=0;u<=1.001;u+=.02)x.lineTo(px(u),py(u));x.lineTo(px(1),H-50);x.closePath();x.fill();
+    const rx=px(1),ry=py(1)+Math.sin(t*20)*2;if(boom){for(let k=0;k<14;k++){x.fillStyle=['#ff3d6e','#ffd36b','#ff7a2e'][k%3];x.beginPath();x.arc(rx+Math.cos(k)*boom*60,ry+Math.sin(k*1.7)*boom*60,10*(1.2-boom),0,7);x.fill()}}
+    else{x.save();x.translate(rx,ry);x.rotate(-.75);x.fillStyle='#ff7a2e';x.beginPath();x.moveTo(-26,-7);x.lineTo(-44-Math.random()*14,0);x.lineTo(-26,7);x.fill();x.fillStyle='#e9f4ff';x.beginPath();x.moveTo(26,0);x.quadraticCurveTo(8,-14,-24,-10);x.lineTo(-24,10);x.quadraticCurveTo(8,14,26,0);x.fill();x.fillStyle='#ff2bd6';x.beginPath();x.arc(4,0,5,0,7);x.fill();x.fillStyle='#29f3ff';x.beginPath();x.moveTo(-24,-10);x.lineTo(-34,-20);x.lineTo(-14,-10);x.moveTo(-24,10);x.lineTo(-34,20);x.lineTo(-14,10);x.fill();x.restore()}
+    if(out){x.fillStyle='#ffd36b';x.font='bold 20px Orbitron, sans-serif';x.fillText('脱出 ×'+xfmt(out),30,40)}}
+  draw(1,0);leaveGuard=async()=>{if(st.busy){toast('飛行中です');return false}return true};
+  $('#rkGo').onclick=async()=>{if(st.busy){if(st.canOut&&!st.out){st.out=st.m;st.canOut=false;$('#rkGo').disabled=true;AU.win();stamp('脱出！',{col:'#3dffa8',sub:`×${xfmt(st.out)}　+${fmt(Math.floor(st.bet*st.out))} NOA`,size:.8,shake:1,dur:900});$('#rkS').innerHTML=`<span class="neon-g">×${xfmt(st.out)} で脱出済み</span>　この先どこまで行くか…`}return}
+    if(!spend(st.bet)){toast('NOAが足りません');return}st.busy=true;st.out=0;st.canOut=true;st.m=1;$('#betsel').style.opacity=.4;const btn=$('#rkGo');btn.classList.remove('gold');btn.classList.add('mag');$('#gmsg').textContent='';$('#rkS').textContent='';
+    const crash=Math.random()<.03?1:Math.min(5000,1/(1-Math.random()));const cb=cpus.map(c=>{const el=$(`.seat[data-cpu="${c.id}"]`);const amt=Math.max(100,Math.round(cpuBank(c.id)*.02/100)*100);cpuAdj(c.id,-amt);el.querySelector('.mn').textContent=fmt(cpuBank(c.id));return{c,el,amt,tg:Math.max(1.15,Math.min(30,(1/(1-Math.random()))*(.6+c.p.aggr))),done:false}});
+    dealerSay('pixel','custom','ハッシャ！ドコマデ イケルカナ！？');AU.whoosh();const t0=performance.now();let lastBeep=1,speed=1,tAcc=0,last=t0;const M=$('#rkM');
+    await new Promise(res=>{const f=n=>{if(!document.body.contains(cv)){res();return}const dt=(n-last)/1000;last=n;tAcc+=dt*speed;const m=Math.exp(.22*tAcc);
+        if(m>=crash){st.m=crash;res();return}st.m=m;M.textContent='×'+xfmt(m);M.style.color=m>=10?'#ffd36b':m>=2?'#3dffa8':'#fff';btn.innerHTML=st.out?'脱出済み':`脱出<br><small>+${fmt(Math.floor(st.bet*m))} NOA</small>`;draw(m,tAcc,0,st.out);
+        if(m>=lastBeep*1.25){lastBeep=m;AU.tone(300+Math.min(1800,Math.log(m)*420),.06,{type:'square',vol:.05})}
+        cb.forEach(b=>{if(!b.done&&m>=b.tg){b.done=true;cpuAdj(b.c.id,Math.floor(b.amt*b.tg));b.el.querySelector('.mn').textContent=fmt(cpuBank(b.c.id));cpuSay(b.el,`×${xfmt(b.tg)}で脱出！`,1600)}});
+        if(st.out&&speed<5)speed=5;requestAnimationFrame(f)};requestAnimationFrame(f)});
+    if(!document.body.contains(cv))return;st.canOut=false;btn.disabled=true;M.textContent='×'+xfmt(crash);M.style.color='#ff3d6e';AU.boom();shakeApp(st.out?1:2.5);flashColor('#ff3d6e',.6);
+    const b0=performance.now();await new Promise(res=>{const f=n=>{const p=(n-b0)/500;draw(crash,tAcc,Math.min(1,p),st.out);p<1?requestAnimationFrame(f):res()};requestAnimationFrame(f)});
+    cb.forEach(b=>{if(!b.done&&Math.random()<.6)cpuSay(b.el,pick(b.c.lose))});st.hist.push(Math.round(crash*100)/100);S.rkHist=st.hist.slice(-12);renderHist();
+    let ret=0;if(st.out){ret=Math.floor(st.bet*st.out);if(st.out>=5)emit('rocket5');if(st.out>=50)achv('rocket50');$('#rkS').innerHTML=`×${xfmt(st.out)} で脱出 → ロケットは <b style="color:#ff3d6e">×${xfmt(crash)}</b> で爆発${crash>st.out*3?'　<span class="dim">（もっと行けた…！）</span>':''}`}else{$('#rkS').innerHTML=`<b style="color:#ff3d6e">×${xfmt(crash)} で爆発！</b>`}
+    await settle('rocket',st.bet,ret,cv,'pixel');if(!document.body.contains(cv))return;st.busy=false;btn.disabled=false;btn.classList.add('gold');btn.classList.remove('mag');btn.textContent='LAUNCH';$('#betsel').style.opacity=1;draw(1,0);M.textContent='×1.00';M.style.color='#fff';save()};
+};
+
+/* ---------- BOMB PANEL (mines) ---------- */
+const minesMult=(M,k)=>{let m=1;for(let i=0;i<k;i++)m*=(25-i)/(25-M-i);return m*.98};
+GAME_MOUNT.mines=(v)=>{const st={bet:1000,busy:false,on:false,M:3,k:0,bombs:null};
+  v.innerHTML=gameHeader('mines')+dealerHTML('pixel')+`<div class="table" style="padding:10px;--feltline:rgba(61,255,168,.5)"><div class="mn-top"><div><small>いまの倍率</small><b id="mnM">×1.00</b></div><div><small>次の1枚で</small><b id="mnN" style="color:var(--green)">-</b></div><div><small>残り安全</small><b id="mnL">-</b></div></div>
+   <div class="mn-grid" id="mnG">${[...Array(25)].map((_,i)=>`<button class="mn-c" data-i="${i}"></button>`).join('')}</div></div>
+  <div class="msg" id="gmsg">爆弾の数と賭け額を選んで START</div>
+  <div class="ctrl"><div class="row" id="mnSel" style="justify-content:center;gap:5px;margin-bottom:6px"><span style="font-size:11px" class="dim">💣</span>${[1,3,5,10,15].map(n=>`<button class="btn sm ${n===3?'red':'ghost'}" data-n="${n}">${n}個</button>`).join('')}</div>${betSel(st,A_BETS)}<div class="actions"><button class="btn gold" id="mnGo" style="font-family:var(--font-d);font-size:17px">START</button></div></div>`;
+  dealerSay('pixel','greet');bindBetSel(st);$$('#mnSel button').forEach(b=>b.onclick=()=>{if(st.on)return;st.M=+b.dataset.n;$$('#mnSel button').forEach(x=>x.className='btn sm '+(+x.dataset.n===st.M?'red':'ghost'));AU.chip()});
+  const cells=$$('#mnG .mn-c');const upd=()=>{const m=st.k?minesMult(st.M,st.k):1;$('#mnM').textContent='×'+xfmt(m);const left=25-st.M-st.k;$('#mnL').textContent=st.on?left:'-';$('#mnN').textContent=st.on&&left>0?'×'+xfmt(minesMult(st.M,st.k+1)):'-';const b=$('#mnGo');if(st.on){b.innerHTML=st.k?`回収<br><small>+${fmt(Math.floor(st.bet*m))} NOA</small>`:'パネルをめくろう';b.disabled=!st.k}};
+  leaveGuard=async()=>{if(st.on&&st.k){toast('先に「回収」してね');return false}if(st.on){refund(st.bet);st.on=false}return !st.busy};
+  async function finish(win){if(!st.on)return;st.on=false;st.busy=true;const m=minesMult(st.M,st.k);cells.forEach((c,i)=>{if(!c.classList.contains('open')){c.classList.add('open','dimd');c.innerHTML=st.bombs.has(i)?'💣':'<span class="gem">◆</span>'}});
+    const ret=win?Math.floor(st.bet*m):0;if(win){if(st.k>=5)emit('mines5');if(st.k===25-st.M)achv('minesall')}await settle('mines',st.bet,ret,$('#mnG'),'pixel');st.busy=false;const b=$('#mnGo');if(!b)return;b.disabled=false;b.textContent='START';$('#betsel').style.opacity=1;$('#mnSel').style.opacity=1;save()}
+  cells.forEach((c,i)=>c.onclick=async()=>{if(!st.on||st.busy||c.classList.contains('open'))return;c.classList.add('open');const r=c.getBoundingClientRect();
+    if(st.bombs.has(i)){c.innerHTML='💣';c.classList.add('bomb');AU.boom();shakeApp(2.5);flashColor('#ff3d6e',.7);FX.firework(r.left+r.width/2,r.top+r.height/2,{col:'#ff3d6e'});$('#gmsg').innerHTML='<span style="color:var(--red)">ドカーン！</span>';await finish(false);return}
+    st.k++;c.innerHTML='<span class="gem">◆</span>';c.animate([{transform:'scale(.6) rotate(-20deg)'},{transform:'scale(1.15)'},{transform:'none'}],{duration:260});AU.tone(500+st.k*70,.12,{type:'triangle',vol:.1});AU.coin(1+st.k*.05);FX.ring(r.left+r.width/2,r.top+r.height/2,{col:'#3dffa8',max:50,w:5,life:.4});upd();$('#gmsg').innerHTML=`<span class="neon-c">セーフ！</span> ${st.k}枚目　×${xfmt(minesMult(st.M,st.k))}`;
+    const m=minesMult(st.M,st.k);if(m>=10&&minesMult(st.M,st.k-1)<10)stamp('×10 突破！',{col:'#ffd36b',size:.7,shake:1,dur:800});if(m>=100&&minesMult(st.M,st.k-1)<100)stamp('×100 突破！！',{col:'#ff2bd6',size:.8,shake:2,dur:900});
+    if(st.k===25-st.M){await stamp('PERFECT!',{col:'#ffd36b',size:1,shake:3});await finish(true)}});
+  $('#mnGo').onclick=async()=>{if(st.busy)return;if(st.on){if(st.k)await finish(true);return}if(!spend(st.bet)){toast('NOAが足りません');return}st.on=true;st.k=0;st.bombs=new Set(shuffle([...Array(25).keys()]).slice(0,st.M));cells.forEach((c,i)=>{c.className='mn-c';c.innerHTML='';c.animate([{transform:'rotateY(90deg)'},{transform:'none'}],{duration:200,delay:i*12,fill:'backwards'})});$('#betsel').style.opacity=.4;$('#mnSel').style.opacity=.4;AU.whoosh();dealerSay('pixel','bet');$('#gmsg').textContent=`爆弾は${st.M}個。どこまでめくる？`;upd()};
+};
+
+/* ---------- PLINKO ---------- */
+const PK_TAB={low:{n:'低',col:'#3dffa8',m:[10,3,1.6,1.4,1.1,1,.5,1,1.1,1.4,1.6,3,10]},mid:{n:'中',col:'#29f3ff',m:[33,11,4,2,1.1,.6,.3,.6,1.1,2,4,11,33]},high:{n:'高',col:'#ff2bd6',m:[170,24,8.1,2,.7,.2,.2,.2,.7,2,8.1,24,170]},ultra:{n:'極',col:'#ffd36b',m:[1000,24,4,1.2,.4,.1,0,.1,.4,1.2,4,24,1000]}};
+GAME_MOUNT.plinko=(v)=>{const st={bet:1000,busy:false,risk:'mid',balls:[],live:0,sess:0};
+  v.innerHTML=gameHeader('plinko')+dealerHTML('pixel')+`<div class="table" style="padding:8px;--feltline:rgba(61,255,168,.5)"><canvas id="pl" width="720" height="610" style="width:100%;display:block"></canvas><div class="pl-slots" id="plS"></div><div class="center" style="font-size:12px;margin-top:6px">このセッションの収支 <b id="plT" style="font-family:var(--font-d)">0</b></div></div>
+  <div class="msg" id="gmsg">リスクと賭け額を選んで、玉を落とそう</div>
+  <div class="ctrl"><div class="row" id="plR" style="justify-content:center;gap:5px;margin-bottom:6px"><span class="dim" style="font-size:11px">リスク</span>${Object.entries(PK_TAB).map(([k,t])=>`<button class="btn sm ${k==='mid'?'':'ghost'}" data-k="${k}">${t.n}</button>`).join('')}</div>${betSel(st,A_BETS)}<div class="actions"><button class="btn gold" id="pl1" style="font-family:var(--font-d)">1球</button><button class="btn mag" id="pl10" style="font-family:var(--font-d)">10球</button></div></div>`;
+  dealerSay('pixel','greet');bindBetSel(st);const cv=$('#pl'),x=cv.getContext('2d'),W=720,H=610,ROWS=12,GX=50,GY=46,TOPY=40;
+  const pegX=(r,c)=>W/2+(c-(r+2)/2)*GX,pegY=r=>TOPY+r*GY;
+  const renderSlots=()=>{const t=PK_TAB[st.risk];$('#plS').innerHTML=t.m.map((m,i)=>`<i data-i="${i}" style="--c:${m>=10?'#ff2bd6':m>=2?'#ffd36b':m>=1?'#3dffa8':'#7d8bb3'}">${m>=1000?'1K':m}</i>`).join('')};renderSlots();
+  $$('#plR button').forEach(b=>b.onclick=()=>{if(st.live)return;st.risk=b.dataset.k;$$('#plR button').forEach(x=>x.className='btn sm '+(x.dataset.k===st.risk?'':'ghost'));renderSlots();AU.chip()});
+  leaveGuard=async()=>{if(st.live){toast('玉が落ちるまで待ってね');return false}return true};
+  let raf=0;const hitPegs={};
+  function pegs(n){for(let r=0;r<ROWS;r++)for(let c=0;c<r+3;c++){const t=hitPegs[r+'_'+c];const hh=t&&n-t<200;x.fillStyle=hh?'#fff':'#29f3ff';x.globalAlpha=hh?1:.75;x.beginPath();x.arc(pegX(r,c),pegY(r),hh?8:5,0,7);x.fill()}x.globalAlpha=1}
+  function frame(n){x.clearRect(0,0,W,H);pegs(n);
+    st.balls=st.balls.filter(b=>{const t=(n-b.t0)/150;const seg=Math.floor(t),u=t-seg;if(seg>=ROWS){land(b);return false}
+      const xs=j=>W/2+(b.pos[j]-j/2)*GX;const x0=xs(seg),x1=xs(seg+1),y0=pegY(seg)-14,y1=pegY(seg+1)-14;const bx=x0+(x1-x0)*u,by=y0+(y1-y0)*u*u-Math.sin(u*Math.PI)*12;
+      if(seg!==b.last){b.last=seg;hitPegs[seg+'_'+(b.pos[seg]+1)]=n;AU.tone(700+seg*60+rnd(0,80),.03,{type:'triangle',vol:.04})}
+      x.fillStyle=b.col;x.globalAlpha=.3;x.beginPath();x.arc(bx,by-10,8,0,7);x.fill();x.globalAlpha=1;x.beginPath();x.arc(bx,by,10,0,7);x.fill();x.fillStyle='#fff';x.beginPath();x.arc(bx-3,by-3,3,0,7);x.fill();return true});
+    if(st.balls.length||Object.values(hitPegs).some(t=>n-t<200))raf=requestAnimationFrame(frame);else{raf=0;x.clearRect(0,0,W,H);pegs(1e15)}}
+  pegs(1e15);
+  function land(b){st.live--;const t=PK_TAB[b.risk];const m=t.m[b.slot];const ret=Math.floor(b.bet*m);record('plinko',b.bet,ret);st.sess+=ret-b.bet;const T=$('#plT');if(!T)return;T.textContent=(st.sess>=0?'+':'')+fmt(st.sess);T.style.color=st.sess>=0?'var(--gold)':'var(--red)';
+    const el=$(`#plS i[data-i="${b.slot}"]`);if(el){el.animate([{transform:'translateY(0)'},{transform:'translateY(10px) scale(1.2)',filter:'brightness(2)'},{transform:'none'}],{duration:320});if(ret>0)award(ret,el,{big:m>=10})}
+    if(m>=100){achv('plinkoedge');legendAdd('plinko',ret-b.bet,m);lightning(innerWidth/2,innerHeight*.4,3,'#ffd36b');stamp('×'+m+'!!',{col:'#ffd36b',sub:`+${fmt(ret)} NOA`,size:1.2,shake:3});dealerSay('pixel','big');setTimeout(()=>bigWin(ret,b.bet),900)}
+    else if(m>=10){legendAdd('plinko',ret-b.bet,m);stamp('×'+m,{col:'#ff2bd6',sub:`+${fmt(ret)} NOA`,size:.85,shake:1.5,dur:900});AU.win()}else if(m>=2)AU.coin(1.2);else AU.tick();
+    if(!st.live){refreshChipBar();save();setTimeout(checkBankrupt,1500)}}
+  function drop(){if(!spend(st.bet)){toast('NOAが足りません');return false}const pos=[0];let c=0;for(let r=0;r<ROWS;r++){if(Math.random()<.5)c++;pos.push(c)}
+    st.balls.push({t0:performance.now(),pos,slot:c,bet:st.bet,risk:st.risk,col:PK_TAB[st.risk].col,last:-1});st.live++;if(!raf)raf=requestAnimationFrame(frame);return true}
+  $('#pl1').onclick=()=>{drop()};$('#pl10').onclick=async()=>{for(let i=0;i<10;i++){if(!document.body.contains(cv)||!drop())break;await sleep(140)}};
+  curCleanup=()=>{cancelAnimationFrame(raf)};
+};
+
+/* ---------- HOLO SCRATCH ---------- */
+const SC_SYM=[{k:'coin',e:'🪙',m:1,w:16},{k:'cherry',e:'🍒',m:2,w:9},{k:'bell',e:'🔔',m:5,w:4},{k:'star',e:'⭐',m:10,w:1.5},{k:'seven',e:'7️⃣',m:50,w:.3},{k:'dia',e:'💎',m:200,w:.05},{k:'crown',e:'👑',m:1000,w:.008}];
+function scMake(){const r=Math.random()*100;let acc=0,win=null;for(const s of SC_SYM){acc+=s.w;if(r<acc){win=s;break}}const grid=[];
+  if(win){for(let i=0;i<3;i++)grid.push(win);const others=SC_SYM.filter(s=>s!==win);const cnt={};while(grid.length<9){const s=pick(others);if((cnt[s.k]||0)<2){cnt[s.k]=(cnt[s.k]||0)+1;grid.push(s)}}}
+  else{const cnt={};const tease=pick(SC_SYM.slice(3));grid.push(tease,tease);cnt[tease.k]=2;while(grid.length<9){const s=pick(SC_SYM);if((cnt[s.k]||0)<2){cnt[s.k]=(cnt[s.k]||0)+1;grid.push(s)}}}
+  return{grid:shuffle(grid),win}}
+GAME_MOUNT.scratch=(v)=>{const st={bet:500,busy:false,card:null,open:0};
+  v.innerHTML=gameHeader('scratch')+dealerHTML('pixel')+`<div class="table" style="padding:12px;--feltline:rgba(255,211,107,.6)"><div class="sc-card"><div class="sc-head">HOLO SCRATCH<small>同じマーク3つで当たり</small></div><div class="sc-grid" id="scG">${[...Array(9)].map((_,i)=>`<button class="sc-c" data-i="${i}"><span class="sc-cv">?</span><span class="sc-sy"></span></button>`).join('')}</div>
+   <div class="sc-pt">${SC_SYM.slice().reverse().map(s=>`<span>${s.e}×3 <b>${s.m}倍</b></span>`).join('')}</div></div></div>
+  <div class="msg" id="gmsg">カードの値段を選んで「買う」</div>
+  <div class="ctrl">${betSel(st,[500,5000,50000,500000])}<div class="actions"><button class="btn ghost" id="scAll" disabled>全部削る</button><button class="btn gold" id="scBuy" style="flex:2;font-family:var(--font-d)">買う</button></div></div>`;
+  dealerSay('pixel','greet');bindBetSel(st);const cells=$$('#scG .sc-c');leaveGuard=async()=>{if(st.card){toast('カードを削りきってね');return false}return true};
+  async function reveal(i,fast){const c=cells[i];if(!st.card||c.classList.contains('open'))return;c.classList.add('open');st.open++;const s=st.card.grid[i];c.querySelector('.sc-sy').textContent=s.e;const r=c.getBoundingClientRect();AU.noise(.12,{vol:.12,freq:4200,q:.6,type:'highpass'});FX.sparkle(r.left+r.width/2,r.top+r.height/2,6,'#c9d3e6');
+    const cnt={};cells.forEach((x,k)=>{if(x.classList.contains('open')){const kk=st.card.grid[k].k;cnt[kk]=(cnt[kk]||0)+1}});const n=cnt[s.k];
+    if(n===2&&s.m>=5&&st.open<9){cells.forEach((x,k)=>{if(x.classList.contains('open')&&st.card.grid[k]===s)x.classList.add('reach')});if(!fast){AU.heart();$('#gmsg').innerHTML=`<span class="neon-m">${s.e} リーチ！あと1つで ${s.m}倍！</span>`}}
+    if(n===3){cells.forEach((x,k)=>{if(st.card.grid[k]===s&&x.classList.contains('open'))x.classList.add('hit')});AU.win()}
+    if(st.open===9)await done()}
+  async function done(){const card=st.card;st.card=null;st.busy=true;$('#scAll').disabled=true;await sleep(350);const w=card.win;const ret=w?st.bet*w.m:0;if(w){if(w.m>=1000)achv('crown3');if(w.m>=10)await stamp(`${w.e}×3`,{col:w.m>=50?'#ffd36b':'#3dffa8',sub:`${w.m}倍！`,size:1,shake:w.m>=50?3:1.5})}
+    await settle('scratch',st.bet,ret,$('#scG'),'pixel');st.busy=false;const b=$('#scBuy');if(b){b.disabled=false;$('#betsel').style.opacity=1}save()}
+  cells.forEach((c,i)=>c.onclick=()=>reveal(i));
+  $('#scAll').onclick=async()=>{if(!st.card)return;$('#scAll').disabled=true;for(let i=0;i<9;i++){if(!st.card)break;if(!cells[i].classList.contains('open')){await reveal(i,true);await sleep(110)}}};
+  $('#scBuy').onclick=()=>{if(st.busy||st.card)return;if(!spend(st.bet)){toast('NOAが足りません');return}st.card=scMake();st.open=0;cells.forEach((c,i)=>{c.className='sc-c';c.querySelector('.sc-sy').textContent='';c.animate([{transform:'scale(.8)',opacity:0},{transform:'none',opacity:1}],{duration:200,delay:i*25,fill:'backwards'})});$('#scBuy').disabled=true;$('#scAll').disabled=false;$('#betsel').style.opacity=.4;$('#gmsg').textContent='マスをタップして削ろう';AU.card();dealerSay('pixel','bet')};
+};
+
+/* chain HUD text for the arcade games */
+const _thA=thHud;thHud=function(){_thA();const el=$('#thx');if(!el)return;const t={rocket:'🚀 倍率は ×5000 まで上がり続ける。降りるタイミングがすべて',mines:'💣 めくるほど倍率アップ。爆弾10個で全部めくれば ×320万',plinko:'🔴 「極」リスクの端は ×1000',scratch:'👑 クラウン3つで 1000倍'}[CUR];if(t){el.innerHTML=t;el.classList.remove('hot')}};
 /* ================= GACHA ================= */
 function itemPreview(it){if(it.cat==='cardback')return `<div style="width:34px;height:48px;border-radius:5px;background:${it.css};border:1px solid rgba(255,255,255,.4);box-shadow:0 2px 6px #000"></div>`;
   if(it.cat==='chip'){const p=it.pal;const cs=p.chips||DEF_CHIP_COLORS;const c=p.coin;return `<div style="display:flex;align-items:center;gap:3px"><div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,${c[0]},${c[1]} 50%,${c[2]});border:2px solid ${c[3]}"></div><div style="width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,${shade(cs[2],-.5)} 0 50%,transparent 52%),repeating-conic-gradient(${cs[2]} 0 15deg,#fff 15deg 22deg,${cs[2]} 22deg 45deg)"></div></div>`}
